@@ -1,0 +1,18 @@
+{
+  "templates": [
+    {
+      "name": "11",
+      "questions_count": {
+        "single_choice": 2,
+        "fill_blank": 0,
+        "programming": 0,
+        "web_design": 0,
+        "network_device": 0,
+        "graphic_design": 0
+      },
+      "duration_minutes": 60,
+      "selected_qids": {},
+      "created_at": "2026-06-21 20:28:48"
+    }
+  ]
+}

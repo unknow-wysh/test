@@ -1,0 +1,3749 @@
+{
+  "programming": [
+    {
+      "content": "【程序功能】\n输入一个整数表示分钟数，将其转换为\"小时:分钟\"的格式输出。\n例如输入78，输出\"1:18\"。\n\n样例输入：\n78\n样例输出：\n1:18",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int m,h;\n    scanf(\"%d\", &m);\n    h=m/60;\n    m=m%60;\n    printf(\"%d:%d\",h,m);\n}",
+      "test_cases": [
+        {
+          "in": "78",
+          "out": "1:18"
+        },
+        {
+          "in": "120",
+          "out": "2:0"
+        },
+        {
+          "in": "60",
+          "out": "1:0"
+        },
+        {
+          "in": "45",
+          "out": "0:45"
+        },
+        {
+          "in": "150",
+          "out": "2:30"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2020年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个两位数，将其十位和个位数字相加，如果和大于16则输出\"中奖\"，否则输出\"未中奖\"。\n\n样例输入：\n89\n样例输出：\n中奖",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a;\n    scanf(\"%d\", &a);\n    if(a/10+a%10>16)\n        printf(\"中奖\");\n    else\n        printf(\"未中奖\");\n}",
+      "test_cases": [
+        {
+          "in": "89",
+          "out": "中奖"
+        },
+        {
+          "in": "99",
+          "out": "中奖"
+        },
+        {
+          "in": "79",
+          "out": "未中奖"
+        },
+        {
+          "in": "88",
+          "out": "未中奖"
+        },
+        {
+          "in": "98",
+          "out": "中奖"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2020年真题"
+    },
+    {
+      "content": "【程序功能】\n输入数据总数，每页显示10条数据，计算并输出需要的总页数。\n例如输入23，输出3。\n\n样例输入：\n23\n样例输出：\n3",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a,sum;\n    scanf(\"%d\", &a);\n    sum=a/10;\n    if(a%10>0)\n        sum++;\n    printf(\"%d\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "23",
+          "out": "3"
+        },
+        {
+          "in": "100",
+          "out": "10"
+        },
+        {
+          "in": "101",
+          "out": "11"
+        },
+        {
+          "in": "9",
+          "out": "1"
+        },
+        {
+          "in": "0",
+          "out": "0"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2020年真题"
+    },
+    {
+      "content": "【程序功能】\n输入购物金额，根据金额享受不同折扣：100以内打九折，100~299打八折，300及以上打七折。输出打折后的金额。\n\n样例输入：\n50\n样例输出：\n45.000000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    float a;\n    scanf(\"%f\", &a);\n    if(a<100)a=a*0.9;\n    else if(a<=299)a=a*0.8;\n    else a=a*0.7;\n    printf(\"%f\",a);\n}",
+      "test_cases": [
+        {
+          "in": "50",
+          "out": "45.000000"
+        },
+        {
+          "in": "100",
+          "out": "80.000000"
+        },
+        {
+          "in": "200",
+          "out": "160.000000"
+        },
+        {
+          "in": "299",
+          "out": "239.200000"
+        },
+        {
+          "in": "500",
+          "out": "350.000000"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2020年真题"
+    },
+    {
+      "content": "【程序功能】\n输入学生总人数，每班45人，计算并输出需要多少个班级（不足45人也要一个班）。\n\n样例输入：\n90\n样例输出：\n2",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a,sum;\n    scanf(\"%d\", &a);\n    sum=a/45;\n    if(a%45>0)\n        sum++;\n    printf(\"%d\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "90",
+          "out": "2"
+        },
+        {
+          "in": "100",
+          "out": "3"
+        },
+        {
+          "in": "45",
+          "out": "1"
+        },
+        {
+          "in": "44",
+          "out": "1"
+        },
+        {
+          "in": "135",
+          "out": "3"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2020年真题"
+    },
+    {
+      "content": "【程序功能】\n先输入一个字符作为用户名，再输入一个字符串作为密码（3位）。\n用户s的密码是\"666\"，用户t的密码是\"999\"。验证用户名和密码是否匹配，输出\"登录\"、\"密码错误\"或\"用户名错误\"。\n\n样例输入：\ns\n666\n样例输出：\n登录",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i;\n    char a,passa[10];\n                {a=getchar(); }\n    getchar();\n    gets(passa);\n    if(a=='s')\n    {\n        for(i=0;i<3;i++)\n            if(passa[i]!='6')break;\n        if(i==3)puts(\"登录\");\n        else puts(\"密码错误\");\n    }\n    else if(a=='t')\n    {\n        for(i=0;i<3;i++)\n            if(passa[i]!='9')break;\n        if(i==3)puts(\"登录\");\n        else puts(\"密码错误\");\n    }\n    else puts(\"用户名错误\");\n}",
+      "test_cases": [
+        {
+          "in": "s\n666",
+          "out": "登录"
+        },
+        {
+          "in": "t\n999",
+          "out": "登录"
+        },
+        {
+          "in": "s\n123",
+          "out": "密码错误"
+        },
+        {
+          "in": "t\n666",
+          "out": "密码错误"
+        },
+        {
+          "in": "x\n666",
+          "out": "用户名错误"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2020年真题"
+    },
+    {
+      "content": "【程序功能】\n输入三个浮点数，将它们从小到大排序后，输出最小值。\n\n样例输入：\n3.5 1.2 2.8\n样例输出：\nmin=1.200000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i,j;\n    float a[3];\n    for(i=0;i<3;i++)\n        scanf(\"%f\", &a[i]);\n    for(i=0;i<3;i++)\n        for(j=i;j<3;j++)\n            if(a[i]>a[j])\n            {\n                a[j]=a[j]+a[i];\n                a[i]=a[j]-a[i];\n                a[j]=a[j]-a[i];\n            }\n    printf(\"min=%f\",a[0]);\n}",
+      "test_cases": [
+        {
+          "in": "3.5 1.2 2.8",
+          "out": "min=1.200000"
+        },
+        {
+          "in": "10.0 5.0 7.5",
+          "out": "min=5.000000"
+        },
+        {
+          "in": "1.1 1.1 1.1",
+          "out": "min=1.100000"
+        },
+        {
+          "in": "100.0 200.0 50.0",
+          "out": "min=50.000000"
+        },
+        {
+          "in": "-1.5 0.0 3.2",
+          "out": "min=-1.500000"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2020年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个整数，判断它是否为三位数。如果是，输出它的百位、十位和个位数字；如果不是，输出\"不是三位\"。\n\n样例输入：\n345\n样例输出：\n百位为3\n十位为4\n个位为5",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a;\n    scanf(\"%d\", &a);\n    if(a/100!=0&&a/1000==0)\n    {\n        printf(\"百位为%d\\n\",a/100);\n        printf(\"十位为%d\\n\",a/10%10);\n        printf(\"个位为%d\\n\",a%10);\n    }\n    else puts(\"不是三位\");\n}",
+      "test_cases": [
+        {
+          "in": "345",
+          "out": "百位为3\n十位为4\n个位为5"
+        },
+        {
+          "in": "100",
+          "out": "百位为1\n十位为0\n个位为0"
+        },
+        {
+          "in": "999",
+          "out": "百位为9\n十位为9\n个位为9"
+        },
+        {
+          "in": "99",
+          "out": "不是三位"
+        },
+        {
+          "in": "1000",
+          "out": "不是三位"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2020年真题"
+    },
+    {
+      "content": "【程序功能】\n2008年GDP为4万亿元，每年增长9%。计算GDP达到10万亿元的年份并输出。\n\n样例输出：\n2019",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    float a=4;\n    int i=2008;\n    while(a<10)\n    {\n        a=a*1.09;\n        i++;\n    }\n    printf(\"%d\",i);\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "2019"
+        },
+        {
+          "in": "",
+          "out": "2019"
+        },
+        {
+          "in": "",
+          "out": "2019"
+        },
+        {
+          "in": "",
+          "out": "2019"
+        },
+        {
+          "in": "",
+          "out": "2019"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2021年真题"
+    },
+    {
+      "content": "【程序功能】\n鸡兔同笼问题：共有30个头，88只脚。计算鸡和兔各有多少只并输出。\n\n样例输出：\n鸡16，兔子14",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a;\n    for(a=0;a<=30;a++)\n        if(2*a+4*(30-a)==88)\n            printf(\"鸡%d，兔子%d\",a,30-a);\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "鸡16，兔子14"
+        },
+        {
+          "in": "",
+          "out": "鸡16，兔子14"
+        },
+        {
+          "in": "",
+          "out": "鸡16，兔子14"
+        },
+        {
+          "in": "",
+          "out": "鸡16，兔子14"
+        },
+        {
+          "in": "",
+          "out": "鸡16，兔子14"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2021年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个整数a。如果a大于0，计算1+2+...+a的和；如果a小于0，计算(-1)+(-2)+...+a的和。输出累加结果。\n\n样例输入：\n5\n样例输出：\n15",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a,i,sum=0;\n    scanf(\"%d\", &a);\n    if(a>0)\n        for(i=1;i<=a;i++)\n            sum+=i;\n    else if(a<0)\n        for(i=-1;i>=a;i--)\n            sum+=i;\n    printf(\"%d\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "5",
+          "out": "15"
+        },
+        {
+          "in": "-5",
+          "out": "-15"
+        },
+        {
+          "in": "10",
+          "out": "55"
+        },
+        {
+          "in": "-3",
+          "out": "-6"
+        },
+        {
+          "in": "0",
+          "out": "0"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2021年真题"
+    },
+    {
+      "content": "【程序功能】\n输出21行图形：偶数行输出5个T，奇数行输出3个X。\n\n样例输出：\n第1行: XXX\n第2行: TTTTT\n...交替共21行",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i;\n    for(i=1;i<=21;i++)\n    {\n        printf(\"第%d行:\",i);\n        if(i%2==1)printf(\"XXX\");\n        else printf(\"TTTTT\");\n        printf(\"\\n\");\n    }\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "第1行: XXX\n第2行: TTTTT\n第3行: XXX\n第4行: TTTTT\n第5行: XXX\n第6行: TTTTT\n第7行: XXX\n第8行: TTTTT\n第9行: XXX\n第10行: TTTTT\n第11行: XXX\n第12行: TTTTT\n第13行: XXX\n第14行: TTTTT\n第15行: XXX\n第16行: TTTTT\n第17行: XXX\n第18行: TTTTT\n第19行: XXX\n第20行: TTTTT\n第21行: XXX"
+        },
+        {
+          "in": "",
+          "out": "第1行: XXX\n第2行: TTTTT\n第3行: XXX\n第4行: TTTTT\n第5行: XXX\n第6行: TTTTT\n第7行: XXX\n第8行: TTTTT\n第9行: XXX\n第10行: TTTTT\n第11行: XXX\n第12行: TTTTT\n第13行: XXX\n第14行: TTTTT\n第15行: XXX\n第16行: TTTTT\n第17行: XXX\n第18行: TTTTT\n第19行: XXX\n第20行: TTTTT\n第21行: XXX"
+        },
+        {
+          "in": "",
+          "out": "第1行: XXX\n第2行: TTTTT\n第3行: XXX\n第4行: TTTTT\n第5行: XXX\n第6行: TTTTT\n第7行: XXX\n第8行: TTTTT\n第9行: XXX\n第10行: TTTTT\n第11行: XXX\n第12行: TTTTT\n第13行: XXX\n第14行: TTTTT\n第15行: XXX\n第16行: TTTTT\n第17行: XXX\n第18行: TTTTT\n第19行: XXX\n第20行: TTTTT\n第21行: XXX"
+        },
+        {
+          "in": "",
+          "out": "第1行: XXX\n第2行: TTTTT\n第3行: XXX\n第4行: TTTTT\n第5行: XXX\n第6行: TTTTT\n第7行: XXX\n第8行: TTTTT\n第9行: XXX\n第10行: TTTTT\n第11行: XXX\n第12行: TTTTT\n第13行: XXX\n第14行: TTTTT\n第15行: XXX\n第16行: TTTTT\n第17行: XXX\n第18行: TTTTT\n第19行: XXX\n第20行: TTTTT\n第21行: XXX"
+        },
+        {
+          "in": "",
+          "out": "第1行: XXX\n第2行: TTTTT\n第3行: XXX\n第4行: TTTTT\n第5行: XXX\n第6行: TTTTT\n第7行: XXX\n第8行: TTTTT\n第9行: XXX\n第10行: TTTTT\n第11行: XXX\n第12行: TTTTT\n第13行: XXX\n第14行: TTTTT\n第15行: XXX\n第16行: TTTTT\n第17行: XXX\n第18行: TTTTT\n第19行: XXX\n第20行: TTTTT\n第21行: XXX"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2021年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个大于200的三位数n，从100循环到n，输出所有个位、十位、百位之和等于24的数。\n\n样例输入：\n300\n样例输出：\n699 789 798 879 888 897 969 978 987 996",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i,x;\n    scanf(\"%d\", &x);\n    if(x>200)\n    {\n        for(i=100;i<=x;i++)\n            if(i%10+i/10%10+i/100%10==24)printf(\"%d \",i);\n    }\n    else puts(\"不到200\");\n}",
+      "test_cases": [
+        {
+          "in": "300",
+          "out": "699 789 798 879 888 897 969 978 987 996"
+        },
+        {
+          "in": "250",
+          "out": ""
+        },
+        {
+          "in": "500",
+          "out": "699 789 798 879 888 897 969 978 987 996"
+        },
+        {
+          "in": "999",
+          "out": "699 789 798 879 888 897 969 978 987 996"
+        },
+        {
+          "in": "700",
+          "out": "699（仅<=700）"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2021年真题"
+    },
+    {
+      "content": "【程序功能】\n输出所有的四叶玫瑰数。四叶玫瑰数是指一个四位数，其各位数字的四次方之和等于该数本身。\n\n样例输出：\n1634 8208 9474",
+      "reference_answer": "#include<stdio.h>\n#include<math.h>\nmain()\n{\n    int a;\n    for(a=1000;a<=9999;a++)\n        if((a%10)*(a%10)*(a%10)*(a%10)+(a/10%10)*(a/10%10)*(a/10%10)*(a/10%10)+(a/100%10)*(a/100%10)*(a/100%10)*(a/100%10)+(a/1000)*(a/1000)*(a/1000)*(a/1000)==a)\n            printf(\"%d \",a);\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "1634 8208 9474"
+        },
+        {
+          "in": "",
+          "out": "1634 8208 9474"
+        },
+        {
+          "in": "",
+          "out": "1634 8208 9474"
+        },
+        {
+          "in": "",
+          "out": "1634 8208 9474"
+        },
+        {
+          "in": "",
+          "out": "1634 8208 9474"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2021年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个整数n，输出1到n之间所有同时能被3和5整除的数。\n\n样例输入：\n50\n样例输出：\n15 30 45",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i,x;\n    scanf(\"%d\", &x);\n    for(i=1;i<=x;i++)\n        if(i%3==0&&i%5==0)printf(\"%d \",i);\n}",
+      "test_cases": [
+        {
+          "in": "50",
+          "out": "15 30 45"
+        },
+        {
+          "in": "100",
+          "out": "15 30 45 60 75 90"
+        },
+        {
+          "in": "14",
+          "out": ""
+        },
+        {
+          "in": "30",
+          "out": "15 30"
+        },
+        {
+          "in": "15",
+          "out": "15"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2021年真题"
+    },
+    {
+      "content": "【程序功能】\n循环输出字母a到z，但不输出字母d和y。\n\n样例输出：\na b c e f g h i j k l m n o p q r s t u v w x z",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i;\n    for(i='a';i<='z';i++)\n    {\n        if(i=='d'||i=='y')continue;\n        printf(\" %c \",i);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "a b c e f g h i j k l m n o p q r s t u v w x z"
+        },
+        {
+          "in": "",
+          "out": "a b c e f g h i j k l m n o p q r s t u v w x z"
+        },
+        {
+          "in": "",
+          "out": "a b c e f g h i j k l m n o p q r s t u v w x z"
+        },
+        {
+          "in": "",
+          "out": "a b c e f g h i j k l m n o p q r s t u v w x z"
+        },
+        {
+          "in": "",
+          "out": "a b c e f g h i j k l m n o p q r s t u v w x z"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2021年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个整数，判断它是否为素数。素数是指大于1且只能被1和自身整除的数。\n\n样例输入：\n7\n样例输出：\nyes",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a,i;\n    scanf(\"%d\", &a);\n    if(a<=1){printf(\"no\");return 0;}\n    for(i=2;i<a;i++)\n        if(a%i==0)break;\n    if(i==a)printf(\"yes\");\n    else printf(\"no\");\n}",
+      "test_cases": [
+        {
+          "in": "7",
+          "out": "yes"
+        },
+        {
+          "in": "10",
+          "out": "no"
+        },
+        {
+          "in": "17",
+          "out": "yes"
+        },
+        {
+          "in": "1",
+          "out": "no"
+        },
+        {
+          "in": "97",
+          "out": "yes"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2021年真题"
+    },
+    {
+      "content": "【程序功能】\n韩信点兵问题：有一队士兵，5人一组余1人，6人一组余5人，7人一组余4人，11人一组余10人。求这队士兵至少有多少人。\n\n样例输出：\n2111",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i=1;\n    while(1)\n    {\n        if(i%5==1&&i%6==5&&i%7==4&&i%11==10)break;\n        i++;\n    }\n    printf(\"%d\",i);\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "2111"
+        },
+        {
+          "in": "",
+          "out": "2111"
+        },
+        {
+          "in": "",
+          "out": "2111"
+        },
+        {
+          "in": "",
+          "out": "2111"
+        },
+        {
+          "in": "",
+          "out": "2111"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2021年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串，判断是否符合手机号规则：第一位为1，长度为11位，其他位必须是数字0-9。分别给出不符合原因或\"符合\"。\n\n样例输入：\n13800138000\n样例输出：\n符合",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain()\n{\n    int i;\n    char a[80];\n    gets(a);\n    if(a[0]=='1')\n    {\n        if(strlen(a)==11)\n        {\n            for(i=1;i<11;i++)\n                if(!(a[i]>='0'&&a[i]<='9'))break;\n            if(i==11)puts(\"符合\");\n            else puts(\"错误字符\");\n        }\n        else puts(\"不是11位\");\n    }\n    else puts(\"第一位不是1\");\n}",
+      "test_cases": [
+        {
+          "in": "13800138000",
+          "out": "符合"
+        },
+        {
+          "in": "12345678901",
+          "out": "符合"
+        },
+        {
+          "in": "23800138000",
+          "out": "第一位不是1"
+        },
+        {
+          "in": "1380013800",
+          "out": "不是11位"
+        },
+        {
+          "in": "1380013800a",
+          "out": "错误字符"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入x，计算分段函数：若x>3，y=x*x；否则y=x。输出y的值。\n\n样例输入：\n5\n样例输出：\n25.000000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    float x,y;\n    scanf(\"%f\", &x);\n    if(x>3)y=x*x;\n    else y=x;\n    printf(\"%f\",y);\n}",
+      "test_cases": [
+        {
+          "in": "5",
+          "out": "25.000000"
+        },
+        {
+          "in": "2",
+          "out": "2.000000"
+        },
+        {
+          "in": "3",
+          "out": "3.000000"
+        },
+        {
+          "in": "-1",
+          "out": "-1.000000"
+        },
+        {
+          "in": "10",
+          "out": "100.000000"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个英文字母，实现大小写转换：大写转小写，小写转大写。如果不是字母则输出\"不是字母\"。\n\n样例输入：\na\n样例输出：\nA",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    char x;\n        {x=getchar(); }\n    if(x>='a'&&x<='z')\n    {\n        x-=32;\n        printf(\"%c\",x);\n    }\n    else if(x>='A'&&x<='Z')\n    {\n        x+=32;\n        printf(\"%c\",x);\n    }\n    else puts(\"不是字母\");\n}",
+      "test_cases": [
+        {
+          "in": "a",
+          "out": "A"
+        },
+        {
+          "in": "A",
+          "out": "a"
+        },
+        {
+          "in": "z",
+          "out": "Z"
+        },
+        {
+          "in": "M",
+          "out": "m"
+        },
+        {
+          "in": "5",
+          "out": "不是字母"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n给定数组a[10]={1,-1,-1,1,2,2,3,4,5,5}，输入一个整数x，统计x在数组中出现的次数并输出。\n\n样例输入：\n1\n样例输出：\n2",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i,sum=0,x,a[10]={1,-1,-1,1,2,2,3,4,5,5};\n    scanf(\"%d\", &x);\n    for(i=0;i<10;i++)\n        if(x==a[i])sum++;\n    printf(\"%d\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "1",
+          "out": "2"
+        },
+        {
+          "in": "2",
+          "out": "2"
+        },
+        {
+          "in": "5",
+          "out": "2"
+        },
+        {
+          "in": "-1",
+          "out": "2"
+        },
+        {
+          "in": "10",
+          "out": "0"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入两个整数x和y。若y等于0，输出\"除数为0\"；否则输出x%y的余数和x/y的商（浮点数）。\n\n样例输入：\n10 3\n样例输出：\n1 3.333333",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int x,y,yu;\n    float a;\n    scanf(\"%d%d\", &x, &y);\n    if(y==0)puts(\"除数为0\");\n    else\n    {\n        yu=x%y;\n        a=x*1.0/y;\n        printf(\"%d %f\",yu,a);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "10 3",
+          "out": "1 3.333333"
+        },
+        {
+          "in": "20 4",
+          "out": "0 5.000000"
+        },
+        {
+          "in": "7 0",
+          "out": "除数为0"
+        },
+        {
+          "in": "15 6",
+          "out": "3 2.500000"
+        },
+        {
+          "in": "100 7",
+          "out": "2 14.285714"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个不到80个字符的用户名。如果长度小于3或与\"haohao\"相同，输出\"no\"；否则输出\"yes\"。\n\n样例输入：\nhaohao\n样例输出：\nno",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain()\n{\n    char a[80]=\"haohao\",b[80];\n    gets(b);\n    if(strlen(b)<3||strcmp(b,a)==0)\n        puts(\"no\");\n    else puts(\"yes\");\n}",
+      "test_cases": [
+        {
+          "in": "haohao",
+          "out": "no"
+        },
+        {
+          "in": "ab",
+          "out": "no"
+        },
+        {
+          "in": "zhangsan",
+          "out": "yes"
+        },
+        {
+          "in": "abc",
+          "out": "yes"
+        },
+        {
+          "in": "haohao123",
+          "out": "yes"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入存款金额x。100000以内按原数输出；超过100000的部分按8%计算利息，总金额=100000+超出部分*0.08。\n\n样例输入：\n50000\n样例输出：\n50000.000000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    float x,sum;\n    scanf(\"%f\", &x);\n    if(x<100000)sum=x;\n    else sum=100000+(x-100000)*0.08;\n    printf(\"%f\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "50000",
+          "out": "50000.000000"
+        },
+        {
+          "in": "100000",
+          "out": "100000.000000"
+        },
+        {
+          "in": "200000",
+          "out": "108000.000000"
+        },
+        {
+          "in": "150000",
+          "out": "104000.000000"
+        },
+        {
+          "in": "110000",
+          "out": "100800.000000"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串，判断是否符合学生号规则：前两位为2，长度6位，其他位必须是数字0-9。分别给出不符合原因或\"符合\"。\n\n样例输入：\n221234\n样例输出：\n符合",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain()\n{\n    int i;\n    char a[80];\n    gets(a);\n    if(a[0]=='2'&&a[1]=='2')\n    {\n        if(strlen(a)==6)\n        {\n            for(i=2;i<6;i++)\n                if(!(a[i]>='0'&&a[i]<='9'))break;\n            if(i==6)puts(\"符合\");\n            else puts(\"错误字符\");\n        }\n        else puts(\"不是6位\");\n    }\n    else puts(\"前两位不是2\");\n}",
+      "test_cases": [
+        {
+          "in": "221234",
+          "out": "符合"
+        },
+        {
+          "in": "229999",
+          "out": "符合"
+        },
+        {
+          "in": "121234",
+          "out": "前两位不是2"
+        },
+        {
+          "in": "22123",
+          "out": "不是6位"
+        },
+        {
+          "in": "22123a",
+          "out": "错误字符"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入用电量v度。50度以下每度1.3元，超过50度的部分每度1.6元。输出应付电费。\n\n样例输入：\n30\n样例输出：\n39.000000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    float v,sum;\n    scanf(\"%f\", &v);\n    if(v>50)sum=(v-50)*1.6+50*1.3;\n    else sum=v*1.3;\n    printf(\"%f\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "30",
+          "out": "39.000000"
+        },
+        {
+          "in": "50",
+          "out": "65.000000"
+        },
+        {
+          "in": "100",
+          "out": "145.000000"
+        },
+        {
+          "in": "60",
+          "out": "81.000000"
+        },
+        {
+          "in": "0",
+          "out": "0.000000"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符和一个字符串（不超过80字符），统计该字符在字符串中出现的次数并输出。\n\n样例输入：\na\nabcaada\n样例输出：\n4",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i,sum=0;\n    char a[80],x;\n        {x=getchar(); }\n    gets(a);\n    for(i=0;i<80;i++)\n        if(x==a[i])sum++;\n    printf(\"%d\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "a\nabcaada",
+          "out": "4"
+        },
+        {
+          "in": "z\nhello",
+          "out": "0"
+        },
+        {
+          "in": "l\nhello",
+          "out": "2"
+        },
+        {
+          "in": "1\n1231451",
+          "out": "3"
+        },
+        {
+          "in": " \nhello world",
+          "out": "1"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个整数半径r，若r非负则计算并输出圆面积（π取3.14159）；若r为负则输出\"数据错误\"。\n\n样例输入：\n5\n样例输出：\n78.539750",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int r;\n    float s;\n    scanf(\"%d\", &r);\n    if(r>=0)\n    {\n        s=r*r*3.14159;\n        printf(\"%f\",s);\n    }\n    else puts(\"数据错误\");\n}",
+      "test_cases": [
+        {
+          "in": "5",
+          "out": "78.539750"
+        },
+        {
+          "in": "0",
+          "out": "0.000000"
+        },
+        {
+          "in": "-3",
+          "out": "数据错误"
+        },
+        {
+          "in": "10",
+          "out": "314.159000"
+        },
+        {
+          "in": "1",
+          "out": "3.141590"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个长度为5的字符串和一个字符，输出该字符在字符串中第一次出现的下标（从0开始）；如果没有出现则输出-1。\n\n样例输入：\nhello\nl\n样例输出：\n2",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i;\n    char x,a[5];\n    gets(a);\n        {x=getchar(); }\n    for(i=0;i<5;i++)\n        if(x==a[i])break;\n    if(i==5)puts(\"-1\");\n    else printf(\"%d\",i);\n}",
+      "test_cases": [
+        {
+          "in": "hello\nl",
+          "out": "2"
+        },
+        {
+          "in": "abcde\nz",
+          "out": "-1"
+        },
+        {
+          "in": "aaaaa\na",
+          "out": "0"
+        },
+        {
+          "in": "world\nd",
+          "out": "4"
+        },
+        {
+          "in": "test\nt",
+          "out": "0"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入利润a。少于1000打八折，超过1000的部分打六折。输出实际利润b。\n\n样例输入：\n500\n样例输出：\n400.000000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    float a,b;\n    scanf(\"%f\", &a);\n    if(a>1000)b=(a-1000)*0.6+800;\n    else b=a*0.8;\n    printf(\"%f\",b);\n}",
+      "test_cases": [
+        {
+          "in": "500",
+          "out": "400.000000"
+        },
+        {
+          "in": "1000",
+          "out": "800.000000"
+        },
+        {
+          "in": "2000",
+          "out": "1400.000000"
+        },
+        {
+          "in": "1500",
+          "out": "1100.000000"
+        },
+        {
+          "in": "800",
+          "out": "640.000000"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个长度为10的字符串（或数组），统计其中字母、数字和其他字符的个数并输出。\n\n样例输入：\nabc123!@#$\n样例输出：\n字母个数 3 数字个数 3 其他个数 4（示例）",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i,x=0,y=0,z=0;\n    char a[20];\n    fgets(a, sizeof(a), stdin);\n    for(i=0;i<10;i++)\n    {\n        if(a[i]>='a'&&a[i]<='z'||a[i]>='A'&&a[i]<='Z')x++;\n        else if(a[i]>='0'&&a[i]<='9')y++;\n        else z++;\n    }\n    printf(\"字母个数 %d 数字个数 %d 其他个数 %d\",x,y,z);\n}",
+      "test_cases": [
+        {
+          "in": "abc123!@#$",
+          "out": "字母个数 3 数字个数 3 其他个数 4（示例）"
+        },
+        {
+          "in": "Hello2022",
+          "out": "字母个数 5 数字个数 4 其他个数 1（示例）"
+        },
+        {
+          "in": "1234567890",
+          "out": "字母个数 0 数字个数 10 其他个数 0（示例）"
+        },
+        {
+          "in": "abcdefghij",
+          "out": "字母个数 10 数字个数 0 其他个数 0（示例）"
+        },
+        {
+          "in": "!@#$%^&*()",
+          "out": "字母个数 0 数字个数 0 其他个数 10（示例）"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入两个浮点数a、b和一个字符x。若x为'+'则输出a+b的值；若为其他字符则输出a和b的值。\n\n样例输入：\n3.5 2.5 +\n样例输出：\n3.500000+2.500000=6.000000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    float a,b;char x;\n        {scanf(\"%f%f%c\", &a, &b, &x); }\n    if(x=='+')printf(\"%f+%f=%f\",a,b,a+b);\n    else printf(\"a=%f,b=%f\",a,b);\n}",
+      "test_cases": [
+        {
+          "in": "3.5 2.5 +",
+          "out": "3.500000+2.500000=6.000000"
+        },
+        {
+          "in": "5 3 -",
+          "out": "a=5.000000,b=3.000000"
+        },
+        {
+          "in": "10 20 +",
+          "out": "10.000000+20.000000=30.000000"
+        },
+        {
+          "in": "1.1 2.2 *",
+          "out": "a=1.100000,b=2.200000"
+        },
+        {
+          "in": "7 8 +",
+          "out": "7.000000+8.000000=15.000000"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入10个整数成绩，去掉一个最高分和一个最低分，计算剩余8个成绩的平均分并输出。\n\n样例输入：\n90 80 70 60 50 40 30 20 10 100\n样例输出：\n45.000000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i,a[10],max,min;\n    float sum;\n    for(i=0;i<10;i++)\n        scanf(\"%d\", &a[i]);\n    sum=max=min=a[0];\n    for(i=0;i<10;i++)\n    {\n        if(a[i]>max)max=a[i];\n        if(a[i]<min)min=a[i];\n        sum+=a[i];\n    }\n    sum=sum-max-min;\n    printf(\"%f\",sum/8);\n}",
+      "test_cases": [
+        {
+          "in": "90 80 70 60 50 40 30 20 10 100",
+          "out": "45.000000"
+        },
+        {
+          "in": "85 85 85 85 85 85 85 85 85 85",
+          "out": "85.000000"
+        },
+        {
+          "in": "100 100 100 100 100 100 100 100 100 0",
+          "out": "100.000000"
+        },
+        {
+          "in": "60 70 80 90 100 50 40 30 20 10",
+          "out": "55.000000"
+        },
+        {
+          "in": "95 88 76 65 54 43 32 21 10 99",
+          "out": "54.000000"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入两个字符，比较它们的大小关系，输出x<y、x=y或x>y。\n\n样例输入：\na b\n样例输出：\na<b",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    char x,y;\n        {char a,b; a=getchar(); b=getchar(); x=a; y=b; }\n    if(x<y)printf(\"%c<%c\",x,y);\n    else if(x==y)printf(\"%c=%c\",x,y);\n    else printf(\"%c>%c\",x,y);\n}",
+      "test_cases": [
+        {
+          "in": "a b",
+          "out": "a<b"
+        },
+        {
+          "in": "a a",
+          "out": "a=a"
+        },
+        {
+          "in": "b a",
+          "out": "b>a"
+        },
+        {
+          "in": "A B",
+          "out": "A<B"
+        },
+        {
+          "in": "z a",
+          "out": "z>a"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入6个员工的工资（浮点数），计算并输出最高工资、最低工资和平均工资。\n\n样例输入：\n3000 4000 5000 6000 7000 8000\n样例输出：\n最高8000 最低3000 平均5500",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i;\n    float a[6],t,max,min,sum=0;\n    for(i=0;i<6;i++)\n    {\n        scanf(\"%f\", &a[i]);\n        sum+=a[i];\n    }\n    max=min=a[0];\n    for(i=1;i<6;i++)\n    {\n        if(max<a[i]){t=max;max=a[i];a[i]=t;}\n        if(min>a[i]){t=min;min=a[i];a[i]=t;}\n    }\n    printf(\"最高%.0f 最低%.0f 平均%.0f\",max,min,sum/6);\n}",
+      "test_cases": [
+        {
+          "in": "3000 4000 5000 6000 7000 8000",
+          "out": "最高8000 最低3000 平均5500"
+        },
+        {
+          "in": "5000 5000 5000 5000 5000 5000",
+          "out": "最高5000 最低5000 平均5000"
+        },
+        {
+          "in": "1000 2000 3000 4000 5000 6000",
+          "out": "最高6000 最低1000 平均3500"
+        },
+        {
+          "in": "8000 7000 6000 5000 4000 3000",
+          "out": "最高8000 最低3000 平均5500"
+        },
+        {
+          "in": "4500 5500 6500 3500 2500 7500",
+          "out": "最高7500 最低2500 平均5000"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入用水量c立方米。9立方以下每立方3.5元，超出9立方的部分每立方4.5元。输出水费。\n\n样例输入：\n5\n样例输出：\n17.500000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    float c,sum;\n    scanf(\"%f\", &c);\n    if(c<9)sum=c*3.5;\n    else sum=(c-9)*4.5+3.5*9;\n    printf(\"%f\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "5",
+          "out": "17.500000"
+        },
+        {
+          "in": "9",
+          "out": "31.500000"
+        },
+        {
+          "in": "15",
+          "out": "58.500000"
+        },
+        {
+          "in": "20",
+          "out": "81.000000"
+        },
+        {
+          "in": "10",
+          "out": "36.000000"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入两个整数m和n，计算m+n的和，然后统计和的结果中0-9每个数字出现的次数并分别输出。\n\n样例输入：\n123 456\n样例输出：\n579 -> 5:1个 7:1个 9:1个",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int m,i,a[10];\n    for(i=0;i<10;i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &m);\n    for(i=0;i<10;i++)\n        if(m==a[i])\n        {\n            printf(\"%d\",i);\n            break;\n        }\n    if(i==10)puts(\"-1\");\n}",
+      "test_cases": [
+        {
+          "in": "123 456",
+          "out": "579 -> 5:1个 7:1个 9:1个"
+        },
+        {
+          "in": "100 200",
+          "out": "300 -> 0:2个 3:1个"
+        },
+        {
+          "in": "999 1",
+          "out": "1000 -> 0:3个 1:1个"
+        },
+        {
+          "in": "0 0",
+          "out": "0 -> 0:1个"
+        },
+        {
+          "in": "555 445",
+          "out": "1000 -> 0:3个 1:1个"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符。如果是数字则输出\"*\"；如果是字母则输出\"#\"；如果是其他字符则输出\"&\"。\n\n样例输入：\n5\n样例输出：\n*",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    char a;\n    a=getchar();\n    if(a>='0'&&a<='9')puts(\"*\");\n    else if((a>='a'&&a<='z')||(a>='A'&&a<='Z'))puts(\"#\");\n    else puts(\"&\");\n}",
+      "test_cases": [
+        {
+          "in": "5",
+          "out": "*"
+        },
+        {
+          "in": "a",
+          "out": "#"
+        },
+        {
+          "in": "Z",
+          "out": "#"
+        },
+        {
+          "in": "!",
+          "out": "&"
+        },
+        {
+          "in": "0",
+          "out": "*"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n先输入10个整数存入数组，再输入一个整数m。在数组中查找m第一次出现的位置下标，找到输出下标，找不到输出-1。\n\n样例输入：\n1 2 3 4 5 6 7 8 9 10\n5\n样例输出：\n4",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a[10],m,i;\n    for(i=0;i<10;i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &m);\n    for(i=0;i<10;i++)\n    {\n        if(a[i]==m)\n        {\n            printf(\"%d\",i);\n            return 0;\n        }\n    }\n    printf(\"-1\");\n}",
+      "test_cases": [
+        {
+          "in": "1 2 3 4 5 6 7 8 9 10\n5",
+          "out": "4"
+        },
+        {
+          "in": "10 20 30 40 50 60 70 80 90 100\n100",
+          "out": "9"
+        },
+        {
+          "in": "1 2 3 4 5 6 7 8 9 10\n99",
+          "out": "-1"
+        },
+        {
+          "in": "5 5 5 5 5 5 5 5 5 5\n5",
+          "out": "0"
+        },
+        {
+          "in": "1 2 1 2 1 2 1 2 1 2\n2",
+          "out": "1"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入10个整数，将它们从小到大排序后输出。\n\n样例输入：\n5 3 8 1 9 2 7 4 6 0\n样例输出：\n0 1 2 3 4 5 6 7 8 9",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int i,j,t;\n    int a[10];\n    for(i=0;i<10;i++)\n        scanf(\"%d\", &a[i]);\n    for(i=0;i<10;i++)\n        for(j=i;j<10;j++)\n            if(a[i]>a[j])\n            {\n                t=a[i];\n                a[i]=a[j];\n                a[j]=t;\n            }\n    for(i=0;i<10;i++)\n        printf(\"%d \",a[i]);\n}",
+      "test_cases": [
+        {
+          "in": "5 3 8 1 9 2 7 4 6 0",
+          "out": "0 1 2 3 4 5 6 7 8 9"
+        },
+        {
+          "in": "10 9 8 7 6 5 4 3 2 1",
+          "out": "1 2 3 4 5 6 7 8 9 10"
+        },
+        {
+          "in": "1 1 1 1 1 1 1 1 1 1",
+          "out": "1 1 1 1 1 1 1 1 1 1"
+        },
+        {
+          "in": "100 50 75 25 0 -10 30 60 90 10",
+          "out": "-10 0 10 25 30 50 60 75 90 100"
+        },
+        {
+          "in": "3 1 4 1 5 9 2 6 5 3",
+          "out": "1 1 2 3 3 4 5 5 6 9"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串。判断字符串中是否包含'@'字符。如果第一位是@输出\"不符合第一位是@\"；如果最后一位是@输出\"不符合最后一位是@\"；如果中间有@输出\"符合\"；如果完全没有@输出\"字符串没有@\"。\n\n样例输入：\nabc@def\n样例输出：\n符合",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain()\n{\n    char a[80];\n    int i,j;\n    gets(a);\n    j=strlen(a);\n    if(a[0]=='@')\n        puts(\"不符合第一位是@\");\n    else\n    {\n        for(i=1;i<j-1;i++)\n            if(a[i]=='@')break;\n        if(i==j-1&&a[j-1]!='@')puts(\"字符串没有@\");\n        else if(a[j-1]!='@')puts(\"符合\");\n        else puts(\"不符合最后一位是@\");\n    }\n}",
+      "test_cases": [
+        {
+          "in": "abc@def",
+          "out": "符合"
+        },
+        {
+          "in": "@abcdef",
+          "out": "不符合第一位是@"
+        },
+        {
+          "in": "abcdef@",
+          "out": "不符合最后一位是@"
+        },
+        {
+          "in": "abcdef",
+          "out": "字符串没有@"
+        },
+        {
+          "in": "a@b@c",
+          "out": "符合"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2022年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个长度不小于8的字符串，将字符串前后对称交换。若长度为奇数，中间字符保持不变；若长度为偶数，全部对称交换。输出交换后的字符串。\n\n样例输入：\nabcdefgh\n样例输出：\nhgfedcba",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain()\n{\n    char a[80];int i,j,t;\n    gets(a);\n    j=strlen(a);\n    for(i=0;i<j/2;i++)\n    {\n        t=a[i];\n        a[i]=a[j-1-i];\n        a[j-1-i]=t;\n    }\n    puts(a);\n}",
+      "test_cases": [
+        {
+          "in": "abcdefgh",
+          "out": "hgfedcba"
+        },
+        {
+          "in": "abcdefghi",
+          "out": "ihgfedcba"
+        },
+        {
+          "in": "12345678",
+          "out": "87654321"
+        },
+        {
+          "in": "hello world",
+          "out": "dlrow olleh"
+        },
+        {
+          "in": "program",
+          "out": "margorp"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2023年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个2行2列的二维数组（或3行4列），判断数组中是否存在负数。如果存在，输出第一个负数的值及其位置（行列号从1开始）；如果不存在，输出\"NO ANY!\"。\n\n样例输入：\n1 2 3 -5\n样例输出：\nfirst appears is -5\nthe position is 4",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a[2][2],i,j,flag=0;\n    for(i=0;i<2;i++)\n        for(j=0;j<2;j++)\n            scanf(\"%d\", &a[i][j]);\n    for(i=0;i<2;i++)\n        for(j=0;j<2;j++)\n            if(a[i][j]<0)\n            {\n                printf(\"首次出现在第%d个\\n位置为%d\",a[i][j],i*2+j+1);\n                flag=1;\n                break;\n            }\n    if(flag==0)puts(\"NO\");\n}",
+      "test_cases": [
+        {
+          "in": "1 2 3 -5",
+          "out": "first appears is -5\nthe position is 4"
+        },
+        {
+          "in": "1 2 3 4",
+          "out": "NO"
+        },
+        {
+          "in": "-1 2 3 4",
+          "out": "first appears is -1\nthe position is 1"
+        },
+        {
+          "in": "5 6 -7 8",
+          "out": "first appears is -7\nthe position is 3"
+        },
+        {
+          "in": "10 -2 0 30",
+          "out": "first appears is -2\nthe position is 2"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2023年真题"
+    },
+    {
+      "content": "【程序功能】\n给定7个字符串（如\"lisa10\"等），找出其中含有字符'0'的字符串，统计该字符串中'0'的个数，并输出字符串和对应的0的个数。\n\n样例输出：\nlisa10 有1个0\njark102 有1个0\ncory705 有1个0\ntfboys001 有2个0",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain()\n{\n    char a[7][10]={\"lisa10\",\"lili379\",\"chenjie33\",\"jark102\",\"cory705\",\"tom77\",\"tfboys001\"};\n    int i,j,ans;\n    for(i=0;i<7;i++)\n    {\n        for(j=0,ans=0;a[i][j]!='\\0';j++)\n            if(a[i][j]=='0')ans++;\n        if(ans)\n            printf(\"%s 有%d个0\\n\",a[i],ans);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "lisa10 有1个0\njark102 有1个0\ncory705 有1个0\ntfboys001 有2个0"
+        },
+        {
+          "in": "",
+          "out": "lisa10 有1个0\njark102 有1个0\ncory705 有1个0\ntfboys001 有2个0"
+        },
+        {
+          "in": "",
+          "out": "lisa10 有1个0\njark102 有1个0\ncory705 有1个0\ntfboys001 有2个0"
+        },
+        {
+          "in": "",
+          "out": "lisa10 有1个0\njark102 有1个0\ncory705 有1个0\ntfboys001 有2个0"
+        },
+        {
+          "in": "",
+          "out": "lisa10 有1个0\njark102 有1个0\ncory705 有1个0\ntfboys001 有2个0"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2023年真题"
+    },
+    {
+      "content": "【程序功能】\n密码设置程序：要求密码必须以大写字母开头且长度为6位。用户有5次设置机会，每次输入后判断是否符合规则。符合则输出\"密码设置成功！\"并结束；不符合则提示重试；超过5次则输出\"more than 5 times\"并结束。\n\n样例输入：\nAbc123\n样例输出：\n密码设置成功！",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain()\n{\n    char a[80];\n    int i=5,flag;\n    while(1)\n    {\n        if(i>0)\n        {\n            printf();\n            scanf(\"%s\", a);\n            if(a[0]>='A'&&a[0]<='Z')\n            {\n                if(strlen(a)==6)flag=1;\n                else flag=0;\n            }\n            else flag=0;\n            if(flag==1)\n            {\n                printf(\"密码设置成功！\");\n                break;\n            }\n            else\n            {\n                printf(\"不符合规则,请重试\\n\");\n                i--;\n                continue;\n            }\n        }\n        else\n        {\n            printf(\"超过5次尝试\\n\");\n            break;\n        }\n    }\n}",
+      "test_cases": [
+        {
+          "in": "Abc123",
+          "out": "密码设置成功！"
+        },
+        {
+          "in": "abc123\nAbc123",
+          "out": "不符合规则,请重试\n密码设置成功！"
+        },
+        {
+          "in": "Abcdef",
+          "out": "密码设置成功！"
+        },
+        {
+          "in": "a12345\nb12345\nc12345\nd12345\ne12345\nf12345",
+          "out": "不符合规则,请重试\n不符合规则,请重试\n不符合规则,请重试\n不符合规则,请重试\n不符合规则,请重试\n超过5次尝试\n"
+        },
+        {
+          "in": "A12345",
+          "out": "密码设置成功！"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2023年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串，将其中的字符倒序输出（两种方法均可：单数组法原地交换或借助第二个数组）。\n\n样例输入：\nhello\n样例输出：\nolleh",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain()\n{\n    char a[80];\n    int i,j;\n    gets(a);\n    j=strlen(a);\n    for(i=0;i<j/2;i++)\n    {\n        char t=a[i];\n        a[i]=a[j-1-i];\n        a[j-1-i]=t;\n    }\n    puts(a);\n}",
+      "test_cases": [
+        {
+          "in": "hello",
+          "out": "olleh"
+        },
+        {
+          "in": "C语言",
+          "out": "言语C"
+        },
+        {
+          "in": "12345",
+          "out": "54321"
+        },
+        {
+          "in": "abcdef",
+          "out": "fedcba"
+        },
+        {
+          "in": "racecar",
+          "out": "racecar"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2023年真题"
+    },
+    {
+      "content": "【程序功能】\n光头强砍树问题：输入树的数量n（不超过1000）。按规则标记每棵树：从位置0开始，间隔依次递增（位置0、1、3、6、10、15...即间隔1、2、3、4、5...）的树标记为1（砍断），其余标记为0（不砍）。输出标记序列。\n\n样例输入：\n10\n样例输出：\n1101001000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int n,a[1000]={0},i=0,step=1;\n    scanf(\"%d\", &n);\n    a[0]=1;\n    while(i+step<n)\n    {\n        i+=step;\n        a[i]=1;\n        step++;\n    }\n    for(i=0;i<n;i++)\n        printf(\"%d\",a[i]);\n}",
+      "test_cases": [
+        {
+          "in": "10",
+          "out": "1101001000"
+        },
+        {
+          "in": "20",
+          "out": "11010010001000000000"
+        },
+        {
+          "in": "5",
+          "out": "11010"
+        },
+        {
+          "in": "3",
+          "out": "110"
+        },
+        {
+          "in": "15",
+          "out": "110100100010000"
+        }
+      ],
+      "score": 25,
+      "difficulty": "难",
+      "source": "2023年真题"
+    },
+    {
+      "content": "【程序功能】\nS型排座号：输入考场座位的行数n和列数m（2≤n,m<10），按S型排列输出座号。即第1列从上到下排，第2列从下到上排，第3列从上到下排...依次交替。座号用两位数格式（不足两位前面补0）。\n\n样例输入：\n3 3\n样例输出：\n01 06 07\n02 05 08\n03 04 09",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int n,m,i,j,num=1;\n    int a[10][10];\n    scanf(\"%d%d\", &n, &m);\n    for(j=0;j<m;j++)\n    {\n        if(j%2==0)\n            for(i=0;i<n;i++)\n                a[i][j]=num++;\n        else\n            for(i=n-1;i>=0;i--)\n                a[i][j]=num++;\n    }\n    for(i=0;i<n;i++)\n    {\n        for(j=0;j<m;j++)\n            printf(\"%02d \",a[i][j]);\n        printf(\"\\n\");\n    }\n}",
+      "test_cases": [
+        {
+          "in": "3 3",
+          "out": "01 06 07\n02 05 08\n03 04 09"
+        },
+        {
+          "in": "2 4",
+          "out": "01 04 05 08\n02 03 06 07"
+        },
+        {
+          "in": "4 2",
+          "out": "01 08\n02 07\n03 06\n04 05"
+        },
+        {
+          "in": "3 4",
+          "out": "01 06 07 12\n02 05 08 11\n03 04 09 10"
+        },
+        {
+          "in": "5 3",
+          "out": "01 10 11\n02 09 12\n03 08 13\n04 07 14\n05 06 15"
+        }
+      ],
+      "score": 30,
+      "difficulty": "难",
+      "source": "2023年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串和一个整数n（位置索引），将字符串中第n个位置（从0开始计）之后的字符移到字符串最前面，该位置之前的字符顺序保持不变移到后面。输出重组后的字符串。若n超出字符串长度，直接输出原字符串。\n\n样例输入：\nabcdef\n2\n样例输出：\ncdefab",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain()\n{\n    char a[80],b[80];\n    int n,i,len;\n    gets(a);\n    scanf(\"%d\", &n);\n    len=strlen(a);\n    if(n>=len)puts(a);\n    else\n    {\n        for(i=0;i<len-n;i++)\n            b[i]=a[n+i];\n        for(i=0;i<n;i++)\n            b[len-n+i]=a[i];\n        b[len]='\\0';\n        puts(b);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "abcdef\n2",
+          "out": "cdefab"
+        },
+        {
+          "in": "hello\n1",
+          "out": "elloh"
+        },
+        {
+          "in": "program\n4",
+          "out": "ramprog"
+        },
+        {
+          "in": "abc\n5",
+          "out": "abc"
+        },
+        {
+          "in": "1234567890\n5",
+          "out": "6789012345"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2023年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个3行4列的二维数组，再输入一个要查找的数num。在数组中查找num，如果找到则输出其所在的行号和列号（行列从1开始）；如果没找到则输出\"没有这个数值\"。\n\n样例输入：\n1 2 3 4 5 6 7 8 9 10 11 12\n7\n样例输出：\n在第2行第3列",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a[3][4],i,j,num,flag=0;\n    for(i=0;i<3;i++)\n        for(j=0;j<4;j++)\n            scanf(\"%d\", &a[i][j]);\n    scanf(\"%d\", &num);\n    for(i=0;i<3;i++)\n    {\n        for(j=0;j<4;j++)\n            if(a[i][j]==num)\n            {\n                flag=1;\n                break;\n            }\n        if(flag)break;\n    }\n    if(flag)printf(\"在第%d行第%d列\",i+1,j+1);\n    else printf(\"没有这个数值\\n\");\n}",
+      "test_cases": [
+        {
+          "in": "1 2 3 4 5 6 7 8 9 10 11 12\n7",
+          "out": "在第2行第3列"
+        },
+        {
+          "in": "1 2 3 4 5 6 7 8 9 10 11 12\n99",
+          "out": "没有这个数值"
+        },
+        {
+          "in": "10 20 30 40 50 60 70 80 90 100 110 120\n50",
+          "out": "在第2行第1列"
+        },
+        {
+          "in": "1 1 1 1 2 2 2 2 3 3 3 3\n3",
+          "out": "在第3行第1列"
+        },
+        {
+          "in": "5 5 5 5 5 5 5 5 5 5 5 5\n5",
+          "out": "在第1行第1列"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2023年真题"
+    },
+    {
+      "content": "【程序功能】\n从键盘输入两行字符串（每行不超过20个字符），分别输出每行字符串中奇数下标位置（第1、3、5...个）的字符。\n\n样例输入：\nhello\nworld\n样例输出：\nel\nol",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char w1[21],w2[21];\n    scanf(\"%s %s\", w1, w2);\n    for(int i=1;w1[i]!='\\0';i+=2)\n        printf(\"%c\",w1[i]);\n    printf(\"\\n\");\n    for(int i=1;w2[i]!='\\0';i+=2)\n        printf(\"%c\",w2[i]);\n    printf(\"\\n\");\n}",
+      "test_cases": [
+        {
+          "in": "hello\nworld",
+          "out": "el\nol"
+        },
+        {
+          "in": "abcdef\nghijkl",
+          "out": "bdf\nhik"
+        },
+        {
+          "in": "123456\n7890",
+          "out": "246\n80"
+        },
+        {
+          "in": "ab\ncd",
+          "out": "b\nd"
+        },
+        {
+          "in": "CProg\nLANG",
+          "out": "Pg\nAG"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n已定义三个字符串：\"hello2024\"、\"nihao2024\"、\"jiayou2024\"。遍历每个字符串，如果该字符串同时包含字母、数字和字符'2'或'4'，则输出\"符合规则\"，否则输出\"不符合规则\"。\n\n样例输出：\nhello2024 符合规则\nnihao2024 不符合规则\njiayou2024 符合规则",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s[3][80]={\"hello2024\",\"nihao2024\",\"jiayou2024\"};\n    int i,j,zi,te,shu;\n    for(i=0;i<3;i++){\n        zi=te=shu=0;\n        for(j=0;s[i][j]!='\\0';j++){\n            if(s[i][j]>='0'&&s[i][j]<='9')shu=1;\n            if(s[i][j]>='a'&&s[i][j]<='z')zi=1;\n            if(s[i][j]=='2'||s[i][j]=='4')te=1;\n        }\n        if(zi==1&&shu==1&&te==1)\n            printf(\"%s 符合规则\\n\",s[i]);\n        else\n            printf(\"%s 不符合规则\\n\",s[i]);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "hello2024 符合规则\nnihao2024 不符合规则\njiayou2024 符合规则\n"
+        },
+        {
+          "in": "",
+          "out": "hello2024 符合规则\nnihao2024 不符合规则\njiayou2024 符合规则\n"
+        },
+        {
+          "in": "",
+          "out": "hello2024 符合规则\nnihao2024 不符合规则\njiayou2024 符合规则\n"
+        },
+        {
+          "in": "",
+          "out": "hello2024 符合规则\nnihao2024 不符合规则\njiayou2024 符合规则\n"
+        },
+        {
+          "in": "",
+          "out": "hello2024 符合规则\nnihao2024 不符合规则\njiayou2024 符合规则\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串（不超过100个字符），输出其中ASCII码值为奇数的字符。\n\n样例输入：\nHello\n样例输出：\nel",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain(){\n    char s[101];\n    gets(s);\n    for(int i=0;i<strlen(s);i++){\n        if((int)s[i]%2!=0)\n            printf(\"%c\",s[i]);\n    }\n    printf(\"\\n\");\n}",
+      "test_cases": [
+        {
+          "in": "Hello",
+          "out": "el\n"
+        },
+        {
+          "in": "ABCD",
+          "out": "AC\n"
+        },
+        {
+          "in": "12345",
+          "out": "135\n"
+        },
+        {
+          "in": "abcdef",
+          "out": "ace\n"
+        },
+        {
+          "in": "!@#$%",
+          "out": "!@#%\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个用户名（不超过20个字符），验证其是否合法。合法条件：①长度在8到20位之间（含8和20）；②只包含大小写字母和数字。如果合法输出\"用户名通过验证\"，否则输出\"用户名不符合要求\"。\n\n样例输入：\nabc12345\n样例输出：\n用户名通过验证",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\n#include<ctype.h>\nmain(){\n    char name[21];\n    gets(name);\n    int len=strlen(name),ok=1;\n    if(len<8||len>20)ok=0;\n    for(int i=0;i<len;i++){\n        if(!isdigit(name[i])&&!isupper(name[i])&&!islower(name[i]))\n        {ok=0;break;}\n    }\n    if(ok)printf(\"用户名通过验证\\n\");\n    else printf(\"用户名不符合要求\\n\");\n}",
+      "test_cases": [
+        {
+          "in": "abc12345",
+          "out": "用户名通过验证\n"
+        },
+        {
+          "in": "ab12",
+          "out": "用户名不符合要求\n"
+        },
+        {
+          "in": "AbCdEfGhIj123",
+          "out": "用户名通过验证\n"
+        },
+        {
+          "in": "abc_1234",
+          "out": "用户名不符合要求\n"
+        },
+        {
+          "in": "ABCDEFGH1234567890",
+          "out": "用户名通过验证\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个不超过20个字符的字符串（不含空格），判断该字符串是否为回文。回文是指正读和反读相同的字符串，是回文输出\"是回文字符串\"，否则输出\"不是回文字符串\"。\n\n样例输入：\nabcba\n样例输出：\n输入的字符串是回文字符串。",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain(){\n    char s[21];\n    gets(s);\n    int l=0,r=strlen(s)-1,ok=1;\n    while(l<r){\n        if(s[l]!=s[r]){ok=0;break;}\n        l++;r--;\n    }\n    if(ok) printf(\"输入的字符串是回文字符串。\\n\");\n    else printf(\"输入的字符串不是回文字符串。\\n\");\n}",
+      "test_cases": [
+        {
+          "in": "abcba",
+          "out": "输入的字符串是回文字符串。\n"
+        },
+        {
+          "in": "hello",
+          "out": "输入的字符串不是回文字符串。\n"
+        },
+        {
+          "in": "level",
+          "out": "输入的字符串是回文字符串。\n"
+        },
+        {
+          "in": "12321",
+          "out": "输入的字符串是回文字符串。\n"
+        },
+        {
+          "in": "abcd",
+          "out": "输入的字符串不是回文字符串。\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n有三家商店，每家商店有4个月的销量数据。输入这12个销量数据（每行4个整数，共3行），分别计算每家商店的平均月销量（保留两位小数），并输出总销量最高的商店编号。\n\n样例输入：\n100 110 120 130\n200 210 220 230\n150 160 170 180\n样例输出：\n每家商店的平均月销量:\n商店 1 的平均月销量: 115.00\n商店 2 的平均月销量: 215.00\n商店 3 的平均月销量: 165.00\n总销量最高的商店是商店编号 2, 总销量为 860",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int s[3][4],total[3]={0};\n    float avg[3];\n    int maxi=0,maxt=0;\n    for(int i=0;i<3;i++)\n        for(int j=0;j<4;j++)\n            scanf(\"%d\", &s[i][j]);\n    for(int i=0;i<3;i++){\n        for(int j=0;j<4;j++)\n            total[i]+=s[i][j];\n        avg[i]=(float)total[i]/4;\n        if(total[i]>maxt){maxt=total[i];maxi=i;}\n    }\n    printf(\"每家商店的平均月销量:\\n\");\n    for(int i=0;i<3;i++)\n        printf(\"商店 %d 的平均月销量: %.2f\\n\",i+1,avg[i]);\n    printf(\"总销量最高的商店是商店编号 %d, 总销量为 %d\\n\",maxi+1,maxt);\n}",
+      "test_cases": [
+        {
+          "in": "100 110 120 130\n200 210 220 230\n150 160 170 180",
+          "out": "每家商店的平均月销量:\n商店 1 的平均月销量: 115.00\n商店 2 的平均月销量: 215.00\n商店 3 的平均月销量: 165.00\n总销量最高的商店是商店编号 2, 总销量为 860\n"
+        },
+        {
+          "in": "50 60 70 80\n90 100 110 120\n30 40 50 60",
+          "out": "每家商店的平均月销量:\n商店 1 的平均月销量: 65.00\n商店 2 的平均月销量: 105.00\n商店 3 的平均月销量: 45.00\n总销量最高的商店是商店编号 2, 总销量为 420\n"
+        },
+        {
+          "in": "100 200 300 400\n10 20 30 40\n50 60 70 80",
+          "out": "每家商店的平均月销量:\n商店 1 的平均月销量: 250.00\n商店 2 的平均月销量: 25.00\n商店 3 的平均月销量: 65.00\n总销量最高的商店是商店编号 1, 总销量为 1000\n"
+        },
+        {
+          "in": "80 90 100 70\n85 75 95 80\n60 70 80 90",
+          "out": "每家商店的平均月销量:\n商店 1 的平均月销量: 85.00\n商店 2 的平均月销量: 83.75\n商店 3 的平均月销量: 75.00\n总销量最高的商店是商店编号 1, 总销量为 340\n"
+        },
+        {
+          "in": "120 130 140 150\n110 120 130 140\n100 110 120 130",
+          "out": "每家商店的平均月销量:\n商店 1 的平均月销量: 135.00\n商店 2 的平均月销量: 125.00\n商店 3 的平均月销量: 115.00\n总销量最高的商店是商店编号 1, 总销量为 540\n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n给定一个3行4列的二维数组：{{1,2,3,4},{9,8,7,6},{-10,10,-5,2}}。找出数组中的最大值和最小值，交换它们的位置，先输出交换前的数组，再输出交换后的数组。\n\n样例输出：\n交换前:\n 1 2 3 4\n 9 8 7 6\n -10 10 -5 2\n交换后:\n 1 2 3 4\n -10 8 7 6\n 9 10 -5 2",
+      "reference_answer": "#include<stdio.h>\n#define R 3\n#define C 4\nmain(){\n    int a[R][C]={{1,2,3,4},{9,8,7,6},{-10,10,-5,2}};\n    int i,j,mr=0,mc=0,nr=0,nc=0;\n    printf(\"交换前:\\n\");\n    for(i=0;i<R;i++){\n        for(j=0;j<C;j++)printf(\" %d\",a[i][j]);\n        printf(\"\\n\");\n    }\n    for(i=0;i<R;i++)\n        for(j=0;j<C;j++){\n            if(a[mr][mc]<a[i][j]){mr=i;mc=j;}\n            if(a[nr][nc]>a[i][j]){nr=i;nc=j;}\n        }\n    int t=a[mr][mc];a[mr][mc]=a[nr][nc];a[nr][nc]=t;\n    printf(\"交换后:\\n\");\n    for(i=0;i<R;i++){\n        for(j=0;j<C;j++)printf(\" %d\",a[i][j]);\n        printf(\"\\n\");\n    }\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "交换前:\n 1 2 3 4\n 9 8 7 6\n -10 10 -5 2\n交换后:\n 1 2 3 4\n -10 8 7 6\n 9 10 -5 2\n"
+        },
+        {
+          "in": "",
+          "out": "交换前:\n 1 2 3 4\n 9 8 7 6\n -10 10 -5 2\n交换后:\n 1 2 3 4\n -10 8 7 6\n 9 10 -5 2\n"
+        },
+        {
+          "in": "",
+          "out": "交换前:\n 1 2 3 4\n 9 8 7 6\n -10 10 -5 2\n交换后:\n 1 2 3 4\n -10 8 7 6\n 9 10 -5 2\n"
+        },
+        {
+          "in": "",
+          "out": "交换前:\n 1 2 3 4\n 9 8 7 6\n -10 10 -5 2\n交换后:\n 1 2 3 4\n -10 8 7 6\n 9 10 -5 2\n"
+        },
+        {
+          "in": "",
+          "out": "交换前:\n 1 2 3 4\n 9 8 7 6\n -10 10 -5 2\n交换后:\n 1 2 3 4\n -10 8 7 6\n 9 10 -5 2\n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n遍历10到99之间的所有两位数，输出十位数与个位数之和不小于13的数。对每个满足条件的数，按\"XX 的十位数 X 和个位数 X 相加不小于 13\"格式输出。\n\n样例输出：\n49 的十位数 4 和个位数 9 相加不小于 13\n58 的十位数 5 和个位数 8 相加不小于 13\n59 的十位数 5 和个位数 9 相加不小于 13\n67 的十位数 6 和个位数 7 相加不小于 13\n68 的十位数 6 和个位数 8 相加不小于 13\n69 的十位数 6 和个位数 9 相加不小于 13\n76 的十位数 7 和个位数 6 相加不小于 13\n77 的十位数 7 和个位数 7 相加不小于 13\n78 的十位数 7 和个位数 8 相加不小于 13\n79 的十位数 7 和个位数 9 相加不小于 13\n85 的十位数 8 和个位数 5 相加不小于 13\n86 的十位数 8 和个位数 6 相加不小于 13\n87 的十位数 8 和个位数 7 相加不小于 13\n88 的十位数 8 和个位数 8 相加不小于 13\n89 的十位数 8 和个位数 9 相加不小于 13\n94 的十位数 9 和个位数 4 相加不小于 13\n95 的十位数 9 和个位数 5 相加不小于 13\n96 的十位数 9 和个位数 6 相加不小于 13\n97 的十位数 9 和个位数 7 相加不小于 13\n98 的十位数 9 和个位数 8 相加不小于 13\n99 的十位数 9 和个位数 9 相加不小于 13",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    for(int n=10;n<=99;n++){\n        int t=n/10,o=n%10;\n        if(t+o>=13)\n            printf(\"%d 的十位数 %d 和个位数 %d 相加不小于 13\\n\",n,t,o);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "49 的十位数 4 和个位数 9 相加不小于 13\n58 的十位数 5 和个位数 8 相加不小于 13\n59 的十位数 5 和个位数 9 相加不小于 13\n67 的十位数 6 和个位数 7 相加不小于 13\n68 的十位数 6 和个位数 8 相加不小于 13\n69 的十位数 6 和个位数 9 相加不小于 13\n76 的十位数 7 和个位数 6 相加不小于 13\n77 的十位数 7 和个位数 7 相加不小于 13\n78 的十位数 7 和个位数 8 相加不小于 13\n79 的十位数 7 和个位数 9 相加不小于 13\n85 的十位数 8 和个位数 5 相加不小于 13\n86 的十位数 8 和个位数 6 相加不小于 13\n87 的十位数 8 和个位数 7 相加不小于 13\n88 的十位数 8 和个位数 8 相加不小于 13\n89 的十位数 8 和个位数 9 相加不小于 13\n94 的十位数 9 和个位数 4 相加不小于 13\n95 的十位数 9 和个位数 5 相加不小于 13\n96 的十位数 9 和个位数 6 相加不小于 13\n97 的十位数 9 和个位数 7 相加不小于 13\n98 的十位数 9 和个位数 8 相加不小于 13\n99 的十位数 9 和个位数 9 相加不小于 13\n"
+        },
+        {
+          "in": "",
+          "out": "49 的十位数 4 和个位数 9 相加不小于 13\n58 的十位数 5 和个位数 8 相加不小于 13\n59 的十位数 5 和个位数 9 相加不小于 13\n67 的十位数 6 和个位数 7 相加不小于 13\n68 的十位数 6 和个位数 8 相加不小于 13\n69 的十位数 6 和个位数 9 相加不小于 13\n76 的十位数 7 和个位数 6 相加不小于 13\n77 的十位数 7 和个位数 7 相加不小于 13\n78 的十位数 7 和个位数 8 相加不小于 13\n79 的十位数 7 和个位数 9 相加不小于 13\n85 的十位数 8 和个位数 5 相加不小于 13\n86 的十位数 8 和个位数 6 相加不小于 13\n87 的十位数 8 和个位数 7 相加不小于 13\n88 的十位数 8 和个位数 8 相加不小于 13\n89 的十位数 8 和个位数 9 相加不小于 13\n94 的十位数 9 和个位数 4 相加不小于 13\n95 的十位数 9 和个位数 5 相加不小于 13\n96 的十位数 9 和个位数 6 相加不小于 13\n97 的十位数 9 和个位数 7 相加不小于 13\n98 的十位数 9 和个位数 8 相加不小于 13\n99 的十位数 9 和个位数 9 相加不小于 13\n"
+        },
+        {
+          "in": "",
+          "out": "49 的十位数 4 和个位数 9 相加不小于 13\n58 的十位数 5 和个位数 8 相加不小于 13\n59 的十位数 5 和个位数 9 相加不小于 13\n67 的十位数 6 和个位数 7 相加不小于 13\n68 的十位数 6 和个位数 8 相加不小于 13\n69 的十位数 6 和个位数 9 相加不小于 13\n76 的十位数 7 和个位数 6 相加不小于 13\n77 的十位数 7 和个位数 7 相加不小于 13\n78 的十位数 7 和个位数 8 相加不小于 13\n79 的十位数 7 和个位数 9 相加不小于 13\n85 的十位数 8 和个位数 5 相加不小于 13\n86 的十位数 8 和个位数 6 相加不小于 13\n87 的十位数 8 和个位数 7 相加不小于 13\n88 的十位数 8 和个位数 8 相加不小于 13\n89 的十位数 8 和个位数 9 相加不小于 13\n94 的十位数 9 和个位数 4 相加不小于 13\n95 的十位数 9 和个位数 5 相加不小于 13\n96 的十位数 9 和个位数 6 相加不小于 13\n97 的十位数 9 和个位数 7 相加不小于 13\n98 的十位数 9 和个位数 8 相加不小于 13\n99 的十位数 9 和个位数 9 相加不小于 13\n"
+        },
+        {
+          "in": "",
+          "out": "49 的十位数 4 和个位数 9 相加不小于 13\n58 的十位数 5 和个位数 8 相加不小于 13\n59 的十位数 5 和个位数 9 相加不小于 13\n67 的十位数 6 和个位数 7 相加不小于 13\n68 的十位数 6 和个位数 8 相加不小于 13\n69 的十位数 6 和个位数 9 相加不小于 13\n76 的十位数 7 和个位数 6 相加不小于 13\n77 的十位数 7 和个位数 7 相加不小于 13\n78 的十位数 7 和个位数 8 相加不小于 13\n79 的十位数 7 和个位数 9 相加不小于 13\n85 的十位数 8 和个位数 5 相加不小于 13\n86 的十位数 8 和个位数 6 相加不小于 13\n87 的十位数 8 和个位数 7 相加不小于 13\n88 的十位数 8 和个位数 8 相加不小于 13\n89 的十位数 8 和个位数 9 相加不小于 13\n94 的十位数 9 和个位数 4 相加不小于 13\n95 的十位数 9 和个位数 5 相加不小于 13\n96 的十位数 9 和个位数 6 相加不小于 13\n97 的十位数 9 和个位数 7 相加不小于 13\n98 的十位数 9 和个位数 8 相加不小于 13\n99 的十位数 9 和个位数 9 相加不小于 13\n"
+        },
+        {
+          "in": "",
+          "out": "49 的十位数 4 和个位数 9 相加不小于 13\n58 的十位数 5 和个位数 8 相加不小于 13\n59 的十位数 5 和个位数 9 相加不小于 13\n67 的十位数 6 和个位数 7 相加不小于 13\n68 的十位数 6 和个位数 8 相加不小于 13\n69 的十位数 6 和个位数 9 相加不小于 13\n76 的十位数 7 和个位数 6 相加不小于 13\n77 的十位数 7 和个位数 7 相加不小于 13\n78 的十位数 7 和个位数 8 相加不小于 13\n79 的十位数 7 和个位数 9 相加不小于 13\n85 的十位数 8 和个位数 5 相加不小于 13\n86 的十位数 8 和个位数 6 相加不小于 13\n87 的十位数 8 和个位数 7 相加不小于 13\n88 的十位数 8 和个位数 8 相加不小于 13\n89 的十位数 8 和个位数 9 相加不小于 13\n94 的十位数 9 和个位数 4 相加不小于 13\n95 的十位数 9 和个位数 5 相加不小于 13\n96 的十位数 9 和个位数 6 相加不小于 13\n97 的十位数 9 和个位数 7 相加不小于 13\n98 的十位数 9 和个位数 8 相加不小于 13\n99 的十位数 9 和个位数 9 相加不小于 13\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输出1到99之间所有既是3的倍数又是奇数的数字，每个数字占一行。\n\n样例输出：\n3\n9\n15\n21\n27\n33\n39\n45\n51\n57\n63\n69\n75\n81\n87\n93\n99",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    for(int i=1;i<=99;i++){\n        if(i%3==0&&i%2!=0)\n            printf(\"%d\\n\",i);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "3\n9\n15\n21\n27\n33\n39\n45\n51\n57\n63\n69\n75\n81\n87\n93\n99\n"
+        },
+        {
+          "in": "",
+          "out": "3\n9\n15\n21\n27\n33\n39\n45\n51\n57\n63\n69\n75\n81\n87\n93\n99\n"
+        },
+        {
+          "in": "",
+          "out": "3\n9\n15\n21\n27\n33\n39\n45\n51\n57\n63\n69\n75\n81\n87\n93\n99\n"
+        },
+        {
+          "in": "",
+          "out": "3\n9\n15\n21\n27\n33\n39\n45\n51\n57\n63\n69\n75\n81\n87\n93\n99\n"
+        },
+        {
+          "in": "",
+          "out": "3\n9\n15\n21\n27\n33\n39\n45\n51\n57\n63\n69\n75\n81\n87\n93\n99\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输入10个整数存入数组a，将a中的偶数依次存入数组b，非偶数位置存0。最后输出b中所有非零元素（即所有偶数）。\n\n样例输入：\n1 2 3 4 5 6 7 8 9 10\n样例输出：\n输入的数中，偶数有:2 4 6 8 10",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int a[10],b[10];\n    for(int i=0;i<10;i++)scanf(\"%d\", &a[i]);\n    for(int i=0;i<10;i++){\n        if(a[i]%2==0)b[i]=a[i];\n        else b[i]=0;\n    }\n    printf(\"输入的数中，偶数有:\");\n    for(int i=0;i<10;i++){\n        if(b[i]!=0)printf(\"%d \",a[i]);\n    }\n    printf(\"\\n\");\n}",
+      "test_cases": [
+        {
+          "in": "1 2 3 4 5 6 7 8 9 10",
+          "out": "输入的数中，偶数有:2 4 6 8 10 "
+        },
+        {
+          "in": "11 13 15 17 19 21 23 25 27 29",
+          "out": "输入的数中，偶数有:"
+        },
+        {
+          "in": "2 4 6 8 10 12 14 16 18 20",
+          "out": "输入的数中，偶数有:2 4 6 8 10 12 14 16 18 20 "
+        },
+        {
+          "in": "1 0 3 0 5 0 7 0 9 0",
+          "out": "输入的数中，偶数有:0 0 0 0 0 "
+        },
+        {
+          "in": "-2 -1 0 1 2 3 4 5 6 7",
+          "out": "输入的数中，偶数有:-2 0 2 4 6 "
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n给定数组numbers={1,2,3,4,0,-32,2,2,6}（共9个元素），计算其中所有正数的平均值并输出（保留6位小数）。\n\n样例输出：\n2.222222",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int a[]={1,2,3,4,0,-32,2,2,6};\n    double sum=0;\n    for(int i=0;i<9;i++)\n        if(a[i]>0)sum+=a[i];\n    printf(\"%f\\n\",sum/9);\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "2.222222\n"
+        },
+        {
+          "in": "",
+          "out": "2.222222\n"
+        },
+        {
+          "in": "",
+          "out": "2.222222\n"
+        },
+        {
+          "in": "",
+          "out": "2.222222\n"
+        },
+        {
+          "in": "",
+          "out": "2.222222\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输入两个人的18位身份证号码（每行一个），提取其中的出生日期（第7到14位），比较两人的年龄大小。输出年龄较大的人（如果第一个人年龄大输出\"第一个人年纪较大\"，相同输出\"两人年纪相同\"，否则输出\"第二个人年纪较大\"）。\n\n样例输入：\n120101199003150011\n120101200012310022\n样例输出：\n第一个人年纪较大。",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain(){\n    char a[20],b[20];\n    gets(a);gets(b);\n    char ba[9],bb[9];\n    strncpy(ba,a+6,8);ba[8]='\\0';\n    strncpy(bb,b+6,8);bb[8]='\\0';\n    int r=strcmp(ba,bb);\n    if(r<0)printf(\"第一个人年纪较大。\\n\");\n    else if(r==0)printf(\"两人年纪相同。\\n\");\n    else printf(\"第二个人年纪较大。\\n\");\n}",
+      "test_cases": [
+        {
+          "in": "120101199003150011\n120101200012310022",
+          "out": "第一个人年纪较大。\n"
+        },
+        {
+          "in": "120101199508080011\n120101199508080022",
+          "out": "两人年纪相同。\n"
+        },
+        {
+          "in": "120101200505050011\n120101199901010022",
+          "out": "第二个人年纪较大。\n"
+        },
+        {
+          "in": "120101198801010011\n120101199512310022",
+          "out": "第一个人年纪较大。\n"
+        },
+        {
+          "in": "120101200010100011\n120101199606060022",
+          "out": "第二个人年纪较大。\n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n给定一个5行5列的二维数组，前4行前4列已给定：{{0,0,1,1},{1,1,1,0},{1,0,1,1},{0,0,0,0}}。规则：如果某行前4列中1的个数是偶数，则该行第5列填1，否则填0；如果某列前4行中1的个数是偶数，则该列第5行填1，否则填0。前4行、前4列分别计算。输出最终完整的5×5数组。\n\n样例输出：\n0 0 1 1 0\n1 1 1 0 1\n1 0 1 1 1\n0 0 0 0 0\n0 1 1 0",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int a[5][5]={{0,0,1,1},{1,1,1,0},{1,0,1,1},{0,0,0,0}};\n    int i,j;\n    for(i=0;i<4;i++){\n        int cnt=0;\n        for(j=0;j<4;j++)cnt+=a[i][j];\n        a[i][4]=cnt%2==0?1:0;\n    }\n    for(j=0;j<4;j++){\n        int cnt=0;\n        for(i=0;i<4;i++)cnt+=a[i][j];\n        a[4][j]=cnt%2==0?1:0;\n    }\n    a[4][4]=0;\n    for(i=0;i<5;i++){\n        for(j=0;j<5;j++)printf(\"%d \",a[i][j]);\n        printf(\"\\n\");\n    }\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "0 0 1 1 0\n1 1 1 0 1\n1 0 1 1 1\n0 0 0 0 0\n0 1 1 0 \n"
+        },
+        {
+          "in": "",
+          "out": "0 0 1 1 0\n1 1 1 0 1\n1 0 1 1 1\n0 0 0 0 0\n0 1 1 0 \n"
+        },
+        {
+          "in": "",
+          "out": "0 0 1 1 0\n1 1 1 0 1\n1 0 1 1 1\n0 0 0 0 0\n0 1 1 0 \n"
+        },
+        {
+          "in": "",
+          "out": "0 0 1 1 0\n1 1 1 0 1\n1 0 1 1 1\n0 0 0 0 0\n0 1 1 0 \n"
+        },
+        {
+          "in": "",
+          "out": "0 0 1 1 0\n1 1 1 0 1\n1 0 1 1 1\n0 0 0 0 0\n0 1 1 0 \n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n计算1/1 - 1/3 + 1/5 - 1/7 + ... - 1/99的值，结果保留10位小数。\n\n样例输出：\n0.7604599047",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    double sum=0;\n    int sgn=1;\n    for(int i=1;i<=99;i+=2){\n        sum+=sgn*1.0/i;\n        sgn=-sgn;\n    }\n    printf(\"%.10f\\n\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "0.7604599047\n"
+        },
+        {
+          "in": "",
+          "out": "0.7604599047\n"
+        },
+        {
+          "in": "",
+          "out": "0.7604599047\n"
+        },
+        {
+          "in": "",
+          "out": "0.7604599047\n"
+        },
+        {
+          "in": "",
+          "out": "0.7604599047\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n给定一个3行3列的矩阵：{{1,1,1},{3,4,6},{6,1,1}}。在每行末尾添加第4列，其值按规则计算：前三个数之和若等于20则填0，否则填20减去前三个数之和的值。输出修改后的3行4列矩阵。\n\n样例输出：\nModified Matrix:\n  1  1  1 17\n  3  4  6  7\n  6  1  1 12",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int m[3][4]={{1,1,1},{3,4,6},{6,1,1}};\n    for(int i=0;i<3;i++){\n        int sum=m[i][0]+m[i][1]+m[i][2];\n        if(sum==20)m[i][3]=0;\n        else m[i][3]=20-sum;\n    }\n    printf(\"修改后的矩阵:\\n\");\n    for(int i=0;i<3;i++){\n        for(int j=0;j<4;j++)printf(\"%3d\",m[i][j]);\n        printf(\"\\n\");\n    }\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "修改后的矩阵:\n  1  1  1 17\n  3  4  6  7\n  6  1  1 12\n"
+        },
+        {
+          "in": "",
+          "out": "修改后的矩阵:\n  1  1  1 17\n  3  4  6  7\n  6  1  1 12\n"
+        },
+        {
+          "in": "",
+          "out": "修改后的矩阵:\n  1  1  1 17\n  3  4  6  7\n  6  1  1 12\n"
+        },
+        {
+          "in": "",
+          "out": "修改后的矩阵:\n  1  1  1 17\n  3  4  6  7\n  6  1  1 12\n"
+        },
+        {
+          "in": "",
+          "out": "修改后的矩阵:\n  1  1  1 17\n  3  4  6  7\n  6  1  1 12\n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n计算1 + 1/2 + 1/3 + ... + 1/99的值，结果保留15位小数。\n\n样例输出：\n1+1/2+1/3 to 1/99 is 5.177377517639620",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    double t=0;\n    for(int i=1;i<=99;i++)t+=1.0/i;\n    printf(\"1+1/2+1/3到1/99的值为%.15f\\n\",t);\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "1+1/2+1/3 to 1/99 is 5.177377517639620\n"
+        },
+        {
+          "in": "",
+          "out": "1+1/2+1/3 to 1/99 is 5.177377517639620\n"
+        },
+        {
+          "in": "",
+          "out": "1+1/2+1/3 to 1/99 is 5.177377517639620\n"
+        },
+        {
+          "in": "",
+          "out": "1+1/2+1/3 to 1/99 is 5.177377517639620\n"
+        },
+        {
+          "in": "",
+          "out": "1+1/2+1/3 to 1/99 is 5.177377517639620\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n给定数组{1,2,3,4,5,6,7,8,9,10}，输入一个整数n（1<=n<=5），分别计算数组前n个元素之和与后n个元素之和并输出。\n\n样例输入：\n3\n样例输出：\n数组中前 3 个元素的和为: 6\n数组中后 3 个元素的和为: 24",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int a[10]={1,2,3,4,5,6,7,8,9,10},n;\n    scanf(\"%d\", &n);\n    int fs=0,bs=0;\n    for(int i=0;i<n;i++)fs+=a[i];\n    for(int i=10-n;i<10;i++)bs+=a[i];\n    printf(\"数组中前 %d 个元素的和为: %d\\n\",n,fs);\n    printf(\"数组中后 %d 个元素的和为: %d\\n\",n,bs);\n}",
+      "test_cases": [
+        {
+          "in": "3",
+          "out": "数组中前 3 个元素的和为: 6\n数组中后 3 个元素的和为: 24\n"
+        },
+        {
+          "in": "5",
+          "out": "数组中前 5 个元素的和为: 15\n数组中后 5 个元素的和为: 40\n"
+        },
+        {
+          "in": "1",
+          "out": "数组中前 1 个元素的和为: 1\n数组中后 1 个元素的和为: 10\n"
+        },
+        {
+          "in": "2",
+          "out": "数组中前 2 个元素的和为: 3\n数组中后 2 个元素的和为: 19\n"
+        },
+        {
+          "in": "4",
+          "out": "数组中前 4 个元素的和为: 10\n数组中后 4 个元素的和为: 34\n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n实现一个简单的点餐系统。菜单：1-汉堡20元、2-薯条10元、3-可乐5元。用户输入操作码：0点餐（输入食物编号和数量）、1查看点餐信息（列出已点食物份数和小计）、2结账（输出总金额并清空）。其他数字退出。\n\n样例输入：\n0\n1 2\n0\n3 1\n1\n2\n样例输出：\n菜单如下：\n1. 汉堡：20.00 元\n2. 薯条：10.00 元\n3. 可乐：5.00 元\n...\n当前点餐信息如下：\n汉堡 ： 2 份 ， 小 计 ： 40.00 元\n可乐 ： 1 份 ， 小 计 ： 5.00 元\n总金额：45.00 元\n本次消费总金额为：45.00 元，感谢惠顾！",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nchar food[3][80]={\"汉堡\",\"薯条\",\"可乐\"};\nfloat price[3]={20,10,5};\nint cnt[3]={0};\nfloat total=0;\nmain(){\n    int c,n,op;\n    printf(\"菜单如下：\\n\");\n    for(int i=0;i<3;i++)\n        printf(\"%d. %s：%.2f 元\\n\",i+1,food[i],price[i]);\n    while(1){\n        printf(\"请选择操作（0：点餐，1：查看点餐信息，2：结账，其他数字：退出）：\");\n        scanf(\"%d\", &op);\n        switch(op){\n            case 0:\n                scanf(\"%d %d\", &c, &n);\n                if(c>=1&&c<=3){cnt[c-1]+=n;total+=price[c-1]*n;}\n                break;\n            case 1:\n                printf(\"当前点餐信息如下：\\n\");\n                for(int i=0;i<3;i++)\n                    if(cnt[i]>0)\n                        printf(\"%s ： %d 份 ， 小 计 ： %.2f 元\\n\",food[i],cnt[i],price[i]*cnt[i]);\n                printf(\"总金额：%.2f 元\\n\",total);\n                break;\n            case 2:\n                printf(\"本次消费总金额为：%.2f 元，感谢惠顾！\\n\",total);\n                for(int i=0;i<3;i++)cnt[i]=0;\n                total=0;\n                return;\n            default:return;\n        }\n    }\n}",
+      "test_cases": [
+        {
+          "in": "0\n1 2\n0\n3 1\n1\n2",
+          "out": "菜单如下：\n1. 汉堡：20.00 元\n2. 薯条：10.00 元\n3. 可乐：5.00 元\n...\n当前点餐信息如下：\n汉堡 ： 2 份 ， 小 计 ： 40.00 元\n可乐 ： 1 份 ， 小 计 ： 5.00 元\n总金额：45.00 元\n本次消费总金额为：45.00 元，感谢惠顾！\n"
+        },
+        {
+          "in": "0\n1 2\n0\n3 1\n1\n2",
+          "out": "菜单如下：\n1. 汉堡：20.00 元\n2. 薯条：10.00 元\n3. 可乐：5.00 元\n...\n当前点餐信息如下：\n汉堡 ： 2 份 ， 小 计 ： 40.00 元\n可乐 ： 1 份 ， 小 计 ： 5.00 元\n总金额：45.00 元\n本次消费总金额为：45.00 元，感谢惠顾！\n"
+        },
+        {
+          "in": "0\n1 2\n0\n3 1\n1\n2",
+          "out": "菜单如下：\n1. 汉堡：20.00 元\n2. 薯条：10.00 元\n3. 可乐：5.00 元\n...\n当前点餐信息如下：\n汉堡 ： 2 份 ， 小 计 ： 40.00 元\n可乐 ： 1 份 ， 小 计 ： 5.00 元\n总金额：45.00 元\n本次消费总金额为：45.00 元，感谢惠顾！\n"
+        },
+        {
+          "in": "0\n1 2\n0\n3 1\n1\n2",
+          "out": "菜单如下：\n1. 汉堡：20.00 元\n2. 薯条：10.00 元\n3. 可乐：5.00 元\n...\n当前点餐信息如下：\n汉堡 ： 2 份 ， 小 计 ： 40.00 元\n可乐 ： 1 份 ， 小 计 ： 5.00 元\n总金额：45.00 元\n本次消费总金额为：45.00 元，感谢惠顾！\n"
+        },
+        {
+          "in": "0\n1 2\n0\n3 1\n1\n2",
+          "out": "菜单如下：\n1. 汉堡：20.00 元\n2. 薯条：10.00 元\n3. 可乐：5.00 元\n...\n当前点餐信息如下：\n汉堡 ： 2 份 ， 小 计 ： 40.00 元\n可乐 ： 1 份 ， 小 计 ： 5.00 元\n总金额：45.00 元\n本次消费总金额为：45.00 元，感谢惠顾！\n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个整数n（n≠0），输出100以内所有能被n整除的正整数，每个数后跟一个空格。\n\n样例输入：\n3\n样例输出：\n100 以内能被 3 整除的数有: 3 6 9 12 15 18 21 24 27 30 33 36 39 42 45 48 51 54 57 60 63 66 69 72 75 78 81 84 87 90 93 96 99",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"100 以内能被 %d 整除的数有: \",n);\n    for(int i=1;i<=100;i++)\n        if(i%n==0)printf(\"%d \",i);\n    printf(\"\\n\");\n}",
+      "test_cases": [
+        {
+          "in": "3",
+          "out": "100 以内能被 3 整除的数有: 3 6 9 12 15 18 21 24 27 30 33 36 39 42 45 48 51 54 57 60 63 66 69 72 75 78 81 84 87 90 93 96 99 \n"
+        },
+        {
+          "in": "7",
+          "out": "100 以内能被 7 整除的数有: 7 14 21 28 35 42 49 56 63 70 77 84 91 98 \n"
+        },
+        {
+          "in": "25",
+          "out": "100 以内能被 25 整除的数有: 25 50 75 100 \n"
+        },
+        {
+          "in": "11",
+          "out": "100 以内能被 11 整除的数有: 11 22 33 44 55 66 77 88 99 \n"
+        },
+        {
+          "in": "50",
+          "out": "100 以内能被 50 整除的数有: 50 100 \n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n实现一个简单的商城购物程序。商品：1-篮球120元、2-足球100元、3-排球80元。输入1开始选购（输入商品编号和数量，输入0结束选购），输入2查看购物车（列出每种商品的数量和小计），输入0结算（输出总价并清空购物车）。\n\n样例输入：\n1\n1 2\n0\n2\n0\n样例输出：\n商品列表如下：\n1. 篮球：120.00 元\n2. 足球：100.00 元\n3. 排球：80.00 元\n...\n购物车内容：\n篮球：2 个，小计：240.00 元\n购物车总价：240.00 元\n本次购物总价：240.00 元，感谢惠顾！",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nchar items[3][10]={\"篮球\",\"足球\",\"排球\"};\nfloat prices[3]={120,100,80};\nint cart[3]={0};\nmain(){\n    int ch;\n    printf(\"欢迎来到商城！\\n\");\n    printf(\"1. 开始选购物物品\\n2. 查看购物车\\n0. 结算\\n\");\n    while(1){\n        scanf(\"%d\", &ch);\n        if(ch==1){\n            printf(\"商品列表如下：\\n\");\n            for(int i=0;i<3;i++)\n                printf(\"%d. %s：%.2f 元\\n\",i+1,items[i],prices[i]);\n            int ic,q;\n            while(1){\n                scanf(\"%d\", &ic);\n                if(ic==0)break;\n                scanf(\"%d\", &q);\n                if(ic>=1&&ic<=3)cart[ic-1]+=q;\n            }\n        }else if(ch==2){\n            float t=0;\n            printf(\"购物车内容：\\n\");\n            for(int i=0;i<3;i++){\n                if(cart[i]>0){\n                    printf(\"%s：%d 个，小计：%.2f 元\\n\",items[i],cart[i],cart[i]*prices[i]);\n                    t+=cart[i]*prices[i];\n                }\n            }\n            printf(\"购物车总价：%.2f 元\\n\",t);\n        }else if(ch==0){\n            float t=0;\n            for(int i=0;i<3;i++)t+=cart[i]*prices[i];\n            printf(\"本次购物总价：%.2f 元，感谢惠顾！\\n\",t);\n            return;\n        }\n    }\n}",
+      "test_cases": [
+        {
+          "in": "1\n1 2\n0\n2\n0",
+          "out": "商品列表如下：\n1. 篮球：120.00 元\n2. 足球：100.00 元\n3. 排球：80.00 元\n...\n购物车内容：\n篮球：2 个，小计：240.00 元\n购物车总价：240.00 元\n本次购物总价：240.00 元，感谢惠顾！\n"
+        },
+        {
+          "in": "1\n1 2\n0\n2\n0",
+          "out": "商品列表如下：\n1. 篮球：120.00 元\n2. 足球：100.00 元\n3. 排球：80.00 元\n...\n购物车内容：\n篮球：2 个，小计：240.00 元\n购物车总价：240.00 元\n本次购物总价：240.00 元，感谢惠顾！\n"
+        },
+        {
+          "in": "1\n1 2\n0\n2\n0",
+          "out": "商品列表如下：\n1. 篮球：120.00 元\n2. 足球：100.00 元\n3. 排球：80.00 元\n...\n购物车内容：\n篮球：2 个，小计：240.00 元\n购物车总价：240.00 元\n本次购物总价：240.00 元，感谢惠顾！\n"
+        },
+        {
+          "in": "1\n1 2\n0\n2\n0",
+          "out": "商品列表如下：\n1. 篮球：120.00 元\n2. 足球：100.00 元\n3. 排球：80.00 元\n...\n购物车内容：\n篮球：2 个，小计：240.00 元\n购物车总价：240.00 元\n本次购物总价：240.00 元，感谢惠顾！\n"
+        },
+        {
+          "in": "1\n1 2\n0\n2\n0",
+          "out": "商品列表如下：\n1. 篮球：120.00 元\n2. 足球：100.00 元\n3. 排球：80.00 元\n...\n购物车内容：\n篮球：2 个，小计：240.00 元\n购物车总价：240.00 元\n本次购物总价：240.00 元，感谢惠顾！\n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输入两个字符串a和b（各不超过30个字符），将它们拼接成一个新字符串c存入数组并输出。\n\n样例输入：\nhello world\n样例输出：\nhelloworld",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char a[31],b[31],c[61];\n    scanf(\"%s %s\", a, b);\n    int i,j;\n    for(i=0;a[i]!='\\0';i++)c[i]=a[i];\n    for(j=0;b[j]!='\\0';j++)c[i+j]=b[j];\n    c[i+j]='\\0';\n    printf(\"%s\\n\",c);\n}",
+      "test_cases": [
+        {
+          "in": "hello world",
+          "out": "helloworld\n"
+        },
+        {
+          "in": "abc 123",
+          "out": "abc123\n"
+        },
+        {
+          "in": "C Prog Lang",
+          "out": "CProgLang\n"
+        },
+        {
+          "in": "2024 Good",
+          "out": "2024Good\n"
+        },
+        {
+          "in": "ni hao ya",
+          "out": "nihaoya\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n有三名同学，每名同学有五门课的成绩。输入这15个成绩（每行5个整数，共3行），输出每门课的最高成绩。\n\n样例输入：\n80 75 90 85 70\n60 85 95 80 65\n70 80 85 90 75\n样例输出：\n第 1 门课最高成绩: 80\n第 2 门课最高成绩: 85\n第 3 门课最高成绩: 95\n第 4 门课最高成绩: 90\n第 5 门课最高成绩: 75",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int s[3][5];\n    for(int i=0;i<3;i++)\n        for(int j=0;j<5;j++)\n            scanf(\"%d\", &s[i][j]);\n    for(int j=0;j<5;j++){\n        int mx=s[0][j];\n        for(int i=1;i<3;i++)\n            if(s[i][j]>mx)mx=s[i][j];\n        printf(\"第 %d 门课最高成绩: %d\\n\",j+1,mx);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "80 75 90 85 70\n60 85 95 80 65\n70 80 85 90 75",
+          "out": "第 1 门课最高成绩: 80\n第 2 门课最高成绩: 85\n第 3 门课最高成绩: 95\n第 4 门课最高成绩: 90\n第 5 门课最高成绩: 75\n"
+        },
+        {
+          "in": "50 60 70 80 90\n90 80 70 60 50\n70 70 70 70 70",
+          "out": "第 1 门课最高成绩: 90\n第 2 门课最高成绩: 80\n第 3 门课最高成绩: 70\n第 4 门课最高成绩: 80\n第 5 门课最高成绩: 90\n"
+        },
+        {
+          "in": "100 90 80 70 60\n95 85 75 65 55\n98 88 78 68 58",
+          "out": "第 1 门课最高成绩: 100\n第 2 门课最高成绩: 90\n第 3 门课最高成绩: 80\n第 4 门课最高成绩: 70\n第 5 门课最高成绩: 60\n"
+        },
+        {
+          "in": "88 77 66 55 44\n44 55 66 77 88\n66 66 66 66 66",
+          "out": "第 1 门课最高成绩: 88\n第 2 门课最高成绩: 77\n第 3 门课最高成绩: 66\n第 4 门课最高成绩: 77\n第 5 门课最高成绩: 88\n"
+        },
+        {
+          "in": "85 90 95 100 80\n75 80 85 90 95\n65 70 75 80 85",
+          "out": "第 1 门课最高成绩: 85\n第 2 门课最高成绩: 90\n第 3 门课最高成绩: 95\n第 4 门课最高成绩: 100\n第 5 门课最高成绩: 95\n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输入两个字符串（各不超过20个字符），将它们拼接成一个新字符串。要求不使用任何字符串库函数（如strlen、strcat、strcpy），仅用for循环实现拼接。\n\n样例输入：\nhello world\n样例输出：\nhelloworld",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char a[21],b[21],c[42];\n    scanf(\"%s %s\", a, b);\n    int i=0,j=0;\n    while(a[i]!='\\0'){c[i]=a[i];i++;}\n    while(b[j]!='\\0'){c[i+j]=b[j];j++;}\n    c[i+j]='\\0';\n    printf(\"%s\\n\",c);\n}",
+      "test_cases": [
+        {
+          "in": "hello world",
+          "out": "helloworld\n"
+        },
+        {
+          "in": "abc 123",
+          "out": "abc123\n"
+        },
+        {
+          "in": "CProg LANG",
+          "out": "CProgLANG\n"
+        },
+        {
+          "in": "2024 exam",
+          "out": "2024exam\n"
+        },
+        {
+          "in": "study hard",
+          "out": "studyhard\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n有3名运动员，每名运动员参加5个项目的比赛。输入3行5列的成绩矩阵，输出每个项目的最高成绩。\n\n样例输入：\n9.5 8.7 9.0 8.5 9.2\n8.0 9.1 8.8 9.3 8.6\n9.0 8.5 9.5 8.0 9.0\n样例输出：\n项目 1 最高成绩: 9.5\n项目 2 最高成绩: 9.1\n项目 3 最高成绩: 9.5\n项目 4 最高成绩: 9.3\n项目 5 最高成绩: 9.2",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    float s[3][5];\n    for(int i=0;i<3;i++)\n        for(int j=0;j<5;j++)\n            scanf(\"%f\", &s[i][j]);\n    for(int j=0;j<5;j++){\n        float mx=s[0][j];\n        for(int i=1;i<3;i++)\n            if(s[i][j]>mx)mx=s[i][j];\n        printf(\"项目 %d 最高成绩: %.1f\\n\",j+1,mx);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "9.5 8.7 9.0 8.5 9.2\n8.0 9.1 8.8 9.3 8.6\n9.0 8.5 9.5 8.0 9.0",
+          "out": "项目 1 最高成绩: 9.5\n项目 2 最高成绩: 9.1\n项目 3 最高成绩: 9.5\n项目 4 最高成绩: 9.3\n项目 5 最高成绩: 9.2\n"
+        },
+        {
+          "in": "7.0 8.0 9.0 6.0 5.0\n8.0 7.0 6.0 9.0 8.0\n5.0 9.0 8.0 7.0 6.0",
+          "out": "项目 1 最高成绩: 8.0\n项目 2 最高成绩: 9.0\n项目 3 最高成绩: 9.0\n项目 4 最高成绩: 9.0\n项目 5 最高成绩: 8.0\n"
+        },
+        {
+          "in": "10.0 9.5 9.0 8.5 8.0\n9.5 10.0 8.5 9.0 9.5\n9.0 8.5 10.0 9.5 8.0",
+          "out": "项目 1 最高成绩: 10.0\n项目 2 最高成绩: 10.0\n项目 3 最高成绩: 10.0\n项目 4 最高成绩: 9.5\n项目 5 最高成绩: 9.5\n"
+        },
+        {
+          "in": "6.5 7.5 8.5 9.5 5.5\n7.0 8.0 9.0 6.0 7.0\n8.5 9.5 6.5 7.5 8.5",
+          "out": "项目 1 最高成绩: 8.5\n项目 2 最高成绩: 9.5\n项目 3 最高成绩: 9.0\n项目 4 最高成绩: 9.5\n项目 5 最高成绩: 8.5\n"
+        },
+        {
+          "in": "9.0 9.0 9.0 9.0 9.0\n8.5 8.5 8.5 8.5 8.5\n9.5 9.5 9.5 9.5 9.5",
+          "out": "项目 1 最高成绩: 9.5\n项目 2 最高成绩: 9.5\n项目 3 最高成绩: 9.5\n项目 4 最高成绩: 9.5\n项目 5 最高成绩: 9.5\n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个1-9之间的数字a，计算并输出s = a + aa + aaa + aaaa的值。例如输入2，则计算2+22+222+2222=2468。\n\n样例输入：\n2\n样例输出：\n2468",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int a,s=0,t=0;\n    scanf(\"%d\", &a);\n    for(int i=0;i<4;i++){\n        t=t*10+a;\n        s+=t;\n    }\n    printf(\"%d\\n\",s);\n}",
+      "test_cases": [
+        {
+          "in": "2",
+          "out": "2468\n"
+        },
+        {
+          "in": "5",
+          "out": "6170\n"
+        },
+        {
+          "in": "1",
+          "out": "1234\n"
+        },
+        {
+          "in": "9",
+          "out": "11106\n"
+        },
+        {
+          "in": "3",
+          "out": "3702\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n有三条街道，每条街道有5个路灯，初始状态用二维数组表示（0表示灭，1表示亮）。用户循环输入操作：输入'c'查看所有路灯的当前状态（0或1）；输入'd'后跟街道号i和路灯号j将该路灯状态取反（0变1，1变0）；输入'q'退出程序。\n\n样例输入：\nc\nq\n样例输出：\n0 1 0 1 0\n1 0 1 0 1\n0 0 0 0 0",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int light[3][5]={{0,1,0,1,0},{1,0,1,0,1},{0,0,0,0,0}};\n    char op;\n    int i,j;\n    while(1){\n                {char a1; do{a1=getchar();}while(a1=='\\n'||a1==' '||a1=='\\t'); op=a1; }\n        if(op=='c'){\n            for(i=0;i<3;i++){\n                for(j=0;j<5;j++)printf(\"%d \",light[i][j]);\n                printf(\"\\n\");\n            }\n        }else if(op=='d'){\n            scanf(\"%d %d\", &i, &j);\n            if(i>=0&&i<3&&j>=0&&j<5)\n                light[i][j]=1-light[i][j];\n        }else if(op=='q'){\n            return;\n        }\n    }\n}",
+      "test_cases": [
+        {
+          "in": "c\nq",
+          "out": "0 1 0 1 0\n1 0 1 0 1\n0 0 0 0 0\n"
+        },
+        {
+          "in": "d\n0 2\nc\nq",
+          "out": "1 1 1 1 1\n0 0 0 0 0\n1 1 1 1 1\n"
+        },
+        {
+          "in": "c\nq",
+          "out": "0 1 0 1 0\n1 0 1 0 1\n0 0 0 0 0\n"
+        },
+        {
+          "in": "d\n0 2\nc\nq",
+          "out": "1 1 1 1 1\n0 0 0 0 0\n1 1 1 1 1\n"
+        },
+        {
+          "in": "c\nq",
+          "out": "0 1 0 1 0\n1 0 1 0 1\n0 0 0 0 0\n"
+        },
+        {
+          "in": "d\n0 2\nc\nq",
+          "out": "1 1 1 1 1\n0 0 0 0 0\n1 1 1 1 1\n"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2024年真题"
+    },
+    {
+      "content": "【程序功能】\n输入桌子的大小（1或2平方米）和椅子的数量。桌子1平方米价格1200元，2平方米价格2200元。椅子少于或等于4个时每个100元，多于4个时超出部分每个80元。计算并输出总价格。\n\n样例输入：\n1 3\n样例输出：\n总价格为1500元",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a,b,sum;\n    scanf(\"%d\", &a);\n    scanf(\"%d\", &b);\n    if(a==1)sum=1200;\n    else sum=2200;\n    if(b<=4)sum+=b*100;\n    else sum+=100*4+(b-4)*80;\n    printf(\"总价格为%d元\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "1 3",
+          "out": "总价格为1500元"
+        },
+        {
+          "in": "2 5",
+          "out": "总价格为3080元"
+        },
+        {
+          "in": "1 10",
+          "out": "总价格为2080元"
+        },
+        {
+          "in": "2 2",
+          "out": "总价格为2400元"
+        },
+        {
+          "in": "1 4",
+          "out": "总价格为1600元"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n一本书共160页。第一天读7页，之后每天比前一天多读5页。求多少天能读完这本书，以及最后一天读了多少页。\n\n样例输出：\n读了8天 最后一天13页",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a=0,num=0,k=7;\n    while(1)\n    {\n        num++;\n        if(a+k>=160)\n        {\n            printf(\"读了%d天 最后一天%d页\",num,160-a);\n            break;\n        }\n        a+=k;\n        k+=5;\n    }\n}",
+      "test_cases": [
+        {
+          "in": "",
+          "out": "读了8天 最后一天13页"
+        },
+        {
+          "in": "",
+          "out": "读了8天 最后一天13页"
+        },
+        {
+          "in": "",
+          "out": "读了8天 最后一天13页"
+        },
+        {
+          "in": "",
+          "out": "读了8天 最后一天13页"
+        },
+        {
+          "in": "",
+          "out": "读了8天 最后一天13页"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n坐车计费：白天6:00-23:00，3公里内起步价8元，超出部分每公里3元。夜间23:00-次日6:00，3公里内起步价10元，超出部分每公里3.5元。输入时间和公里数，输出车费。\n\n样例输入：\n8 5\n样例输出：\n14.000000",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int t;\n    float l;\n    scanf(\"%d\", &t);\n    scanf(\"%f\", &l);\n    if(t>=6&&t<23)\n    {\n        if(l>3)printf(\"%f\",8+(l-3)*3);\n        else printf(\"%d\",8);\n    }\n    else\n    {\n        if(l>3)printf(\"%f\",10+(l-3)*3.5);\n        else printf(\"%d\",10);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "8 5",
+          "out": "14.000000"
+        },
+        {
+          "in": "8 1",
+          "out": "8"
+        },
+        {
+          "in": "2 5",
+          "out": "17.000000"
+        },
+        {
+          "in": "22 3",
+          "out": "8"
+        },
+        {
+          "in": "0 2",
+          "out": "10"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个正整数n，输出1到n之间所有包含数字8的数，并统计共有多少个这样的数。\n\n样例输入：\n30\n样例输出：\n8 18 28 共3个",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int n,i,b,flag=0,num=0;\n    scanf(\"%d\", &n);\n    for(i=1;i<=n;i++)\n    {\n        b=i;\n        flag=0;\n        while(b)\n        {\n            if(b%10==8){num++;flag=1;break;}\n            b=b/10;\n        }\n        if(flag==1)printf(\"%d \",i);\n    }\n    printf(\"\\n共%d个\",num);\n}",
+      "test_cases": [
+        {
+          "in": "30",
+          "out": "8 18 28 共3个"
+        },
+        {
+          "in": "100",
+          "out": "8 18 28 38 48 58 68 78 80 81 82 83 84 85 86 87 88 89 98 共19个"
+        },
+        {
+          "in": "10",
+          "out": "8 共1个"
+        },
+        {
+          "in": "7",
+          "out": "共0个"
+        },
+        {
+          "in": "80",
+          "out": "8 18 28 38 48 58 68 78 80 共9个"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串（以换行结束），统计其中元音字母（a、e、i、o、u）各自出现的次数（不区分大小写），使用switch语句实现。\n\n样例输入：\nHello World\n样例输出：\n0 1 0 2 0",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    char ch;\n    int num_a=0,num_e=0,num_i=0,num_o=0,num_u=0;\n    while((ch=getchar())!='\\n')\n    {\n        switch(ch)\n        {\n            case'a':case'A':num_a++;break;\n            case'e':case'E':num_e++;break;\n            case'i':case'I':num_i++;break;\n            case'o':case'O':num_o++;break;\n            case'u':case'U':num_u++;break;\n        }\n    }\n    printf(\"%d %d %d %d %d\",num_a,num_e,num_i,num_o,num_u);\n}",
+      "test_cases": [
+        {
+          "in": "Hello World",
+          "out": "0 1 0 2 0"
+        },
+        {
+          "in": "AEIOUaeiou",
+          "out": "2 2 2 2 2"
+        },
+        {
+          "in": "Programming",
+          "out": "1 0 0 1 0"
+        },
+        {
+          "in": "xyz",
+          "out": "0 0 0 0 0"
+        },
+        {
+          "in": "Beautiful",
+          "out": "1 1 1 1 1"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n一个月用水不超过10立方米单价5元，超过10立方米部分单价6元。如果上一个月用水超过15立方米，则后续所有月份单价均变为6元。输入6个月的用水量，输出总水费。\n\n样例输入：\n5 5 5 5 5 5\n样例输出：\n150",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int s[6],m[6],dj=5,sum=0,i;\n    for(i=0;i<6;i++)\n        scanf(\"%d\", &s[i]);\n    for(i=0;i<6;i++)\n    {\n        if(s[i]<=10)m[i]=dj*s[i];\n        else m[i]=dj*10+(s[i]-10)*6;\n        if(s[i]>15)dj=6;\n    }\n    for(i=0;i<6;i++)\n        sum+=m[i];\n    printf(\"%d\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "5 5 5 5 5 5",
+          "out": "150"
+        },
+        {
+          "in": "10 10 10 10 10 10",
+          "out": "300"
+        },
+        {
+          "in": "20 10 10 10 10 10",
+          "out": "410"
+        },
+        {
+          "in": "5 5 16 5 5 5",
+          "out": "346"
+        },
+        {
+          "in": "8 12 8 12 8 12",
+          "out": "360"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n连续输入若干天的温度值，输入0表示结束。输出最高温度以及大于等于38度的天数占总天数的百分比（保留两位小数）。\n\n样例输入：\n36 38 40 35 0\n样例输出：\n最高40 大于38度占比40.00%",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    float d,max;\n    int i,num1=0,num2=0;\n    scanf(\"%f\", &d);\n    max=d;\n    while(d)\n    {\n        if(d>=38)num1++;\n        num2++;\n        scanf(\"%f\", &d);\n        if(d>max)max=d;\n    }\n    printf(\"最高%.0f 大于38度占比%.2f%%\",max,(num1*1.0/num2)*100);\n}",
+      "test_cases": [
+        {
+          "in": "36 38 40 35 0",
+          "out": "最高40 大于38度占比40.00%"
+        },
+        {
+          "in": "30 32 35 0",
+          "out": "最高35 大于38度占比0.00%"
+        },
+        {
+          "in": "39 38 40 41 0",
+          "out": "最高41 大于38度占比75.00%"
+        },
+        {
+          "in": "25 0",
+          "out": "最高25 大于38度占比0.00%"
+        },
+        {
+          "in": "38 38 38 0",
+          "out": "最高38 大于38度占比100.00%"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n连续输入每天运动的步数，输入-1表示结束。输出运动天数、平均步数、达标天数（步数≥8000为达标）和达标比率（百分比，保留两位小数）。\n\n样例输入：\n10000 8000 5000 6000 9000 -1\n样例输出：\n运动天数5 平均7600 达标3 达标比率60.00%",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int bs,d=0,num=0,sum=0;\n    while(1)\n    {\n        scanf(\"%d\", &bs);\n        if(bs==-1)break;\n        sum=sum+bs;\n        d++;\n        if(bs>=8000)num++;\n    }\n    printf(\"运动天数%d 平均%d 达标%d 达标比率%.2f%%\",d,sum/d,num,num*1.0/d*100);\n}",
+      "test_cases": [
+        {
+          "in": "10000 8000 5000 6000 9000 -1",
+          "out": "运动天数5 平均7600 达标3 达标比率60.00%"
+        },
+        {
+          "in": "8000 8000 8000 -1",
+          "out": "运动天数3 平均8000 达标3 达标比率100.00%"
+        },
+        {
+          "in": "5000 6000 7000 -1",
+          "out": "运动天数3 平均6000 达标0 达标比率0.00%"
+        },
+        {
+          "in": "10000 -1",
+          "out": "运动天数1 平均10000 达标1 达标比率100.00%"
+        },
+        {
+          "in": "3000 4000 5000 6000 7000 7999 -1",
+          "out": "运动天数6 平均... 达标0 达标比率0.00%"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n交替输入若干数字（输入0结束）。第1次输入（奇数次）的数字，求其各位数字之和；第2次输入（偶数次）的数字，求其各位数字之积。如此交替。\n\n样例输入：\n123 456 789 0\n样例输出：\n奇数位和6 偶数位积120 奇数位和24",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int num,t=1,sum1=0,sum2=1;\n    while(1)\n    {\n        scanf(\"%d\", &num);\n        if(num==0)break;\n        sum1=0;sum2=1;\n        if(t)\n        {\n            while(num){sum1=sum1+num%10;num=num/10;}\n            printf(t?\"奇数位和%d\":\" 奇数位和%d\",sum1);\n        }\n        else\n        {\n            while(num){sum2=sum2*(num%10);num=num/10;}\n            printf(\" 偶数位积%d\",sum2);\n        }\n        t=!t;\n    }\n}",
+      "test_cases": [
+        {
+          "in": "123 456 789 0",
+          "out": "奇数位和6 偶数位积120 奇数位和24"
+        },
+        {
+          "in": "12 34 0",
+          "out": "奇数位和3 偶数位积12"
+        },
+        {
+          "in": "111 222 0",
+          "out": "奇数位和3 偶数位积8"
+        },
+        {
+          "in": "5 0",
+          "out": "奇数位和5"
+        },
+        {
+          "in": "100 200 300 400 0",
+          "out": "奇数位和1 偶数位积0 奇数位和3 偶数位积0"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n输入5个正整数，判断每个数是否为回文数（正读反读相同）。输出所有回文数，并统计个数。如果没有回文数则输出\"以上数字没有回文数\"。\n\n样例输入：\n121 123 131 454 789\n样例输出：\n121 131 454 共3个",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int x,a,i,b,num=0;\n    for(i=1;i<=5;i++)\n    {\n        scanf(\"%d\", &x);\n        a=x;b=0;\n        while(a!=0){b=b*10+a%10;a=a/10;}\n        if(x==b){printf(\"%d \",x);num++;}\n    }\n    if(num==0)printf(\"以上数字没有回文数\");\n}",
+      "test_cases": [
+        {
+          "in": "121 123 131 454 789",
+          "out": "121 131 454 共3个"
+        },
+        {
+          "in": "123 456 789 101 202",
+          "out": "101 202 共2个"
+        },
+        {
+          "in": "123 234 345 456 567",
+          "out": "以上数字没有回文数"
+        },
+        {
+          "in": "1 2 3 4 5",
+          "out": "1 2 3 4 5 共5个"
+        },
+        {
+          "in": "11 22 33 44 55",
+          "out": "11 22 33 44 55 共5个"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n输入7个人的游泳分数，去掉一个最高分和一个最低分，计算剩余5个分数的平均分并输出（保留两位小数）。\n\n样例输入：\n9.0 8.5 9.5 8.0 9.2 8.8 9.1\n样例输出：\n去掉最高分和最低分后的平均分是：8.92",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    float s[7],sum,avg=0,max,min;\n    int i;\n    for(i=0;i<7;i++)\n        scanf(\"%f\", &s[i]);\n    sum=min=max=s[0];\n    for(i=1;i<7;i++)\n    {\n        if(s[i]>max)max=s[i];\n        if(s[i]<min)min=s[i];\n        sum=sum+s[i];\n    }\n    avg=(sum-max-min)/5;\n    printf(\"去掉最高分和最低分后的平均分是：%.2f\",avg);\n}",
+      "test_cases": [
+        {
+          "in": "9.0 8.5 9.5 8.0 9.2 8.8 9.1",
+          "out": "去掉最高分和最低分后的平均分是：8.92"
+        },
+        {
+          "in": "10 10 10 10 10 10 10",
+          "out": "去掉最高分和最低分后的平均分是：10.00"
+        },
+        {
+          "in": "5 6 7 8 9 4 10",
+          "out": "去掉最高分和最低分后的平均分是：7.00"
+        },
+        {
+          "in": "8.0 8.0 8.0 8.0 8.0 8.0 8.0",
+          "out": "去掉最高分和最低分后的平均分是：8.00"
+        },
+        {
+          "in": "7.5 8.5 6.5 9.5 7.0 8.0 9.0",
+          "out": "去掉最高分和最低分后的平均分是..."
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n输入蛋糕尺寸（6寸或8寸）和巧克力块数。6寸蛋糕150元，8寸蛋糕180元。加巧克力：第1块10元，第2块起每块7元。输出总价格。\n\n样例输入：\n6 0\n样例输出：\n总价格一共150元",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int dg,qkl,sum;\n    scanf(\"%d\", &dg);\n    scanf(\"%d\", &qkl);\n    if(dg==6)sum=150;\n    else sum=180;\n    if(qkl==1)sum=sum+10;\n    else sum=sum+10+7*(qkl-1);\n    printf(\"总价格一共%d元\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "6 0",
+          "out": "总价格一共150元"
+        },
+        {
+          "in": "8 0",
+          "out": "总价格一共180元"
+        },
+        {
+          "in": "6 1",
+          "out": "总价格一共160元"
+        },
+        {
+          "in": "6 3",
+          "out": "总价格一共174元"
+        },
+        {
+          "in": "8 5",
+          "out": "总价格一共218元"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个正整数，然后连续输入一组除数（输入0结束）。输出能被该正整数整除的所有除数，最后输出\"这些数字可以被整除！\"。\n\n样例输入：\n12\n2 3 4 5 6 7 0\n样例输出：\n2 3 4 6 这些数字可以被整除！",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a,b;\n    scanf(\"%d\", &a);\n    while(1)\n    {\n        scanf(\"%d\", &b);\n        if(b==0)break;\n        if(a%b==0)printf(\"%d \",b);\n    }\n    printf(\"这些数字可以被整除！\");\n}",
+      "test_cases": [
+        {
+          "in": "12\n2 3 4 5 6 7 0",
+          "out": "2 3 4 6 这些数字可以被整除！"
+        },
+        {
+          "in": "7\n1 2 3 4 5 6 7 0",
+          "out": "1 7 这些数字可以被整除！"
+        },
+        {
+          "in": "100\n10 20 30 50 0",
+          "out": "10 20 50 这些数字可以被整除！"
+        },
+        {
+          "in": "13\n2 3 4 5 0",
+          "out": "这些数字可以被整除！"
+        },
+        {
+          "in": "8\n1 2 3 4 8 16 0",
+          "out": "1 2 4 8 这些数字可以被整除！"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n买票优惠问题：原价成人500元，儿童300元。三人以下无优惠（儿童不计入团购人数）；3-15人，成人每人优惠80元；15人以上，成人每人优惠80元，若包含儿童则免一个儿童费用，若无儿童则每位成人再优惠20元。输入成人数量和儿童数量，输出总费用。\n\n样例输入：\n2 1\n样例输出：\n花费的总费用价格为：1300",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a,b,sum=0;\n    scanf(\"%d %d\", &a, &b);\n    if(a<3)sum=a*500+b*300;\n    else if(a>=3&&a<=15)sum=a*(500-80)+b*300;\n    else if(a>15)\n    {\n        if(b==0)sum=a*(500-80-20);\n        else sum=a*(500-80)+b*300-300;\n    }\n    printf(\"花费的总费用价格为：%d\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "2 1",
+          "out": "花费的总费用价格为：1300"
+        },
+        {
+          "in": "5 2",
+          "out": "花费的总费用价格为：2700"
+        },
+        {
+          "in": "20 0",
+          "out": "花费的总费用价格为：8000"
+        },
+        {
+          "in": "20 1",
+          "out": "花费的总费用价格为：8400"
+        },
+        {
+          "in": "3 0",
+          "out": "花费的总费用价格为：1260"
+        }
+      ],
+      "score": 30,
+      "difficulty": "难",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个整数a（1~9），输出所有满足「三位数的百位+十位+个位=a」的三位数，并统计个数。例如输入3，输出102 111 120 201 210 300，共6个。\n\n样例输入：\n3\n样例输出：\n102 111 120 201 210 300 共6个",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a,i,num=0,j,l;\n    scanf(\"%d\", &a);\n    for(i=1;i<=9;i++)\n        for(j=0;j<=9;j++)\n        {\n            l=a-i-j;\n            if(l>=0)\n            {\n                printf(\"%d%d%d \",i,j,l);\n                num++;\n            }\n        }\n    printf(\"共%d个\",num);\n}",
+      "test_cases": [
+        {
+          "in": "3",
+          "out": "102 111 120 201 210 300 共6个"
+        },
+        {
+          "in": "1",
+          "out": "100 共1个"
+        },
+        {
+          "in": "27",
+          "out": "999 共1个"
+        },
+        {
+          "in": "5",
+          "out": "104 113 122 131 140 ... 共15个"
+        },
+        {
+          "in": "2",
+          "out": "101 110 200 共3个"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个正整数、一个运算符（+、-、*、/）和另一个正整数，输出运算表达式和结果。除法结果以浮点数输出。\n\n样例输入：\n1+2\n样例输出：\n1+2=3",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int a,c;\n    char b;\n        {scanf(\"%d%c%d\", &a, &b, &c); }\n    switch(b)\n    {\n        case '+':printf(\"%d+%d=%d\",a,c,a+c);break;\n        case '-':printf(\"%d-%d=%d\",a,c,a-c);break;\n        case '*':printf(\"%d*%d=%d\",a,c,a*c);break;\n        case '/':printf(\"%d/%d=%f\",a,c,a*1.0/c);break;\n    }\n}",
+      "test_cases": [
+        {
+          "in": "1+2",
+          "out": "1+2=3"
+        },
+        {
+          "in": "5-3",
+          "out": "5-3=2"
+        },
+        {
+          "in": "6*7",
+          "out": "6*7=42"
+        },
+        {
+          "in": "10/4",
+          "out": "10/4=2.500000"
+        },
+        {
+          "in": "9/3",
+          "out": "9/3=3.000000"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个正整数m，找出所有满足以下条件的三位数：能被m整除且十位数字是5。将这些数输出。\n\n样例输入：\n3\n样例输出：\n150 153 156 159 ... 等",
+      "reference_answer": "#include<stdio.h>\nmain()\n{\n    int m,i;\n    scanf(\"%d\", &m);\n    for(i=100;i<1000;i++)\n        if(i%m==0&&(i/10%10==5))\n            printf(\"%d \",i);\n}",
+      "test_cases": [
+        {
+          "in": "3",
+          "out": "150 153 156 159 ... 等"
+        },
+        {
+          "in": "5",
+          "out": "150 250 350 450 550 650 750 850 950"
+        },
+        {
+          "in": "7",
+          "out": "154 252 350 455 553 651 756 854 952"
+        },
+        {
+          "in": "2",
+          "out": "150 152 154 156 158 250 252 ... 等"
+        },
+        {
+          "in": "25",
+          "out": "150 250 350 450 550 650 750 850 950"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2025年真题"
+    },
+    {
+      "content": "【程序功能】\n输入五个学生的学号和三科成绩（语文、数学、英语），计算并输出每个学生的平均分（保留1位小数）。\n\n样例输入：\n1001 85 90 78\n样例输出：\n1001\t85\t90\t78\t84.3",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int scores[5][4]={0},sum=0,i,j;\n    for(i=0;i<5;i++)\n        for(j=0;j<4;j++)\n            scanf(\"%d\", &scores[i][j]);\n    for(i=0;i<5;i++){\n        sum=0;\n        printf(\"%d\\t\",scores[i][0]);\n        for(j=1;j<4;j++){\n            printf(\"%d\\t\",scores[i][j]);\n            sum=sum+scores[i][j];\n        }\n        printf(\"%.1f\\n\",sum/3.0);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "1001 85 90 78",
+          "out": "1001\t85\t90\t78\t84.3"
+        },
+        {
+          "in": "1002 92 88 95",
+          "out": "1002\t92\t88\t95\t91.7"
+        },
+        {
+          "in": "1003 70 65 80",
+          "out": "1003\t70\t65\t80\t71.7"
+        },
+        {
+          "in": "1004 100 99 98",
+          "out": "1004\t100\t99\t98\t99.0"
+        },
+        {
+          "in": "1005 60 70 80",
+          "out": "1005\t60\t70\t80\t70.0"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一串字符，进行加密转换：大写字母转小写，小写字母转大写，数字字符9→8、8→7...1→0，其他字符转为#。输出加密后的字符串。\n\n样例输入：\nHelloWorld123!\n样例输出：\nhELLOwORLD876#",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int i;\n    char ch[100]={0};\n    gets(ch);\n    for(i=0;ch[i]!='\\0';i++){\n        if(ch[i]>='a'&&ch[i]<='z')\n            ch[i]=ch[i]-32;\n        else if(ch[i]>='A'&&ch[i]<='Z')\n            ch[i]=ch[i]+32;\n        else if(ch[i]>='0'&&ch[i]<='9')\n            ch[i]='9'-(ch[i]-'0');\n        else\n            ch[i]='#';\n    }\n    printf(\"加密后的字符串为:\");\n    puts(ch);\n}",
+      "test_cases": [
+        {
+          "in": "HelloWorld123!",
+          "out": "hELLOwORLD876#"
+        },
+        {
+          "in": "ABCabc987@",
+          "out": "abcABC012#"
+        },
+        {
+          "in": "Test2026#AI",
+          "out": "tEST7937##"
+        },
+        {
+          "in": "Zz09*&^",
+          "out": "zZ90###"
+        },
+        {
+          "in": "Python3.11",
+          "out": "pYTHON6.88"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个6位密码字符串，判断密码等级：含大写字母计1级，含小写字母计1级，含数字计1级。如果密码恰好6位且不含其他字符，输出等级（1/2/3级）；否则输出\"密码有误\"。\n\n样例输入：\nAbc123\n样例输出：\n您输入的密码是3级密码",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char password[80]={0};\n    int i,cnt=0,cnt1=0,cnt2=0,cnt3=0,cnt4=0,level=0;\n    gets(password);\n    for(i=0;password[i]!='\\0';i++){\n        if(password[i]>='A'&&password[i]<='Z') cnt1=1;\n        else if(password[i]>='a'&&password[i]<='z') cnt2=1;\n        else if(password[i]>='0'&&password[i]<='9') cnt3=1;\n        else cnt4=1;\n        cnt++;\n    }\n    level=cnt1+cnt2+cnt3;\n    if(cnt4==0&&cnt==6){\n        if(level==1)printf(\"您输入的密码是1级密码\");\n        else if(level==2)printf(\"您输入的密码是2级密码\");\n        else if(level==3)printf(\"您输入的密码是3级密码\");\n    }else{\n        printf(\"您输入的密码有误!\");\n    }\n}",
+      "test_cases": [
+        {
+          "in": "Abc123",
+          "out": "您输入的密码是3级密码"
+        },
+        {
+          "in": "abcdef",
+          "out": "您输入的密码是1级密码"
+        },
+        {
+          "in": "ABC123",
+          "out": "您输入的密码是2级密码"
+        },
+        {
+          "in": "Ab12@#",
+          "out": "您输入的密码有误!"
+        },
+        {
+          "in": "Abc12",
+          "out": "您输入的密码有误!"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入两个整数m和k，输出m之后（不含m）的k个素数，每个素数之间用空格分隔。\n\n样例输入：\n5 4\n样例输出：\n7 11 13 17",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int i,m,k,tag=1,num,cnt=0;\n    scanf(\"%d %d\", &m, &k);\n    for(num=m+1;;num++){\n        tag=1;\n        for(i=2;i<num;i++)\n            if(num%i==0){tag=0;break;}\n        if(tag==1){\n            printf(\"%d \",num);\n            cnt++;\n        }\n        if(cnt==k) break;\n    }\n}",
+      "test_cases": [
+        {
+          "in": "5 4",
+          "out": "7 11 13 17 "
+        },
+        {
+          "in": "10 5",
+          "out": "11 13 17 19 23 "
+        },
+        {
+          "in": "0 3",
+          "out": "2 3 5 "
+        },
+        {
+          "in": "20 4",
+          "out": "23 29 31 37 "
+        },
+        {
+          "in": "30 6",
+          "out": "31 37 41 43 47 53 "
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n有5个打饭窗口，每个窗口每人打饭时间固定为8、10、13、16、18秒。输入5个窗口各自排队人数，计算并输出最短排队用时（秒）。\n\n样例输入：\n10 8 5 12 6\n样例输出：\n最短排队用时65秒",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int a[5]={8,10,13,16,18},b[5],i,min;\n    for(i=0;i<5;i++) scanf(\"%d\", &b[i]);\n    min=a[0]*b[0];\n    for(i=1;i<5;i++)\n        if(min>a[i]*b[i]) min=a[i]*b[i];\n    printf(\"最短排队用时%d秒\",min);\n}",
+      "test_cases": [
+        {
+          "in": "10 8 5 12 6",
+          "out": "最短排队用时65秒"
+        },
+        {
+          "in": "3 5 8 2 10",
+          "out": "最短排队用时24秒"
+        },
+        {
+          "in": "15 10 7 9 11",
+          "out": "最短排队用时91秒"
+        },
+        {
+          "in": "1 1 1 1 15",
+          "out": "最短排队用时8秒"
+        },
+        {
+          "in": "20 3 6 4 2",
+          "out": "最短排队用时30秒"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个正整数n（n>0），计算并输出以下数列的和（保留2位小数）：\nsum = 2×3/2 + 3×4/4 + 4×5/6 + ... + (n+1)(n+2)/(2n)\n\n样例输入：\n3\n样例输出：\nsum=10.00",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int n,i;\n    double sum=0;\n    scanf(\"%d\", &n);\n    if(n>0)\n        for(i=2;i<=n;i++)\n            sum=sum+(i+1)*(i+2)/(2.0*i);\n    printf(\"和=%.2f\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "3",
+          "out": "sum=10.00"
+        },
+        {
+          "in": "5",
+          "out": "sum=22.50"
+        },
+        {
+          "in": "8",
+          "out": "sum=45.68"
+        },
+        {
+          "in": "1",
+          "out": "sum=0.00"
+        },
+        {
+          "in": "10",
+          "out": "sum=63.37"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n公鸡5元一只，母鸡3元一只，小鸡1元三只。输入总钱数（整数），输出所有可能的购买方案（公鸡、母鸡、小鸡各若干只），并统计方案总数。\n\n样例输入：\n100\n样例输出：\n多种方案输出",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int money,gong,mu,xiao,count=0;\n    scanf(\"%d\", &money);\n    for(gong=0;gong<=money/5;gong++)\n        for(mu=0;mu<=money/3;mu++){\n            xiao=money-gong*5-mu*3;\n            if(xiao>=0&&xiao%3==0){\n                count++;\n                printf(\"公鸡%d,母鸡%d,小鸡%d\\n\",gong,mu,xiao);\n            }\n        }\n    printf(\"共有%d种方案\",count);\n}",
+      "test_cases": [
+        {
+          "in": "100",
+          "out": "公鸡2,母鸡0,小鸡90\n公鸡2,母鸡1,小鸡87\n公鸡2,母鸡2,小鸡84\n公鸡2,母鸡3,小鸡81\n公鸡2,母鸡4,小鸡78\n公鸡2,母鸡5,小鸡75\n公鸡2,母鸡6,小鸡72\n公鸡2,母鸡7,小鸡69\n公鸡2,母鸡8,小鸡66\n公鸡2,母鸡9,小鸡63\n公鸡2,母鸡10,小鸡60\n公鸡2,母鸡11,小鸡57\n公鸡2,母鸡12,小鸡54\n公鸡2,母鸡13,小鸡51\n公鸡2,母鸡14,小鸡48\n公鸡2,母鸡15,小鸡45\n公鸡2,母鸡16,小鸡42\n公鸡2,母鸡17,小鸡39\n公鸡2,母鸡18,小鸡36\n公鸡2,母鸡19,小鸡33\n公鸡2,母鸡20,小鸡30\n公鸡2,母鸡21,小鸡27\n公鸡2,母鸡22,小鸡24\n公鸡2,母鸡23,小鸡21\n公鸡2,母鸡24,小鸡18\n公鸡2,母鸡25,小鸡15\n公鸡2,母鸡26,小鸡12\n公鸡2,母鸡27,小鸡9\n公鸡2,母鸡28,小鸡6\n公鸡2,母鸡29,小鸡3\n公鸡2,母鸡30,小鸡0\n公鸡5,母鸡0,小鸡75\n公鸡5,母鸡1,小鸡72\n公鸡5,母鸡2,小鸡69\n公鸡5,母鸡3,小鸡66\n公鸡5,母鸡4,小鸡63\n公鸡5,母鸡5,小鸡60\n公鸡5,母鸡6,小鸡57\n公鸡5,母鸡7,小鸡54\n公鸡5,母鸡8,小鸡51\n公鸡5,母鸡9,小鸡48\n公鸡5,母鸡10,小鸡45\n公鸡5,母鸡11,小鸡42\n公鸡5,母鸡12,小鸡39\n公鸡5,母鸡13,小鸡36\n公鸡5,母鸡14,小鸡33\n公鸡5,母鸡15,小鸡30\n公鸡5,母鸡16,小鸡27\n公鸡5,母鸡17,小鸡24\n公鸡5,母鸡18,小鸡21\n公鸡5,母鸡19,小鸡18\n公鸡5,母鸡20,小鸡15\n公鸡5,母鸡21,小鸡12\n公鸡5,母鸡22,小鸡9\n公鸡5,母鸡23,小鸡6\n公鸡5,母鸡24,小鸡3\n公鸡5,母鸡25,小鸡0\n公鸡8,母鸡0,小鸡60\n公鸡8,母鸡1,小鸡57\n公鸡8,母鸡2,小鸡54\n公鸡8,母鸡3,小鸡51\n公鸡8,母鸡4,小鸡48\n公鸡8,母鸡5,小鸡45\n公鸡8,母鸡6,小鸡42\n公鸡8,母鸡7,小鸡39\n公鸡8,母鸡8,小鸡36\n公鸡8,母鸡9,小鸡33\n公鸡8,母鸡10,小鸡30\n公鸡8,母鸡11,小鸡27\n公鸡8,母鸡12,小鸡24\n公鸡8,母鸡13,小鸡21\n公鸡8,母鸡14,小鸡18\n公鸡8,母鸡15,小鸡15\n公鸡8,母鸡16,小鸡12\n公鸡8,母鸡17,小鸡9\n公鸡8,母鸡18,小鸡6\n公鸡8,母鸡19,小鸡3\n公鸡8,母鸡20,小鸡0\n公鸡11,母鸡0,小鸡45\n公鸡11,母鸡1,小鸡42\n公鸡11,母鸡2,小鸡39\n公鸡11,母鸡3,小鸡36\n公鸡11,母鸡4,小鸡33\n公鸡11,母鸡5,小鸡30\n公鸡11,母鸡6,小鸡27\n公鸡11,母鸡7,小鸡24\n公鸡11,母鸡8,小鸡21\n公鸡11,母鸡9,小鸡18\n公鸡11,母鸡10,小鸡15\n公鸡11,母鸡11,小鸡12\n公鸡11,母鸡12,小鸡9\n公鸡11,母鸡13,小鸡6\n公鸡11,母鸡14,小鸡3\n公鸡11,母鸡15,小鸡0\n公鸡14,母鸡0,小鸡30\n公鸡14,母鸡1,小鸡27\n公鸡14,母鸡2,小鸡24\n公鸡14,母鸡3,小鸡21\n公鸡14,母鸡4,小鸡18\n公鸡14,母鸡5,小鸡15\n公鸡14,母鸡6,小鸡12\n公鸡14,母鸡7,小鸡9\n公鸡14,母鸡8,小鸡6\n公鸡14,母鸡9,小鸡3\n公鸡14,母鸡10,小鸡0\n公鸡17,母鸡0,小鸡15\n公鸡17,母鸡1,小鸡12\n公鸡17,母鸡2,小鸡9\n公鸡17,母鸡3,小鸡6\n公鸡17,母鸡4,小鸡3\n公鸡17,母鸡5,小鸡0\n公鸡20,母鸡0,小鸡0\n共有112种方案"
+        },
+        {
+          "in": "50",
+          "out": "公鸡1,母鸡0,小鸡45\n公鸡1,母鸡1,小鸡42\n公鸡1,母鸡2,小鸡39\n公鸡1,母鸡3,小鸡36\n公鸡1,母鸡4,小鸡33\n公鸡1,母鸡5,小鸡30\n公鸡1,母鸡6,小鸡27\n公鸡1,母鸡7,小鸡24\n公鸡1,母鸡8,小鸡21\n公鸡1,母鸡9,小鸡18\n公鸡1,母鸡10,小鸡15\n公鸡1,母鸡11,小鸡12\n公鸡1,母鸡12,小鸡9\n公鸡1,母鸡13,小鸡6\n公鸡1,母鸡14,小鸡3\n公鸡1,母鸡15,小鸡0\n公鸡4,母鸡0,小鸡30\n公鸡4,母鸡1,小鸡27\n公鸡4,母鸡2,小鸡24\n公鸡4,母鸡3,小鸡21\n公鸡4,母鸡4,小鸡18\n公鸡4,母鸡5,小鸡15\n公鸡4,母鸡6,小鸡12\n公鸡4,母鸡7,小鸡9\n公鸡4,母鸡8,小鸡6\n公鸡4,母鸡9,小鸡3\n公鸡4,母鸡10,小鸡0\n公鸡7,母鸡0,小鸡15\n公鸡7,母鸡1,小鸡12\n公鸡7,母鸡2,小鸡9\n公鸡7,母鸡3,小鸡6\n公鸡7,母鸡4,小鸡3\n公鸡7,母鸡5,小鸡0\n公鸡10,母鸡0,小鸡0\n共有34种方案"
+        },
+        {
+          "in": "30",
+          "out": "公鸡0,母鸡0,小鸡30\n公鸡0,母鸡1,小鸡27\n公鸡0,母鸡2,小鸡24\n公鸡0,母鸡3,小鸡21\n公鸡0,母鸡4,小鸡18\n公鸡0,母鸡5,小鸡15\n公鸡0,母鸡6,小鸡12\n公鸡0,母鸡7,小鸡9\n公鸡0,母鸡8,小鸡6\n公鸡0,母鸡9,小鸡3\n公鸡0,母鸡10,小鸡0\n公鸡3,母鸡0,小鸡15\n公鸡3,母鸡1,小鸡12\n公鸡3,母鸡2,小鸡9\n公鸡3,母鸡3,小鸡6\n公鸡3,母鸡4,小鸡3\n公鸡3,母鸡5,小鸡0\n公鸡6,母鸡0,小鸡0\n共有18种方案"
+        },
+        {
+          "in": "20",
+          "out": "公鸡1,母鸡0,小鸡15\n公鸡1,母鸡1,小鸡12\n公鸡1,母鸡2,小鸡9\n公鸡1,母鸡3,小鸡6\n公鸡1,母鸡4,小鸡3\n公鸡1,母鸡5,小鸡0\n公鸡4,母鸡0,小鸡0\n共有7种方案"
+        },
+        {
+          "in": "10",
+          "out": "公鸡2,母鸡0,小鸡0\n共有1种方案"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n基本工资5000元。输入两个月的销量，按以下规则计算每月工资：\n- 销量>100：每多1台+50元；销量<100：每少1台-50元\n- 如果连续两个月销量均>100，则第二个月额外+1000元\n输出两个月的工资。\n\n样例输入：\n120 130\n样例输出：\n第一个月工资:6000元\n第二个月工资:7500元",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int base=5000,x1,x2,s1,s2;\n    scanf(\"%d\", &x1);\n    scanf(\"%d\", &x2);\n    s1=base+(x1-100)*50;\n    s2=base+(x2-100)*50;\n    if(x1>100&&x2>100) s2+=1000;\n    printf(\"第一个月工资:%d元\\n\",s1);\n    printf(\"第二个月工资:%d元\\n\",s2);\n}",
+      "test_cases": [
+        {
+          "in": "120 130",
+          "out": "第一个月工资:6000元\n第二个月工资:7500元"
+        },
+        {
+          "in": "80 90",
+          "out": "第一个月工资:4000元\n第二个月工资:4500元"
+        },
+        {
+          "in": "150 110",
+          "out": "第一个月工资:7500元\n第二个月工资:6500元"
+        },
+        {
+          "in": "100 120",
+          "out": "第一个月工资:5000元\n第二个月工资:7000元"
+        },
+        {
+          "in": "90 80",
+          "out": "第一个月工资:4500元\n第二个月工资:4000元"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入年月日（三个整数），输出该日期是星期几。\n\n样例输入：\n2026 6 23\n样例输出：\n星期二",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int y,m,d,days=0,i;\n    int mon[]={31,28,31,30,31,30,31,31,30,31,30,31};\n    scanf(\"%d%d%d\", &y, &m, &d);\n    for(i=1;i<y;i++){\n        if((i%4==0&&i%100!=0)||i%400==0) days+=366;\n        else days+=365;\n    }\n    if((y%4==0&&y%100!=0)||y%400==0) mon[1]=29;\n    for(i=1;i<m;i++) days+=mon[i];\n    days+=d;\n    if(days%7==0) printf(\"星期日\");\n    else printf(\"星期%d\",days%7);\n}",
+      "test_cases": [
+        {
+          "in": "2026 6 23",
+          "out": "星期二"
+        },
+        {
+          "in": "2025 1 1",
+          "out": "星期三"
+        },
+        {
+          "in": "2024 2 29",
+          "out": "星期四"
+        },
+        {
+          "in": "2023 12 25",
+          "out": "星期一"
+        },
+        {
+          "in": "2020 1 1",
+          "out": "星期三"
+        }
+      ],
+      "score": 20,
+      "difficulty": "难",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个正整数N，然后输入N行N列二维数组的元素，计算该数组两条对角线（左上→右下、右上→左下）上所有元素之和并输出。\n\n样例输入：\n3\n1 2 3\n4 5 6\n7 8 9\n样例输出：\n对角线元素和=25",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int N,i,j,sum=0;\n    int a[100][100]={0};\n    scanf(\"%d\", &N);\n        for(i=0;i<N;i++)\n        for(j=0;j<N;j++)\n            scanf(\"%d\", &a[i][j]);\n    for(i=0;i<N;i++)\n        for(j=0;j<N;j++)\n            if(i==j||i+j==N-1) sum+=a[i][j];\n    printf(\"对角线元素和=%d\\n\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "3\n1 2 3\n4 5 6\n7 8 9",
+          "out": "对角线元素和=25"
+        },
+        {
+          "in": "2\n1 2\n3 4",
+          "out": "对角线元素和=10"
+        },
+        {
+          "in": "4\n1 1 1 1\n1 1 1 1\n1 1 1 1\n1 1 1 1",
+          "out": "对角线元素和=8"
+        },
+        {
+          "in": "3\n10 20 30\n40 50 60\n70 80 90",
+          "out": "对角线元素和=250"
+        },
+        {
+          "in": "1\n100",
+          "out": "对角线元素和=100"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入6个整数存入数组，将所有负数改为0。然后找出数组中最长连续递增片段，输出该片段的元素总和。\n\n样例输入：\n10 20 10 30 50 10\n样例输出：\n最长连续递增总和=90",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int a[6],i,max_sum,current_sum;\n    for(i=0;i<6;i++){\n        scanf(\"%d\", &a[i]);\n        if(a[i]<0) a[i]=0;\n    }\n    max_sum=a[0]; current_sum=a[0];\n    for(i=1;i<6;i++){\n        if(a[i]>a[i-1]) current_sum=current_sum+a[i];\n        else current_sum=a[i];\n        if(current_sum>max_sum) max_sum=current_sum;\n    }\n    printf(\"最长连续递增总和=%d\\n\",max_sum);\n}",
+      "test_cases": [
+        {
+          "in": "10 20 10 30 50 10",
+          "out": "最长连续递增总和=90"
+        },
+        {
+          "in": "1 2 3 4 5 6",
+          "out": "最长连续递增总和=21"
+        },
+        {
+          "in": "6 5 4 3 2 1",
+          "out": "最长连续递增总和=6"
+        },
+        {
+          "in": "-5 -3 10 20 5 30",
+          "out": "最长连续递增总和=35"
+        },
+        {
+          "in": "10 -2 5 15 8 20",
+          "out": "最长连续递增总和=28"
+        }
+      ],
+      "score": 20,
+      "difficulty": "难",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入两个字符串（不含空格），统计第二个字符串在第一个字符串中出现的次数（不重叠计数也可重叠均可），输出次数。\n\n样例输入：\nabababab bab\n样例输出：\n出现次数=3",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char a[100],b[100];\n    int i,j,num=0;\n    scanf(\"%s\", a);\n    scanf(\"%s\", b);\n    for(i=0;a[i]!='\\0';i++){\n        if(a[i]==b[0]){\n            for(j=0;b[j]!='\\0'&&a[i+j]==b[j];j++);\n            if(b[j]=='\\0') num++;\n        }\n    }\n    printf(\"出现次数=%d\",num);\n}",
+      "test_cases": [
+        {
+          "in": "abababab bab",
+          "out": "出现次数=3"
+        },
+        {
+          "in": "hellohello he",
+          "out": "出现次数=2"
+        },
+        {
+          "in": "aaaaa aa",
+          "out": "出现次数=4"
+        },
+        {
+          "in": "abcdef cde",
+          "out": "出现次数=1"
+        },
+        {
+          "in": "xyzxyzxyz xyz",
+          "out": "出现次数=3"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入5天的股票价格（整数）。只能先买入后卖出（买入日期早于卖出日期），找出盈利最大的买卖方案。输出买入日期（第几天）、卖出日期和最大盈利值。\n\n样例输入：\n10 20 15 30 25\n样例输出：\n买入日期：1\n卖出日期：4\n最大盈利：20",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int money[5],i,j,max=0,buy,sell,lirun;\n    for(i=0;i<5;i++) scanf(\"%d\", &money[i]);\n    for(i=0;i<4;i++){\n        for(j=i+1;j<5;j++){\n            lirun=money[j]-money[i];\n            if(lirun>max){max=lirun;buy=i+1;sell=j+1;}\n        }\n    }\n    printf(\"买入日期：%d\\n\",buy);\n    printf(\"卖出日期：%d\\n\",sell);\n    printf(\"最大盈利：%d\\n\",max);\n}",
+      "test_cases": [
+        {
+          "in": "10 20 15 30 25",
+          "out": "买入日期：1\n卖出日期：4\n最大盈利：20"
+        },
+        {
+          "in": "50 40 30 20 10",
+          "out": "买入日期：1\n卖出日期：1\n最大盈利：0"
+        },
+        {
+          "in": "5 10 5 15 20",
+          "out": "买入日期：1\n卖出日期：5\n最大盈利：15"
+        },
+        {
+          "in": "100 80 120 90 110",
+          "out": "买入日期：2\n卖出日期：3\n最大盈利：40"
+        },
+        {
+          "in": "30 20 50 10 40",
+          "out": "买入日期：2\n卖出日期：3\n最大盈利：30"
+        }
+      ],
+      "score": 20,
+      "difficulty": "难",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入字符串s和数字串t。将t反转后，与s逐字符穿插输出：先输出t的一个字符，再输出s的一个字符，交替进行。如果t较短则s剩余部分直接输出。\n\n样例输入：\nhello 123\n样例输出：\n3h2e1llo",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s[100],t[100],temp[100];\n    int i,len1=0,len2=0;\n    scanf(\"%s\", s);\n    scanf(\"%s\", t);\n    while(s[len1]!='\\0') len1++;\n    while(t[len2]!='\\0') len2++;\n    for(i=0;i<len2;i++) temp[i]=t[len2-1-i];\n    for(i=0;i<len2;i++) t[i]=temp[i];\n    for(i=0;i<len1;i++){\n        if(i<len2) printf(\"%c\",t[i]);\n        printf(\"%c\",s[i]);\n    }\n}",
+      "test_cases": [
+        {
+          "in": "hello 123",
+          "out": "3h2e1llo"
+        },
+        {
+          "in": "abc 12",
+          "out": "2a1bc"
+        },
+        {
+          "in": "test 9876",
+          "out": "6t7e8s9t"
+        },
+        {
+          "in": "xyz 1",
+          "out": "1xyz"
+        },
+        {
+          "in": "code 54321",
+          "out": "1c2o3d4e5"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串（不含空格），提取其中所有的数字字符，将它们对应的数值求和并输出。\n\n样例输入：\na1b2c3\n样例输出：\n数字和=6",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s[100];\n    int i,sum=0;\n    scanf(\"%s\", s);\n    for(i=0;s[i]!='\\0';i++)\n        if(s[i]>='0'&&s[i]<='9')\n            sum+=s[i]-'0';\n    printf(\"数字和=%d\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "a1b2c3",
+          "out": "数字和=6"
+        },
+        {
+          "in": "abc123def456",
+          "out": "数字和=21"
+        },
+        {
+          "in": "hello2026",
+          "out": "数字和=10"
+        },
+        {
+          "in": "x0y9z8",
+          "out": "数字和=17"
+        },
+        {
+          "in": "test",
+          "out": "数字和=0"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串（不含空格），将连续相同的字符压缩为\"字符+个数\"的格式（个数>1时才写个数）。输出压缩后的字符串。\n例如：aaabbcc 压缩为 a3b2c2\n\n样例输入：\naaabbcc\n样例输出：\na3b2c2",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s[100];\n    int i=0,count;\n    char ch;\n    scanf(\"%s\", s);\n    while(s[i]!='\\0'){\n        ch=s[i]; count=1;\n        while(s[i+1]!='\\0'&&s[i+1]==ch){count++;i++;}\n        printf(\"%c\",ch);\n        if(count>1) printf(\"%d\",count);\n        i++;\n    }\n}",
+      "test_cases": [
+        {
+          "in": "aaabbcc",
+          "out": "a3b2c2"
+        },
+        {
+          "in": "aabbccdd",
+          "out": "a2b2c2d2"
+        },
+        {
+          "in": "abcd",
+          "out": "abcd"
+        },
+        {
+          "in": "aaabbbccc",
+          "out": "a3b3c3"
+        },
+        {
+          "in": "zzzzzyyyyy",
+          "out": "z5y5"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "2026年真题"
+    },
+    {
+      "content": "【程序功能】\n输入5个学生的3门课成绩，分别求每个学生的平均成绩和每门课程的平均成绩并输出。\n\n样例输入：\n85 90 78 92 88 95 70 65 80 100 99 98 60 70 80\n样例输出：\n输出平均分",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    float score[5][3],stu_avg[5]={0},sub_avg[3]={0};\n    int i,j;\n    for(i=0;i<5;i++)\n        for(j=0;j<3;j++){\n            scanf(\"%f\", &score[i][j]);\n            stu_avg[i]+=score[i][j];\n            sub_avg[j]+=score[i][j];\n        }\n    printf(\"每个学生的平均分:\\n\");\n    for(i=0;i<5;i++) printf(\"%d:%.1f\\n\",i+1,stu_avg[i]/3);\n    printf(\"每门课的平均分:\\n\");\n    for(j=0;j<3;j++) printf(\"课%d:%.1f\\n\",j+1,sub_avg[j]/5);\n}",
+      "test_cases": [
+        {
+          "in": "85 90 78 92 88 95 70 65 80 100 99 98 60 70 80",
+          "out": "每个学生的平均分:\n1:84.3\n2:91.7\n3:71.7\n4:99.0\n5:70.0\n每门课的平均分:\n课1:81.4\n课2:82.4\n课3:86.2"
+        },
+        {
+          "in": "80 80 80 90 90 90 70 70 70 85 85 85 95 95 95",
+          "out": "每个学生的平均分:\n1:80.0\n2:90.0\n3:70.0\n4:85.0\n5:95.0\n每门课的平均分:\n课1:84.0\n课2:84.0\n课3:84.0"
+        },
+        {
+          "in": "60 60 60 60 60 60 60 60 60 60 60 60 60 60 60",
+          "out": "每个学生的平均分:\n1:60.0\n2:60.0\n3:60.0\n4:60.0\n5:60.0\n每门课的平均分:\n课1:60.0\n课2:60.0\n课3:60.0"
+        },
+        {
+          "in": "100 100 100 100 100 100 100 100 100 100 100 100 0 0 0",
+          "out": "每个学生的平均分:\n1:100.0\n2:100.0\n3:100.0\n4:100.0\n5:0.0\n每门课的平均分:\n课1:80.0\n课2:80.0\n课3:80.0"
+        },
+        {
+          "in": "75 85 95 65 75 85 55 65 75 45 55 65 35 45 55",
+          "out": "每个学生的平均分:\n1:85.0\n2:75.0\n3:65.0\n4:55.0\n5:45.0\n每门课的平均分:\n课1:55.0\n课2:65.0\n课3:75.0"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个正整数n，统计从1到n（包含n）的所有整数中，数字0~9各自出现的总次数，并输出统计结果。\n\n样例输入：\n12\n样例输出：\n统计0-9次数",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int n,i,j,num[10]={0};\n    scanf(\"%d\", &n);\n    for(i=1;i<=n;i++){\n        j=i;\n        while(j!=0){num[j%10]++;j/=10;}\n    }\n    printf(\"从1到%d之间\\n\",n);\n    for(i=0;i<10;i++) printf(\"有%d个%d\\n\",num[i],i);\n}",
+      "test_cases": [
+        {
+          "in": "12",
+          "out": "从1到12之间\n有1个0\n有5个1\n有2个2\n有1个3\n有1个4\n有1个5\n有1个6\n有1个7\n有1个8\n有1个9"
+        },
+        {
+          "in": "100",
+          "out": "从1到100之间\n有11个0\n有21个1\n有20个2\n有20个3\n有20个4\n有20个5\n有20个6\n有20个7\n有20个8\n有20个9"
+        },
+        {
+          "in": "5",
+          "out": "从1到5之间\n有0个0\n有1个1\n有1个2\n有1个3\n有1个4\n有1个5\n有0个6\n有0个7\n有0个8\n有0个9"
+        },
+        {
+          "in": "20",
+          "out": "从1到20之间\n有2个0\n有12个1\n有3个2\n有2个3\n有2个4\n有2个5\n有2个6\n有2个7\n有2个8\n有2个9"
+        },
+        {
+          "in": "50",
+          "out": "从1到50之间\n有5个0\n有15个1\n有15个2\n有15个3\n有15个4\n有6个5\n有5个6\n有5个7\n有5个8\n有5个9"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个整数，从个位开始提取每一位数字。将第一个数字作为初始值，后续偶数数字累加到结果，奇数数字与当前结果相乘。输出每一步的计算过程和最终结果。\n\n样例输入：\n1234\n样例输出：\n4+3*2+1=9",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int sum=0,a;\n    scanf(\"%d\", &a);\n    while(a!=0){\n        if(a%10!=0){\n            if(sum==0){sum=a%10;printf(\"%d\",sum);}\n            else if(a%10%2==0){printf(\"+%d\",a%10);sum+=a%10;}\n            else{printf(\"*%d\",a%10);sum*=a%10;}\n        }\n        a/=10;\n    }\n    printf(\"=%d\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "1234",
+          "out": "4+3*2+1=9"
+        },
+        {
+          "in": "5678",
+          "out": "8*7+6+5=67"
+        },
+        {
+          "in": "2468",
+          "out": "8+6+4+2=20"
+        },
+        {
+          "in": "1357",
+          "out": "7*5*3*1=105"
+        },
+        {
+          "in": "1111",
+          "out": "1*1*1*1=1"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个整数n，输出一个直角边长度为n的数字直角三角形，所有数字均为2位（不足2位前面补0），数字从01开始递增。\n\n样例输入：\n3\n样例输出：\n010203\n0405\n06",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int a=1,i,j,n;\n    scanf(\"%d\", &n);\n    for(i=1;i<=n;i++){\n        for(j=1;j<=n-(i-1);j++){\n            printf(\"%02d\",a); a++;\n        }\n        printf(\"\\n\");\n    }\n}",
+      "test_cases": [
+        {
+          "in": "3",
+          "out": "010203\n0405\n06\n"
+        },
+        {
+          "in": "4",
+          "out": "01020304\n050607\n0809\n10\n"
+        },
+        {
+          "in": "2",
+          "out": "0102\n03\n"
+        },
+        {
+          "in": "5",
+          "out": "0102030405\n06070809\n101112\n1314\n15"
+        },
+        {
+          "in": "1",
+          "out": "01\n"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n有一个容量为n的口袋（整数n由键盘输入）。依次输入若干正整数代表物品容积，将物品放入口袋（每次放入后口袋容量减少相应数值），直到无法放入下一个物品时停止。统计并输出成功放入口袋的物品数量。\n\n样例输入：\n100\n30 40 20 50\n样例输出：\n放入了3个物品",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int n,a,num=0;\n    scanf(\"%d\", &n);\n    while(1){\n        scanf(\"%d\", &a);\n        if(a>n) break;\n        n-=a; num++;\n    }\n    printf(\"网小通的口袋放入了%d个物品\",num);\n}",
+      "test_cases": [
+        {
+          "in": "100\n30 40 20 50",
+          "out": "放入了3个物品"
+        },
+        {
+          "in": "50\n10 20 25",
+          "out": "放入了2个物品"
+        },
+        {
+          "in": "30\n50",
+          "out": "放入了0个物品"
+        },
+        {
+          "in": "200\n100 80 25",
+          "out": "放入了2个物品"
+        },
+        {
+          "in": "60\n15 15 15 15 5",
+          "out": "放入了4个物品"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个整数，判断它是否为回文数（正读和反读相同）。如果是回文数输出\"是回文数\"，否则输出\"不是回文数\"。\n\n样例输入：\n12321\n样例输出：\n12321 是回文数",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int a,b=0,t;\n    scanf(\"%d\", &a);\n    t=a;\n    while(t!=0){b=b*10+t%10;t/=10;}\n    if(a==b) printf(\"%d 是回文数\",a);\n    else printf(\"%d 不是回文数\",a);\n}",
+      "test_cases": [
+        {
+          "in": "12321",
+          "out": "12321 是回文数"
+        },
+        {
+          "in": "12345",
+          "out": "12345 不是回文数"
+        },
+        {
+          "in": "1221",
+          "out": "1221 是回文数"
+        },
+        {
+          "in": "1",
+          "out": "1 是回文数"
+        },
+        {
+          "in": "10",
+          "out": "10 不是回文数"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n在一行内输入10个整数，找出其中最长的连续递增序列，输出该序列的长度。\n\n样例输入：\n1 2 3 4 5 6 7 8 9 10\n样例输出：\n最长递增序列的长度为10",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int a[10],i,num=1,max=0;\n    for(i=0;i<10;i++) scanf(\"%d\", &a[i]);\n    for(i=1;i<10;i++){\n        if(a[i]>a[i-1]) num++;\n        else num=1;\n        if(num>max) max=num;\n    }\n    printf(\"最长递增序列的长度为%d\\n\",max);\n}",
+      "test_cases": [
+        {
+          "in": "1 2 3 4 5 6 7 8 9 10",
+          "out": "最长递增序列的长度为10"
+        },
+        {
+          "in": "10 9 8 7 6 5 4 3 2 1",
+          "out": "最长递增序列的长度为1"
+        },
+        {
+          "in": "1 3 5 2 4 6 8 1 3 5",
+          "out": "最长递增序列的长度为4"
+        },
+        {
+          "in": "5 5 5 5 5 5 5 5 5 5",
+          "out": "最长递增序列的长度为1"
+        },
+        {
+          "in": "1 2 1 2 3 4 5 1 2 3",
+          "out": "最长递增序列的长度为5"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个正整数n，已知n是两个不同质数的乘积，找出并输出这两个质数中较大的那个。\n\n样例输入：\n15\n样例输出：\n5",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int n,i,j,flag;\n    scanf(\"%d\", &n);\n    for(i=2;i<n;i++){\n        if(n%i==0){\n            flag=1;\n            for(j=2;j<i/2;j++)\n                if(i%j==0){flag=0;break;}\n            if(flag==1){\n                for(j=2;j<n/i/2;j++)\n                    if((n/i)%j==0){flag=0;break;}\n                if(flag==1) break;\n            }\n        }\n    }\n    printf(\"%d\",n/i);\n}",
+      "test_cases": [
+        {
+          "in": "15",
+          "out": "5"
+        },
+        {
+          "in": "21",
+          "out": "7"
+        },
+        {
+          "in": "77",
+          "out": "11"
+        },
+        {
+          "in": "143",
+          "out": "13"
+        },
+        {
+          "in": "35",
+          "out": "7"
+        }
+      ],
+      "score": 20,
+      "difficulty": "中",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n监护室每半小时测量一次病人血压。输入测量次数n，然后输入n组血压数据（每组两个整数：收缩压和舒张压）。血压正常的标准是收缩压在90~140之间（含端点）且舒张压在60~90之间（含端点）。计算病人保持正常血压的最长连续小时数（连续2次正常=1小时），输出该小时数。\n\n样例输入：\n4\n120 80 130 85 150 90 110 70\n样例输出：\n病人保持正常血压的最长小时数:2",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int n,i,a,b,sum=0,c=0,max=0;\n    scanf(\"%d\", &n);\n    printf(\"请输入%d组整数，每组两个，分别代表收缩压和舒张压:\\n\",n);\n    for(i=1;i<=n;i++){\n        sum=0;\n        scanf(\"%d%d\", &a, &b);\n        if(a>=90&&a<=140&&b>=60&&b<=90) ++c;\n        else c=0;\n        if(c>max) max=c;\n    }\n    printf(\"病人保持正常血压的最长小时数:%d\",max);\n}",
+      "test_cases": [
+        {
+          "in": "4\n120 80 130 85 150 90 110 70",
+          "out": "病人保持正常血压的最长小时数:2"
+        },
+        {
+          "in": "6\n100 70 110 75 120 80 130 85 140 90 90 60",
+          "out": "病人保持正常血压的最长小时数:6"
+        },
+        {
+          "in": "3\n150 100 160 110 100 70",
+          "out": "病人保持正常血压的最长小时数:1"
+        },
+        {
+          "in": "5\n120 80 110 70 130 85 140 95 100 60",
+          "out": "病人保持正常血压的最长小时数:4"
+        },
+        {
+          "in": "2\n150 100 160 110",
+          "out": "病人保持正常血压的最长小时数:0"
+        }
+      ],
+      "score": 20,
+      "difficulty": "难",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n小鱼平日每天游泳50公里，周末（周六、周日）休息不游泳。输入两个整数x（当前是周几，1~7）和n（经过的天数），计算并输出从周x开始经过n天后，小鱼累计游泳的总公里数。\n\n样例输入：\n1 5\n样例输出：\n共250公里",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    int x,n,i,sum=0;\n    scanf(\"%d%d\", &x, &n);\n    for(i=1;i<=n;i++){\n        if(x!=6&&x!=7) sum+=50;\n        if(x!=7) x++;\n        else x=1;\n    }\n    printf(\"共%d公里\",sum);\n}",
+      "test_cases": [
+        {
+          "in": "1 5",
+          "out": "共250公里"
+        },
+        {
+          "in": "5 3",
+          "out": "共100公里"
+        },
+        {
+          "in": "6 7",
+          "out": "共250公里"
+        },
+        {
+          "in": "3 10",
+          "out": "共400公里"
+        },
+        {
+          "in": "7 2",
+          "out": "共100公里"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入两个字符串（不含空格），比较它们的大小（不允许使用strcmp函数）。如果第一个字符串大于第二个输出1，相等输出0，小于输出-1。\n\n样例输入：\nChina China\n样例输出：\n0",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s1[100],s2[100];\n    int i;\n    scanf(\"%s%s\", s1, s2);\n    for(i=0;s1[i]!='\\0'&&s2[i]!='\\0';i++){\n        if(s1[i]>s2[i]){printf(\"1\");return;}\n        if(s1[i]<s2[i]){printf(\"-1\");return;}\n    }\n    if(s1[i]=='\\0'&&s2[i]=='\\0') printf(\"0\");\n    else if(s1[i]=='\\0') printf(\"-1\");\n    else printf(\"1\");\n}",
+      "test_cases": [
+        {
+          "in": "China China",
+          "out": "0"
+        },
+        {
+          "in": "china China",
+          "out": "1"
+        },
+        {
+          "in": "abc abcd",
+          "out": "-1"
+        },
+        {
+          "in": "Hello Hello",
+          "out": "0"
+        },
+        {
+          "in": "xyz abc",
+          "out": "1"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串（不含空格），将字符串首尾字符互换后，与原字符串连接输出。\n例如输入\"china\"，输出\"chinaanihc\"。\n\n样例输入：\nchina\n样例输出：\nchinaanihc",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain(){\n    char s[200],rev[100];\n    int i,len;\n    scanf(\"%s\", s);\n    len=strlen(s);\n    for(i=0;i<len;i++) rev[i]=s[len-1-i];\n    rev[len]='\\0';\n    printf(\"%s%s\",s,rev);\n}",
+      "test_cases": [
+        {
+          "in": "china",
+          "out": "chinaanihc"
+        },
+        {
+          "in": "hello",
+          "out": "helloolleh"
+        },
+        {
+          "in": "ab",
+          "out": "abba"
+        },
+        {
+          "in": "test",
+          "out": "testtset"
+        },
+        {
+          "in": "abcde",
+          "out": "abcdeedcba"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个由数字字符构成的字符串，分别统计其中奇数和偶数的个数并输出。\n例如输入\"7843028503\"，输出\"4 6\"（4个奇数，6个偶数）。\n\n样例输入：\n7843028503\n样例输出：\n4 6",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s[100];\n    int i,odd=0,even=0;\n    scanf(\"%s\", s);\n    for(i=0;s[i]!='\\0';i++){\n        if((s[i]-'0')%2==0) even++;\n        else odd++;\n    }\n    printf(\"%d %d\",odd,even);\n}",
+      "test_cases": [
+        {
+          "in": "7843028503",
+          "out": "4 6"
+        },
+        {
+          "in": "1234567890",
+          "out": "5 5"
+        },
+        {
+          "in": "24680",
+          "out": "0 5"
+        },
+        {
+          "in": "13579",
+          "out": "5 0"
+        },
+        {
+          "in": "1111222233",
+          "out": "6 4"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串（不含空格），删除其中ASCII码值能被3整除的字符，将剩余字符按ASCII码从小到大排序后输出。\n\n样例输入：\nChinancpeu\n样例输出：\nCaehnnp",
+      "reference_answer": "#include<stdio.h>\n#include<string.h>\nmain(){\n    char s[100],r[100];\n    int i,j=0,len;\n    char t;\n    scanf(\"%s\", s);\n    for(i=0;s[i]!='\\0';i++)\n        if(s[i]%3!=0) r[j++]=s[i];\n    r[j]='\\0';\n    len=j;\n    for(i=0;i<len-1;i++)\n        for(j=0;j<len-1-i;j++)\n            if(r[j]>r[j+1]){t=r[j];r[j]=r[j+1];r[j+1]=t;}\n    printf(\"%s\",r);\n}",
+      "test_cases": [
+        {
+          "in": "Chinancpeu",
+          "out": "Caehnnp"
+        },
+        {
+          "in": "abcdefghi",
+          "out": "beh"
+        },
+        {
+          "in": "ABCDEFGHI",
+          "out": "BEH"
+        },
+        {
+          "in": "0123456789",
+          "out": "1478"
+        },
+        {
+          "in": "xyz",
+          "out": "xyz"
+        }
+      ],
+      "score": 20,
+      "difficulty": "难",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个包含多个'*'的字符串（不含空格），删除所有除头部和尾部连续'*'以外的'*'，输出处理后的字符串。\n例如输入\"*******A*BC*DEF*G****\"，输出\"*******ABCDEFG****\"。\n\n样例输入：\n*******A*BC*DEF*G****\n样例输出：\n*******ABCDEFG****",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s[200],r[200];\n    int i=0,j=0,k,start,end,len;\n    scanf(\"%s\", s);\n    while(s[i]=='*'){r[j++]=s[i];i++;}\n    start=j;\n    for(;s[i]!='\\0';i++)\n        if(s[i]!='*') r[j++]=s[i];\n    end=j-1;\n    i=0;\n    while(s[i]!='\\0') i++;\n    len=i;\n    for(k=len-1;k>=0&&s[k]=='*';k--)\n        r[j++]=s[k];\n    r[j]='\\0';\n    printf(\"%s\",r);\n}",
+      "test_cases": [
+        {
+          "in": "*******A*BC*DEF*G****",
+          "out": "*******ABCDEFG****"
+        },
+        {
+          "in": "*a*b*c*",
+          "out": "*abc*"
+        },
+        {
+          "in": "***abc***",
+          "out": "***abc***"
+        },
+        {
+          "in": "abc",
+          "out": "abc"
+        },
+        {
+          "in": "**a**b**c**",
+          "out": "**abc**"
+        }
+      ],
+      "score": 20,
+      "difficulty": "难",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串（不含空格），再输入一个要查找的字符。如果该字符在字符串中存在，输出它第一次出现的位置（位置从0开始编号）；如果不存在，输出\"NO\"。\n\n样例输入：\nhello l\n样例输出：\n2",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s[100],ch;\n    int i;\n        {scanf(\"%s %c\", s, &ch); }\n    for(i=0;s[i]!='\\0';i++)\n        if(s[i]==ch){printf(\"%d\",i);return;}\n    printf(\"NO\");\n}",
+      "test_cases": [
+        {
+          "in": "hello l",
+          "out": "2"
+        },
+        {
+          "in": "abcdefg z",
+          "out": "NO"
+        },
+        {
+          "in": "test t",
+          "out": "0"
+        },
+        {
+          "in": "China a",
+          "out": "4"
+        },
+        {
+          "in": "programming g",
+          "out": "3"
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串（不含空格），删除其中所有的数字字符后输出。\n\n样例输入：\nabc123def\n样例输出：\nabcdef",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s[100],r[100];\n    int i,j=0;\n    scanf(\"%s\", s);\n    for(i=0;s[i]!='\\0';i++)\n        if(s[i]<'0'||s[i]>'9') r[j++]=s[i];\n    r[j]='\\0';\n    printf(\"%s\",r);\n}",
+      "test_cases": [
+        {
+          "in": "abc123def",
+          "out": "abcdef"
+        },
+        {
+          "in": "2026hello",
+          "out": "hello"
+        },
+        {
+          "in": "test",
+          "out": "test"
+        },
+        {
+          "in": "a1b2c3d4",
+          "out": "abcd"
+        },
+        {
+          "in": "123456",
+          "out": ""
+        }
+      ],
+      "score": 15,
+      "difficulty": "易",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个包含空格的字符串（用gets读取），统计其中单词的个数。单词之间以一个或多个空格分隔。\n\n样例输入：\nhello world\n样例输出：\n2",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s[200];\n    int i,word=0,count=0;\n    gets(s);\n    for(i=0;s[i]!='\\0';i++){\n        if(s[i]==' ') word=0;\n        else if(word==0){word=1;count++;}\n    }\n    printf(\"%d\",count);\n}",
+      "test_cases": [
+        {
+          "in": "hello world",
+          "out": "2"
+        },
+        {
+          "in": "this is a test",
+          "out": "4"
+        },
+        {
+          "in": "  hello  ",
+          "out": "1"
+        },
+        {
+          "in": "C programming language",
+          "out": "3"
+        },
+        {
+          "in": "single",
+          "out": "1"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "模拟题"
+    },
+    {
+      "content": "【程序功能】\n输入一个字符串和子串（不含空格），统计该字符串中指定子串出现的次数并输出。\n\n样例输入：\nabababab bab\n样例输出：\n3",
+      "reference_answer": "#include<stdio.h>\nmain(){\n    char s[200],sub[100];\n    int i,j,k,cnt=0;\n    scanf(\"%s%s\", s, sub);\n    for(i=0;s[i]!='\\0';i++){\n        k=i;\n        for(j=0;sub[j]!='\\0'&&s[k]==sub[j];j++,k++);\n        if(sub[j]=='\\0') cnt++;\n    }\n    printf(\"%d\",cnt);\n}",
+      "test_cases": [
+        {
+          "in": "abababab bab",
+          "out": "3"
+        },
+        {
+          "in": "aaaaaa aa",
+          "out": "5"
+        },
+        {
+          "in": "abcabcabc abc",
+          "out": "3"
+        },
+        {
+          "in": "hello he",
+          "out": "1"
+        },
+        {
+          "in": "xyzxyz xyz",
+          "out": "2"
+        }
+      ],
+      "score": 15,
+      "difficulty": "中",
+      "source": "模拟题"
+    }
+  ]
+}

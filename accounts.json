@@ -1,0 +1,12 @@
+{
+  "admin": {
+    "password": "admin0527",
+    "name": "春考网络一点通",
+    "is_admin": true
+  },
+  "免费领取考试系统添加下方微信": {
+    "password": "教师可免费领取局域网考试系统",
+    "name": "网络技术",
+    "is_admin": false
+  }
+}

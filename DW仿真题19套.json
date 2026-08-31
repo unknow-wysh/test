@@ -1,0 +1,232 @@
+{
+  "web_design": [
+    {
+      "content": "【网页制作要求】\n题目：中医中药 - 传统文化瑰宝\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「中医中药 - 传统文化瑰宝」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\中医中药",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/中医中药/样图.png",
+      "images": [
+        "exam_files/imported/中医中药/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：书画艺术 - 笔墨丹青\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「书画艺术 - 笔墨丹青」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\书画艺术",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/书画艺术/样图.png",
+      "images": [
+        "exam_files/imported/书画艺术/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：华夏传统文化 · 非遗传承\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「华夏传统文化 · 非遗传承」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\传统文化",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/传统文化/样图.png",
+      "images": [
+        "exam_files/imported/传统文化/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：体育健身 - 活力人生\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「体育健身 - 活力人生」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\体育",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/体育/样图.png",
+      "images": [
+        "exam_files/imported/体育/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：园林花卉 - 绿意生活\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「园林花卉 - 绿意生活」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\园林花卉",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/园林花卉/样图.png",
+      "images": [
+        "exam_files/imported/园林花卉/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：求是大学 · 百年学府 · 追求卓越\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「求是大学 · 百年学府 · 追求卓越」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\大学",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/大学/样图.png",
+      "images": [
+        "exam_files/imported/大学/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：孔子文化 - 儒学之源\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「孔子文化 - 儒学之源」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\孔子文化",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/孔子文化/样图.png",
+      "images": [
+        "exam_files/imported/孔子文化/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：山东民俗 - 齐鲁风情\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「山东民俗 - 齐鲁风情」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\山东民俗",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/山东民俗/样图.png",
+      "images": [
+        "exam_files/imported/山东民俗/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：山东美食 - 齐鲁味道\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「山东美食 - 齐鲁味道」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\山东美食",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/山东美食/样图.png",
+      "images": [
+        "exam_files/imported/山东美食/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：泰山旅游 - 五岳独尊\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「泰山旅游 - 五岳独尊」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\泰山旅游",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/泰山旅游/样图.png",
+      "images": [
+        "exam_files/imported/泰山旅游/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：济南野生动物世界 - 泉城动物园\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「济南野生动物世界 - 泉城动物园」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\济南野生动物世界",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/济南野生动物世界/样图.png",
+      "images": [
+        "exam_files/imported/济南野生动物世界/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：海滨旅游 - 山东海岸线\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「海滨旅游 - 山东海岸线」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\海滨旅游",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/海滨旅游/样图.png",
+      "images": [
+        "exam_files/imported/海滨旅游/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：烟台农业 - 农耕春秋\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「烟台农业 - 农耕春秋」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\烟台农业",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/烟台农业/样图.png",
+      "images": [
+        "exam_files/imported/烟台农业/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：物流港口 - 智慧联运\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「物流港口 - 智慧联运」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\物流港口",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/物流港口/样图.png",
+      "images": [
+        "exam_files/imported/物流港口/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：科技馆 - 探索未来\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「科技馆 - 探索未来」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\科技馆",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/科技馆/样图.png",
+      "images": [
+        "exam_files/imported/科技馆/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：纺织丝绸 - 锦绣中华\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「纺织丝绸 - 锦绣中华」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\纺织丝绸",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/纺织丝绸/样图.png",
+      "images": [
+        "exam_files/imported/纺织丝绸/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：葡萄酒 - 烟台佳酿 · 葡萄美酒夜光杯\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「葡萄酒 - 烟台佳酿 · 葡萄美酒夜光杯」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\葡萄酒",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/葡萄酒/样图.png",
+      "images": [
+        "exam_files/imported/葡萄酒/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：陶瓷艺术 - 千年窑火\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「陶瓷艺术 - 千年窑火」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\陶瓷艺术",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/陶瓷艺术/样图.png",
+      "images": [
+        "exam_files/imported/陶瓷艺术/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    },
+    {
+      "content": "【网页制作要求】\n题目：非遗剪纸 - 纸上生花\n\n请使用 Dreamweaver 完成以下网页制作，可参考样图。\n\n制作要求：\n1. 在 website 文件夹中创建 index.html 作为主页\n2. 创建 css 文件夹，在其中创建 style.css 文件并正确引用\n3. 页面布局居中，宽度不超过 1200px\n4. 制作导航栏，内容围绕「非遗剪纸 - 纸上生花」主题\n5. 主体区域使用图文混排\n6. 底部添加版权信息和联系方式\n",
+      "folder_path": "C:\\Users\\Administrator\\Desktop\\网页20套仿真题\\非遗剪纸",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 外部 CSS 文件正确引用，样式分离（5分）\n4. 页面布局居中，宽度设置正确（5分）\n5. 图文混排布局正确，内容完整（5分）\n6. 底部版权信息完整（5分）\n7. 整体效果与样图基本一致（10分）\n",
+      "score": 50,
+      "image": "exam_files/imported/非遗剪纸/样图.png",
+      "images": [
+        "exam_files/imported/非遗剪纸/样图.png"
+      ],
+      "source": "网页仿真题",
+      "difficulty": "中"
+    }
+  ]
+}

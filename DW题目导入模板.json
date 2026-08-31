@@ -1,0 +1,14 @@
+{
+  "web_design": [
+    {
+      "content": "【网页制作要求】\n请使用 Dreamweaver 完成以下网页制作：\n\n1. 在 website 文件夹中创建 index.html 文件\n2. 创建 css 文件夹，在其中创建 style.css 文件\n3. 页面要求：\n   - 布局居中，宽度不超过 1200px\n   - 制作导航栏，包含"首页""产品""关于我们""联系我们"四个链接\n   - 主体区域使用图文混排\n   - 底部添加版权信息",
+      "folder_path": "exam_files/website",
+      "reference_answer": "评分要点：\n1. HTML 结构语义化标签使用正确（10分）\n2. 导航栏功能完整（10分）\n3. 图文混排布局正确（5分）\n4. 外部CSS文件正确引用（5分）",
+      "score": 30,
+      "image": "",
+      "images": [],
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    }
+  ]
+}

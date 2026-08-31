@@ -1,0 +1,1209 @@
+{
+  "single_choice": [
+    {
+      "content": "1. 下列选项中，属于合法C语言标识符的是（  ）",
+      "options": [
+        "3count",
+        "_myVar",
+        "double",
+        "a-b"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "2. 以下C语言标识符中，不合法的是（  ）",
+      "options": [
+        "total_sum",
+        "_value1",
+        "2ndPlace",
+        "myFunc"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "3. 下列哪个是合法的C语言标识符（  ）",
+      "options": [
+        "goto",
+        "%rate",
+        "StudentName",
+        "num#2"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "4. 下面C语言标识符中合法的是（  ）",
+      "options": [
+        "long",
+        "$price",
+        "_alpha",
+        "7days"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "5. 以下属于合法C语言标识符的是（  ）",
+      "options": [
+        "int",
+        "file_name",
+        "@email",
+        "1st_rank"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "6. 下列选项中合法的C语言标识符是（  ）",
+      "options": [
+        "continue",
+        "+offset",
+        "MAX_LEN",
+        "data!"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "7. 以下哪个是合法的C语言科学计数法表示形式？",
+      "options": [
+        "6.2e3.1",
+        "3e",
+        "1.5E-2",
+        "e4"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "8. 下面选项里符合C语言科学计数法规范的是？",
+      "options": [
+        "9.3e+",
+        "8.0E-3",
+        "e-2",
+        "7.2e1.8"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "9. 以下合法的科学计数法表示是（  ）",
+      "options": [
+        "2e-",
+        "4.6E+1",
+        "e5",
+        "3.3e2.2"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "10. 以下代码用于读取用户输入的一个整数到变量x中，正确的代码是（  ）\n#include <stdio.h>\nmain() {\n    int x;\n    // 此处应填入代码\n    printf(\"%d\\n\", x);\n}",
+      "options": [
+        "{float _s1[1]; scanf(\"%f\", _s1); x=_s1[0]; }",
+        "scanf(\"%d\", x);",
+        "{int _s1[1]; scanf(\"%d\", _s1); x=_s1[0]; }",
+        "scanf(x, \"%d\");"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "11. 有如下代码，若用户输入6.28，程序的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int num;\n    {int _s1[1]; scanf(\"%d\", _s1); num=_s1[0]; }\n    printf(\"%d\\n\", num);\n\n}",
+      "options": [
+        "6.28",
+        "6",
+        "0",
+        "编译错误"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "12. 以下代码用于读取两个整数m和n，并输出它们的乘积，正确的是（  ）\n#include <stdio.h>\nmain() {\n    int m, n;\n    // 选项代码\n    printf(\"%d\\n\", m * n);\n\n}",
+      "options": [
+        "scanf(\"%d %d\", m, n);",
+        "{int _s1[1]; int _s2[1]; scanf(\"%d %d\", _s1, _s2); m=_s1[0]; n=_s2[0]; }",
+        "{float _s1[1]; float _s2[1]; scanf(\"%f %f\", _s1, _s2); m=_s1[0]; n=_s2[0]; }",
+        "scanf(\"%d%d\", m, n);"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "13. 若要读取用户输入的一个字符到变量c中，以下正确的是（  ）\n#include <stdio.h>\nmain() {\n    char c;\n    // 选项代码\n    printf(\"%c\\n\", c);\n\n}",
+      "options": [
+        "{char _s1[2]; scanf(\"%s\", _s1); c=_s1[0]; }",
+        "scanf(\"%c\", c);",
+        "{char _s1[2]; scanf(\"%c\", _s1); c=_s1[0]; }",
+        "scanf(c, \"%c\");"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "14. 有如下代码，若用户输入 7 8，程序的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int a, b;\n    {int _s1[1]; int _s2[1]; scanf(\"%d %d\", _s1, _s2); a=_s1[0]; b=_s2[0]; }\n    printf(\"%d\\n\", a * b);\n\n}",
+      "options": [
+        "7",
+        "8",
+        "56",
+        "15"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "15. 以下关于使用scanf读取两个字符的代码，正确的是（  ）\n#include <stdio.h>\nmain() {\n    char c1, c2;\n    // 选项代码\n    printf(\"%c%c\\n\", c1, c2);\n\n}",
+      "options": [
+        "scanf(\"%c %c\", c1, c2);",
+        "{char _s1[2]; char _s2[2]; scanf(\"%c%c\", _s1, _s2); c1=_s1[0]; c2=_s2[0]; }",
+        "{char _s1[2]; char _s2[2]; scanf(\"%s %s\", _s1, _s2); c1=_s1[0]; c2=_s2[0]; }",
+        "{char _s201[256]; scanf(\"%c %c\", _s201); c1=_s201[0]; }"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "16. 若要使用printf函数输出一个浮点数并保留三位小数，以下正确的是（  ）\n#include <stdio.h>\nmain() {\n    float f = 3.14159;\n    // 选项代码\n\n}",
+      "options": [
+        "printf(\"%d\\n\", f);",
+        "printf(\"%.3f\\n\", f);",
+        "printf(\"%f\\n\", f);",
+        "printf(\"%.2f\\n\", f);"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "17. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int n = 15;\n    printf(\"%04d\\n\", n);\n\n}",
+      "options": [
+        "15",
+        "0015",
+        "015",
+        "15  "
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "18. 以下代码运行时，若用户输入D，输出结果是（  ）\n#include <stdio.h>\nmain() {\n    char ch;\n    ch = getchar();\n    putchar(ch + 1);\n\n}",
+      "options": [
+        "D",
+        "E",
+        "C",
+        "编译错误"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "19. 以下关于getchar和putchar函数的说法，正确的是（  ）",
+      "options": [
+        "getchar可以读取字符串",
+        "putchar只能输出大写字母",
+        "getchar从标准输入读取一个字符",
+        "putchar从标准输入读取字符"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "20. 以下代码运行时，若用户输入X，输出结果是（  ）\n#include <stdio.h>\nmain() {\n    char ch;\n    ch = getchar();\n    putchar((ch >= 'A' && ch <= 'Z') ? ch + 32 : ch);\n\n}",
+      "options": [
+        "X",
+        "x",
+        "编译错误",
+        "无输出"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "21. 已知int a = 6, b = 4;，则表达式a + b * 3的值是（  ）",
+      "options": [
+        "30",
+        "18",
+        "42",
+        "24"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "22. 若int x = 8;，执行x--;后，x的值是（  ）",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "6"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "23. 已知int m = 9, n = 4;，表达式m % n的结果是（  ）",
+      "options": [
+        "0",
+        "2",
+        "1",
+        "4"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "24. 有int num = 4;，那么++num + 3的值是（  ）",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "25. 设int a = 5, b = 2;，double c = 3.0;，表达式(int)(a * c + b++) / (--a)的值是（  ）",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "26. 已知int a = 3, b = 2, c = 5;，表达式a++ * (--b) + (c--) / 2的值是（  ）",
+      "options": [
+        "5",
+        "6",
+        "4",
+        "7"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "27. 以下代码段执行后，变量a的值是多少？\nint a;\na = 5, 6;",
+      "options": [
+        "5",
+        "6",
+        "11",
+        "编译错误"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "28. 若有如下代码，变量x的值是？\nint x;\nx = (4, 5);",
+      "options": [
+        "4",
+        "5",
+        "9",
+        "语法错误"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "29. 执行以下代码，m的值是？\nint m;\nm = 3 + (5, 6);",
+      "options": [
+        "6",
+        "8",
+        "9",
+        "14"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "30. 有如下代码，n的值是？\nint n;\nn = (2, 4, 6);",
+      "options": [
+        "2",
+        "4",
+        "6",
+        "12"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "31. 以下代码运行后，p的值是？\nint p;\np = 2; p = p + 1, p * 3;",
+      "options": [
+        "3",
+        "6",
+        "9",
+        "5"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "32. 执行这段代码，r的值是？\nint r;\nr = 2, r = r + 3, r = r * 2;",
+      "options": [
+        "5",
+        "6",
+        "10",
+        "4"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "33. 以下代码执行后，result的值是（  ）\n#include <stdio.h>\nmain() {\n    int a = 7;\n    double b = 3.0;\n    int result = (int)(a / b);\n    printf(\"%d\\n\", result);\n\n}",
+      "options": [
+        "2",
+        "2.3",
+        "2.33",
+        "7"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "34. 在C语言中，若有float x = 5.78;，则(int)x的值是（  ）",
+      "options": [
+        "6",
+        "5.0",
+        "5",
+        "5.78"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "35. 已知int a = 12; int b = 5;，(double)a / b的结果是（  ）",
+      "options": [
+        "2",
+        "2.4",
+        "2.0",
+        "12"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "36. #include <stdio.h>\nmain() {\n    int a = 0, b = 1, c = 3;\n    int result = (a || b) && (c > 2);\n    printf(\"%d\\n\", result);\n\n}\n上述代码的输出结果是（  ）",
+      "options": [
+        "0",
+        "1",
+        "3",
+        "编译错误"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "37. #include <stdio.h>\nmain() {\n    int m = 4, n = 0, p = 5;\n    int outcome = (m < 3 && n++) || (p >= 5 && ++p);\n    printf(\"n = %d, p = %d, outcome = %d\\n\", n, p, outcome);\n\n}\n该程序输出的结果是（  ）",
+      "options": [
+        "n = 0, p = 6, outcome = 1",
+        "n = 1, p = 5, outcome = 0",
+        "n = 0, p = 5, outcome = 0",
+        "n = 1, p = 6, outcome = 1"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "38. #include <stdio.h>\nmain() {\n    int x = 1, y = 0, z = 2;\n    int res = (x && y++) || (z < 3 && ++z);\n    printf(\"y = %d, z = %d, res = %d\\n\", y, z, res);\n\n}\n程序运行后的输出结果是（  ）",
+      "options": [
+        "y = 1, z = 3, res = 1",
+        "y = 0, z = 3, res = 1",
+        "y = 1, z = 2, res = 1",
+        "y = 0, z = 2, res = 0"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "39. 在C语言中，以下哪个是正确的关系运算符（  ）",
+      "options": [
+        "&&",
+        "=",
+        "==",
+        "!"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "40. 若int a = 8, b = 6;，则表达式a > b的结果是（  ）",
+      "options": [
+        "0",
+        "1",
+        "8",
+        "6"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "41. 已知int x = 15, y = 15;，表达式x == y的值是（  ）",
+      "options": [
+        "0",
+        "1",
+        "15",
+        "30"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "42. 以下逻辑表达式中，能正确表示\"x大于0且小于100\"的是（  ）",
+      "options": [
+        "x > 0 && x < 100",
+        "x > 0 || x < 100",
+        "x >= 0 && x <= 100",
+        "x >= 0 || x <= 100"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "43. 若int m = 0, n = 1;，表达式m && n的值是（  ）",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "不确定"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "44. 以下哪个表达式能判断x是否为奇数（  ）",
+      "options": [
+        "x % 2 == 0",
+        "x % 2 != 0",
+        "x / 2 == 0",
+        "x / 2 != 0"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "45. 已知int a = 1, b = 0;，表达式!a || b的值是（  ）",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "不确定"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "46. 若int m = 5, n = 5;，表达式m >= n && m <= n的结果是（  ）",
+      "options": [
+        "0",
+        "1",
+        "5",
+        "10"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "47. 以下哪个是C语言中正确的if语句语法？（  ）",
+      "options": [
+        "if a > 5 { printf(\"Hello\"); }",
+        "if (a > 5) printf(\"Hello\");",
+        "if (a = 5); { printf(\"Hello\"); };",
+        "if a = 5 printf(\"Hello\");"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "48. 若有如下代码：\nint a = 7;\nif (a > 10) {\n    printf(\"A\");\n} else {\n    printf(\"B\");\n}\n程序的输出结果是（  ）",
+      "options": [
+        "A",
+        "B",
+        "AB",
+        "无输出"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "49. 以下代码段的输出结果是（  ）\nint num = 13;\nif (num % 2 == 0) {\n    printf(\"Even\");\n} else {\n    printf(\"Odd\");\n}",
+      "options": [
+        "Even",
+        "Odd",
+        "EvenOdd",
+        "编译错误"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "50. 有如下代码：\nint x = 12;\nif (x > 15)\n    printf(\"High\");\nelse if (x > 8)\n    printf(\"Medium\");\nelse\n    printf(\"Low\");\n输出结果是（  ）",
+      "options": [
+        "High",
+        "Medium",
+        "Low",
+        "无输出"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "51. 若int a = 1;，以下哪个if语句会执行其语句块中的内容？（  ）",
+      "options": [
+        "if (a) { printf(\"True\"); }",
+        "if (!a) { printf(\"True\"); }",
+        "if (a == 0) { printf(\"True\"); }",
+        "if (a < 0) { printf(\"True\"); }"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "52. 以下代码的输出是（  ）\nint score = 72;\nif (score >= 90) {\n    printf(\"A\");\n} else if (score >= 80) {\n    printf(\"B\");\n} else if (score >= 70) {\n    printf(\"C\");\n} else if (score >= 60) {\n    printf(\"D\");\n} else {\n    printf(\"F\");\n}",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "53. 以下关于switch语句的说法，正确的是（  ）",
+      "options": [
+        "switch后面的表达式可以是浮点型",
+        "case后面的值可以是变量",
+        "switch语句中可以没有default分支",
+        "每个case分支中必须有break语句"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "54. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int n = 3;\n    switch (n) {\n        case 1: printf(\"One\"); break;\n        case 2: printf(\"Two\"); break;\n        case 3: printf(\"Three\"); break;\n        default: printf(\"Other\");\n    }\n\n}",
+      "options": [
+        "One",
+        "Two",
+        "Three",
+        "Other"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "55. 当x = 2时，执行以下代码的输出是（  ）\n#include <stdio.h>\nmain() {\n    int x = 2;\n    switch (x) {\n        case 1: printf(\"A\");\n        case 2: printf(\"B\");\n        case 3: printf(\"C\");\n        default: printf(\"D\");\n    }\n\n}",
+      "options": [
+        "B",
+        "BC",
+        "BCD",
+        "ABCD"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "56. 以下关于while循环的说法，正确的是（  ）",
+      "options": [
+        "while循环的循环体至少会执行一次",
+        "while循环的条件表达式为假时，才会执行循环体",
+        "while循环的条件表达式为真时，才会执行循环体",
+        "while循环不能嵌套使用"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "57. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int i = 1;\n    while (i < 4) {\n        printf(\"%d \", i);\n        i++;\n    }\n\n}",
+      "options": [
+        "0 1 2",
+        "0 1 2 3",
+        "1 2 3",
+        "1 2 3 4"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "58. 以下代码的循环体执行次数是（  ）\n#include <stdio.h>\nmain() {\n    int i = 8;\n    while (i > 0) {\n        printf(\"%d \", i);\n        i = i - 3;\n    }\n\n}",
+      "options": [
+        "2次",
+        "3次",
+        "4次",
+        "5次"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "59. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int num = 0;\n    while (num < 4) {\n        num++;\n        if (num == 2) {\n            continue;\n        }\n        printf(\"%d \", num);\n    }\n\n}",
+      "options": [
+        "1 2 3 4",
+        "1 3 4",
+        "1 2",
+        "2 3 4"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "60. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int i = 0;\n    while (1) {\n        if (i == 4) {\n            break;\n        }\n        printf(\"%d \", i);\n        i++;\n    }\n\n}",
+      "options": [
+        "0 1 2 3 4",
+        "0 1 2 3",
+        "无输出",
+        "死循环"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "61. 以下代码的作用是计算1到8的整数和，缺失的部分应该是（  ）\n#include <stdio.h>\nmain() {\n    int i = 1, sum = 0;\n    while (i <= 8) {\n        ____________;\n        i++;\n    }\n    printf(\"%d\\n\", sum);\n\n}",
+      "options": [
+        "sum = i",
+        "sum = sum + i",
+        "sum = sum * i",
+        "sum = i * i"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "62. 以下对do while循环结构描述正确的是（  ）",
+      "options": [
+        "do while循环的循环体至少执行0次",
+        "do while循环是先判断条件，再执行循环体",
+        "do while循环是先执行循环体，再判断条件",
+        "do while循环不能使用break语句"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "63. 有如下代码：\n#include <stdio.h>\nmain() {\n    int i = 2;\n    do {\n        printf(\"%d \", i);\n        i = i + 3;\n    } while (i < 8);\n\n}\n该程序的输出结果是（  ）",
+      "options": [
+        "2 5",
+        "2 5 8",
+        "2",
+        "无输出"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "64. 以下代码中do while循环的执行次数是（  ）\n#include <stdio.h>\nmain() {\n    int n = 0;\n    do {\n        n++;\n    } while (n > 3);\n\n}",
+      "options": [
+        "0次",
+        "1次",
+        "3次",
+        "无限次"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "65. 下面代码运行后，变量x的值是（  ）\n#include <stdio.h>\nmain() {\n    int x = 5;\n    do {\n        x = x - 2;\n    } while (x > 1);\n\n}",
+      "options": [
+        "5",
+        "1",
+        "-1",
+        "3"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "66. 有代码如下：\n#include <stdio.h>\nmain() {\n    int num = 3;\n    do {\n        num = num * 2;\n    } while (num < 10);\n    printf(\"%d\", num);\n\n}\n程序的输出结果是（  ）",
+      "options": [
+        "3",
+        "6",
+        "12",
+        "10"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "67. 以下代码用于计算一个正整数各位数字之和，空白处应填入（  ）\n#include <stdio.h>\nmain() {\n    int num = 3456;\n    int sum = 0;\n    do {\n        sum += num % 10;\n        ______;\n    } while (num > 0);\n    printf(\"各位数字之和为: %d\\n\", sum);\n\n}",
+      "options": [
+        "num = num * 10",
+        "num = num / 10",
+        "num = num + 10",
+        "num = num - 10"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "68. 以下for循环的执行次数是（  ）\nfor (int i = 0; i < 7; i++) {\n    // 循环体\n}",
+      "options": [
+        "0次",
+        "6次",
+        "7次",
+        "8次"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "69. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    for (int i = 2; i <= 5; i++) {\n        printf(\"%d \", i);\n    }\n\n}",
+      "options": [
+        "2 3 4",
+        "2 3 4 5",
+        "1 2 3 4",
+        "2 3 4 5 6"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "70. 在for循环中，初始化表达式、条件表达式和更新表达式（  ）",
+      "options": [
+        "都必须存在",
+        "初始化表达式必须存在，其他两个可以省略",
+        "条件表达式必须存在，其他两个可以省略",
+        "都可以省略"
+      ],
+      "answer": 3,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "71. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    for (int i = 6; i > 0; i--) {\n        if (i == 4) {\n            continue;\n        }\n        printf(\"%d \", i);\n    }\n\n}",
+      "options": [
+        "6 5 4 3 2 1",
+        "6 5 3 2 1",
+        "6 5",
+        "6 5 4"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "72. 以下for循环用于计算1到6的累加和，空白处应填入（  ）\n#include <stdio.h>\nmain() {\n    int sum = 0;\n    for (int i = 1; i <= 6; i++) {\n        ______;\n    }\n    printf(\"累加和为: %d\\n\", sum);\n\n}",
+      "options": [
+        "sum = i",
+        "sum += i",
+        "sum = sum - i",
+        "sum = i + 1"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "73. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int i, j;\n    for (i = 1; i <= 3; i++) {\n        for (j = 1; j <= i; j++) {\n            printf(\"%d \", j * i);\n        }\n        printf(\"\\n\");\n    }\n\n}",
+      "options": [
+        "1 2 4 3 6 9",
+        "1 2 3 3 4 5",
+        "1 1 2 1 2 3",
+        "1 2 2 3 3 3"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "74. 在C语言中，定义一个包含7个整数的一维数组，正确的是（  ）",
+      "options": [
+        "int array[7];",
+        "array int[7];",
+        "int array[] = 7;",
+        "int[7] array;"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "75. 若有数组定义int arr[4] = {5, 10, 15, 20};，则arr[2]的值是（  ）",
+      "options": [
+        "5",
+        "10",
+        "15",
+        "20"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "76. 有数组定义int scores[] = {88, 92, 76, 85, 90};，则数组scores的长度是（  ）",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "无法确定"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "77. 若有数组int arr[4] = {3, 6};，则arr[3]的值是（  ）",
+      "options": [
+        "0",
+        "3",
+        "6",
+        "随机值"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "78. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int arr[4] = {2, 4, 6, 8};\n    for (int i = 0; i < 4; i++) {\n        printf(\"%d \", arr[i]);\n    }\n\n}",
+      "options": [
+        "2 4",
+        "2 4 6 8",
+        "0 1 2 3",
+        "4 6 8 10"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "79. 以下关于一维数组定义和初始化，正确的是（  ）",
+      "options": [
+        "int arr[3] = {1, 2, 3, 4};",
+        "int arr[] = {1, 2, 3};",
+        "int arr[3] = ;",
+        "int arr[0];"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "80. 以下定义一个2行3列二维整型数组的正确方式是（  ）",
+      "options": [
+        "int arr(2, 3);",
+        "int arr[2][3];",
+        "int arr[2, 3];",
+        "int arr[3][2];"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "81. 若有二维数组定义int a[2][3] = {{3, 6, 9}, {12, 15, 18}};，则a[1][1]的值是（  ）",
+      "options": [
+        "3",
+        "9",
+        "12",
+        "15"
+      ],
+      "answer": 3,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "82. 对于二维数组int c[3][4];，数组c包含的元素个数是（  ）",
+      "options": [
+        "7",
+        "12",
+        "8",
+        "16"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "83. 定义二维数组并在定义时不指定行数，但指定列数为3，且初始化元素为1,2,3,4,5,6，以下定义正确的是（  ）",
+      "options": [
+        "int arr[][3] = {1, 2, 3, 4, 5, 6};",
+        "int arr[3][] = {1, 2, 3, 4, 5, 6};",
+        "int arr[2][3] = {1, 2, 3, 4, 5, 6};",
+        "int arr[3][2] = {1, 2, 3, 4, 5, 6};"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "84. 若有二维数组int d[3][3] = {{1}, {2}, {3}};，则d[2][1]的值是（  ）",
+      "options": [
+        "1",
+        "2",
+        "0",
+        "3"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "85. 定义一个二维数组int arr[2][3]，并将其初始化为全0，以下哪种方式最简洁且正确（  ）",
+      "options": [
+        "int arr[2][3] = {0};",
+        "int arr[2, 3] = {0};",
+        "int arr(2, 3) = {0};",
+        "int arr[2][3] = 0;"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "86. 以下定义字符数组的方式中，正确的是（  ）",
+      "options": [
+        "char str(8);",
+        "char str[8];",
+        "char str[];",
+        "char str = \"hello\";"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "87. 若定义char name[7] = \"Robert\";，则name[6]的值是（  ）",
+      "options": [
+        "'t'",
+        "'\\0'",
+        "随机字符",
+        "无值"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "88. 要定义一个能存储字符串\"programming\"的字符数组，数组长度至少为（  ）",
+      "options": [
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "89. 以下能正确初始化字符数组的是（  ）",
+      "options": [
+        "char str[] = {'H', 'e', 'l', 'l', 'o'};",
+        "char str[5] = {\"Hello\"};",
+        "char str = \"Hello\";",
+        "char str[5] = \"Hello\";"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "90. 以下代码中字符数组str的实际长度是（  ）\n#include <stdio.h>\nmain() {\n    char str[] = \"hello\";\n\n}",
+      "options": [
+        "5",
+        "6",
+        "由编译器决定",
+        "未定义"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "91. 若有字符数组char ch[8] = \"12345\";，则ch[5]的值是（  ）",
+      "options": [
+        "'5'",
+        "'\\0'",
+        "随机值",
+        "编译错误"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "92. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int a = 3, b = 5;\n    a = a + b;\n    b = a - b;\n    a = a - b;\n    printf(\"%d %d\\n\", a, b);\n\n}",
+      "options": [
+        "3 5",
+        "5 3",
+        "8 3",
+        "5 8"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "93. 以下程序的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int i, sum = 0;\n    for (i = 1; i <= 10; i++) {\n        if (i % 3 == 0) continue;\n        sum += i;\n    }\n    printf(\"%d\\n\", sum);\n\n}",
+      "options": [
+        "37",
+        "55",
+        "27",
+        "45"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "94. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int arr[] = {1, 3, 5, 7, 9};\n    int p_idx = 2;\n    printf(\"%d\\n\", arr[p_idx]);\n\n}",
+      "options": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "answer": 2,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "95. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int x = 5;\n    printf(\"%d \", x++);\n    printf(\"%d\\n\", ++x);\n\n}",
+      "options": [
+        "5 6",
+        "5 7",
+        "6 7",
+        "6 6"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "96. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int a = 10, b = 20;\n    int max = a > b ? a : b;\n    printf(\"%d\\n\", max);\n\n}",
+      "options": [
+        "10",
+        "20",
+        "30",
+        "0"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "97. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int i = 0;\n    do {\n        i++;\n        if (i == 3) break;\n        printf(\"%d \", i);\n    } while (i < 5);\n\n}",
+      "options": [
+        "1 2",
+        "1 2 3",
+        "1 2 3 4",
+        "1"
+      ],
+      "answer": 0,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "98. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int n = 124;\n    int rev = 0;\n    while (n > 0) {\n        rev = rev * 10 + n % 10;\n        n /= 10;\n    }\n    printf(\"%d\\n\", rev);\n\n}",
+      "options": [
+        "124",
+        "421",
+        "142",
+        "241"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "99. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    int a[3][3] = {{1,2,3},{4,5,6},{7,8,9}};\n    int sum = 0;\n    for (int i = 0; i < 3; i++) {\n        sum += a[i][i];\n    }\n    printf(\"%d\\n\", sum);\n\n}",
+      "options": [
+        "12",
+        "15",
+        "18",
+        "45"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    },
+    {
+      "content": "100. 以下代码的输出结果是（  ）\n#include <stdio.h>\nmain() {\n    char str[] = \"ABCDEF\";\n    int len = 0;\n    while (str[len] != '\\0') len++;\n    printf(\"%d\\n\", len);\n\n}",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "0"
+      ],
+      "answer": 1,
+      "score": 2,
+      "difficulty": "中"
+    }
+  ],
+  "fill_blank": [],
+  "programming": [],
+  "web_design": [],
+  "network_device": [],
+  "graphic_design": []
+}

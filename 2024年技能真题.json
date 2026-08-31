@@ -1,0 +1,556 @@
+{
+  "network_device": [
+    {
+      "content": "【网络拓扑】\n2024年3月9日 上午场（OSPF）\n\n设备清单：\n- 三层交换机 LSW1（1台）\n- 二层交换机 LSW2~LSW7（6台）\n- 路由器 AR1、AR2、AR3（3台）\n- PC1~PC7（7台）\n\nVLAN规划：\n- VLAN10: 131.26.11.0/24，网关 LSW1\n- VLAN20: 131.26.12.0/24，网关 LSW1\n- VLAN30: 131.26.13.0/24，网关 LSW1 / AR3单臂路由\n- VLAN40: 131.26.14.0/24，网关 LSW1 / AR3单臂路由\n- VLAN1007: 192.168.120.0/24，互联\n\n【调试要求】\n1. 按拓扑图完成VLAN配置\n2. 按拓扑图给出的网络地址配置设备接口及VLAN IP地址\n3. LSW1三层交换机实现不同VLAN间通信；AR3单臂路由实现不同VLAN间通信\n4. OSPF动态路由协议实现全网互通\n5. STP生成树：LSW1为根交换机\n6. ACL：禁止PC1访问PC4，禁止PC2访问PC5",
+      "text_fields": [
+        {
+          "label": "LSW1 VLAN与VLANIF配置"
+        },
+        {
+          "label": "LSW1 Trunk端口配置"
+        },
+        {
+          "label": "LSW1 STP根桥配置"
+        },
+        {
+          "label": "LSW2-LSW7 二层交换机配置"
+        },
+        {
+          "label": "AR1 路由器配置"
+        },
+        {
+          "label": "AR2 路由器配置"
+        },
+        {
+          "label": "AR3 单臂路由配置"
+        },
+        {
+          "label": "ACL 3001/3002 配置"
+        },
+        {
+          "label": "OSPF配置"
+        },
+        {
+          "label": "PC连通性验证"
+        }
+      ],
+      "score": 20,
+      "reference_answer": {
+        "LSW1 VLAN与VLANIF配置": "vlan batch 10 20 30 40 1007\ninterface Vlanif10\n ip address 131.26.11.1 255.255.255.0\ninterface Vlanif20\n ip address 131.26.12.1 255.255.255.0\ninterface Vlanif30\n ip address 131.26.13.1 255.255.255.0\ninterface Vlanif40\n ip address 131.26.14.1 255.255.255.0\ninterface Vlanif1007\n ip address 192.168.120.1 255.255.255.0",
+        "LSW1 Trunk端口配置": "interface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 1007\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 1007\ninterface GigabitEthernet0/0/3\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 1007\ninterface GigabitEthernet0/0/4\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 1007",
+        "LSW1 STP根桥配置": "stp mode stp\nstp root primary\nstp enable",
+        "LSW2-LSW7 二层交换机配置": "LSW2: vlan batch 10 20 30 40 / PC3→VLAN30(E0/0/1) / PC4→VLAN40(E0/0/2) / Trunk GE0/0/1,GE0/0/2 allow-pass vlan 10 20 30 40\nLSW3: vlan batch 10 20 30 40 / PC1→VLAN10(E0/0/1) / PC2→VLAN20(E0/0/2) / Trunk GE0/0/1,GE0/0/2 allow-pass vlan 10 20 30 40\nLSW4: vlan batch 10 20 30 40 / PC7→VLAN30(E0/0/1) / Trunk GE0/0/1,GE0/0/2 allow-pass vlan 10 20 30 40\nLSW5: vlan batch 10 20 30 40 1007 / Trunk GE0/0/1,GE0/0/2,GE0/0/3 allow-pass vlan 10 20 30 40 1007\nLSW6: vlan batch 10 20 30 40 / PC6→VLAN40(E0/0/1) / Trunk GE0/0/1,GE0/0/2 allow-pass vlan 10 20 30 40\nLSW7: vlan batch 10 20 30 40 / PC5→VLAN30(E0/0/1) / Trunk GE0/0/1,GE0/0/2 allow-pass vlan 10 20 30 40",
+        "AR1 路由器配置": "sysname AR1\ninterface GigabitEthernet0/0/0\n ip address 10.0.0.1 255.255.255.252\ninterface GigabitEthernet0/0/1\n ip address 219.133.100.1 255.255.255.0\nospf 1\n area 0\n  network 10.0.0.0 0.0.0.3\n  network 219.133.100.0 0.0.0.255",
+        "AR2 路由器配置": "sysname AR2\ninterface GigabitEthernet0/0/0\n ip address 10.0.0.2 255.255.255.252\ninterface GigabitEthernet0/0/1\n ip address 10.0.0.5 255.255.255.252\ninterface GigabitEthernet0/0/2\n ip address 219.133.10.1 255.255.255.0\nospf 1\n area 0\n  network 10.0.0.0 0.0.0.3\n  network 10.0.0.4 0.0.0.3\n  network 219.133.10.0 0.0.0.255",
+        "AR3 单臂路由配置": "sysname AR3\ninterface GigabitEthernet0/0/0\n ip address 10.0.0.6 255.255.255.252\ninterface GigabitEthernet0/0/1.30\n dot1q termination vid 30\n ip address 131.26.13.1 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet0/0/1.40\n dot1q termination vid 40\n ip address 131.26.14.1 255.255.255.0\n arp broadcast enable\nospf 1\n area 0\n  network 10.0.0.4 0.0.0.3\n  network 131.26.13.0 0.0.0.255\n  network 131.26.14.0 0.0.0.255",
+        "ACL 3001/3002 配置": "acl 3001\n rule 5 deny ip source 131.26.11.2 0 destination 131.26.14.2 0\n rule 10 permit ip\ninterface GigabitEthernet0/0/1\n traffic-filter outbound acl 3001\n\nacl 3002\n rule 5 deny ip source 131.26.12.2 0 destination 131.26.13.3 0\n rule 10 permit ip\ninterface GigabitEthernet0/0/4\n traffic-filter outbound acl 3002",
+        "OSPF配置": "LSW1: ospf 1 / area 0 / network 131.26.11.0 0.0.0.255 / network 131.26.12.0 0.0.0.255 / network 131.26.13.0 0.0.0.255 / network 131.26.14.0 0.0.0.255 / network 192.168.120.0 0.0.0.255\nAR1/AR2/AR3 见各自配置",
+        "PC连通性验证": "PC1 ping 131.26.14.2 → ACL禁止，不通\nPC2 ping 131.26.13.3 → ACL禁止，不通\nPC3 ping 131.26.14.2 → 应通\ndisplay stp brief → LSW1为根桥\ndisplay ip routing-table → 应含219.133.100.0/24和219.133.10.0/24"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.9上1.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n2024年3月9日 下午场（RIP）\n\n设备清单：\n- 三层交换机 LSW3（1台）\n- 二层交换机 LSW1、LSW2、LSW4、LSW5（4台）\n- 路由器 AR1、AR2、AR3、AR4（4台）\n- PC1~PC7（7台）\n\nVLAN规划：\n- VLAN101: 10.1.1.0/24，网关 LSW3/AR1单臂路由\n- VLAN102: 10.1.2.0/24，网关 10.1.2.254(AR1 DHCP)\n- VLAN103: 192.168.103.0/24，网关 LSW3/AR1单臂路由\n- VLAN104: 192.168.104.0/24，网关 LSW3/AR1单臂路由\n- VLAN1003: 192.168.11.0/24，互联\n\n【调试要求】\n1. 按拓扑图完成VLAN配置\n2. 按拓扑图给出的网络地址配置设备接口及VLAN IP地址\n3. LSW3三层交换机实现不同VLAN间通信；AR1单臂路由实现不同VLAN间通信\n4. RIP动态路由协议实现全网互通\n5. AR1上使用DHCP为VLAN102分配IP地址，最多前100个，网关为10.1.2.254",
+      "text_fields": [
+        {
+          "label": "LSW3 VLAN与VLANIF配置"
+        },
+        {
+          "label": "LSW3 Trunk端口与RIP配置"
+        },
+        {
+          "label": "LSW1 二层交换机配置"
+        },
+        {
+          "label": "LSW2 二层交换机配置"
+        },
+        {
+          "label": "LSW4-LSW5 二层交换机配置"
+        },
+        {
+          "label": "AR1 单臂路由与DHCP配置"
+        },
+        {
+          "label": "AR2 路由器配置"
+        },
+        {
+          "label": "AR3-AR4 路由器配置"
+        },
+        {
+          "label": "RIP全网配置"
+        },
+        {
+          "label": "DHCP与连通性验证"
+        }
+      ],
+      "score": 20,
+      "reference_answer": {
+        "LSW3 VLAN与VLANIF配置": "vlan batch 101 102 103 104 1003\ninterface Vlanif101\n ip address 10.1.1.1 255.255.255.0\ninterface Vlanif102\n ip address 10.1.2.1 255.255.255.0\ninterface Vlanif103\n ip address 192.168.103.1 255.255.255.0\ninterface Vlanif104\n ip address 192.168.104.1 255.255.255.0\ninterface Vlanif1003\n ip address 192.168.11.1 255.255.255.0",
+        "LSW3 Trunk端口与RIP配置": "interface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 101 102 103 104 1003\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 101 102 103 104 1003\ninterface GigabitEthernet0/0/3\n port link-type trunk\n port trunk allow-pass vlan 101 102 103 104 1003\nrip 1\n version 2\n network 10.0.0.0\n network 192.168.103.0\n network 192.168.104.0\n network 192.168.11.0",
+        "LSW1 二层交换机配置": "vlan batch 101 102 103 104 1003\ninterface Ethernet0/0/1\n port link-type access\n port default vlan 101\ninterface Ethernet0/0/2\n port link-type access\n port default vlan 103\ninterface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 101 102 103 104 1003\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 101 102 103 104 1003",
+        "LSW2 二层交换机配置": "vlan batch 101 102 103 104 1003\ninterface Ethernet0/0/1\n port link-type access\n port default vlan 102\ninterface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 101 102 103 104 1003\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 101 102 103 104 1003",
+        "LSW4-LSW5 二层交换机配置": "LSW4: vlan batch 101 102 103 104 / PC3→VLAN103(E0/0/1) / PC4→VLAN104(E0/0/2) / Trunk GE0/0/1,GE0/0/2,GE0/0/3\nLSW5: vlan batch 101 102 103 104 / PC5→VLAN103(E0/0/1) / PC6→VLAN104(E0/0/2) / Trunk GE0/0/1,GE0/0/2,GE0/0/3",
+        "AR1 单臂路由与DHCP配置": "sysname AR1\ndhcp enable\ninterface GigabitEthernet0/0/0\n ip address 192.168.100.1 255.255.255.0\ninterface GigabitEthernet0/0/1.101\n dot1q termination vid 101\n ip address 10.1.1.1 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet0/0/1.102\n dot1q termination vid 102\n ip address 10.1.2.1 255.255.255.0\n arp broadcast enable\n dhcp select global\ninterface GigabitEthernet0/0/1.103\n dot1q termination vid 103\n ip address 192.168.103.1 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet0/0/1.104\n dot1q termination vid 104\n ip address 192.168.104.1 255.255.255.0\n arp broadcast enable\nip pool vlan102\n gateway-list 10.1.2.254\n network 10.1.2.0 mask 255.255.255.0\n dns-list 8.8.8.8 114.114.114.114\nrip 1\n version 2\n network 192.168.100.0\n network 10.0.0.0\n network 192.168.103.0\n network 192.168.104.0",
+        "AR2 路由器配置": "sysname AR2\ninterface GigabitEthernet0/0/0\n ip address 192.168.100.2 255.255.255.0\ninterface GigabitEthernet0/0/1\n ip address 192.168.200.1 255.255.255.0\ninterface GigabitEthernet0/0/2\n ip address 192.168.11.1 255.255.255.0\nrip 1\n version 2\n network 192.168.100.0\n network 192.168.200.0\n network 192.168.11.0",
+        "AR3-AR4 路由器配置": "AR3: interface GE0/0/0 ip 192.168.200.2/24 / GE0/0/1 ip 10.0.0.1/30 / rip 1 ver 2 / network 192.168.200.0 / network 10.0.0.0\nAR4: interface GE0/0/0 ip 10.0.0.2/30 / GE0/0/1 ip 201.10.10.1/24 / rip 1 ver 2 / network 10.0.0.0 / network 201.10.10.0",
+        "RIP全网配置": "所有设备运行RIPv2，LSW3通告10.0.0.0/192.168.103.0/192.168.104.0/192.168.11.0；AR1通告192.168.100.0/10.0.0.0/192.168.103.0/192.168.104.0；AR2通告192.168.100.0/192.168.200.0/192.168.11.0；AR3通告192.168.200.0/10.0.0.0；AR4通告10.0.0.0/201.10.10.0",
+        "DHCP与连通性验证": "display ip pool name vlan102 used → 查看DHCP分配\nPC2 ipconfig → 获取10.1.2.X地址，网关10.1.2.254\nPC1 ping 192.168.103.2 → 应通（VLAN101→VLAN103）\nPC2 ping 201.10.10.1 → 应通\nPC5 ping 192.168.104.2 → 应通"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.9下.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n2024年3月10日 上午场（OSPF）\n\n设备清单：\n- 三层交换机 LSW1、LSW4（2台）\n- 二层交换机 LSW2、LSW3（2台）\n- 路由器 AR1、AR2（2台）\n- PC1~PC6（6台）\n\nVLAN规划：\n- VLAN10: 192.168.10.0/24，网关 LSW1\n- VLAN20: 192.168.20.0/24，网关 LSW1\n- VLAN30: 192.168.30.0/24，网关 LSW1(DHCP，最多150个IP)\n- VLAN40: 192.168.40.0/24，网关 LSW4(DHCP)\n- VLAN50: 192.168.50.0/24，网关 LSW4\n- VLAN60: 192.168.60.0/24，网关 LSW4\n- VLAN200: 172.16.20.0/24，AR1单臂互联LSW1\n- VLAN300: 172.16.30.0/24，AR1单臂互联LSW4\n- VLAN1003: 172.168.30.0/24，AR2互联LSW1/LSW4\n\n【调试要求】\n1. 按拓扑图完成VLAN配置\n2. 按拓扑图给出的网络地址配置设备接口及VLAN IP地址\n3. LSW1和LSW4三层交换机实现不同VLAN间通信；AR1单臂路由实现不同VLAN间通信\n4. OSPF动态路由协议实现全网互通\n5. LSW1上为VLAN30和VLAN40做DHCP，VLAN30最多可分配150个IP",
+      "text_fields": [
+        {
+          "label": "LSW1 VLAN/VLANIF与DHCP配置"
+        },
+        {
+          "label": "LSW1 Trunk与OSPF配置"
+        },
+        {
+          "label": "LSW4 VLAN/VLANIF与DHCP配置"
+        },
+        {
+          "label": "LSW4 Trunk与OSPF配置"
+        },
+        {
+          "label": "LSW2 二层交换机配置"
+        },
+        {
+          "label": "LSW3 二层交换机配置"
+        },
+        {
+          "label": "AR1 单臂路由与OSPF配置"
+        },
+        {
+          "label": "AR2 路由器配置"
+        },
+        {
+          "label": "OSPF全网配置"
+        },
+        {
+          "label": "DHCP与连通性验证"
+        }
+      ],
+      "score": 20,
+      "reference_answer": {
+        "LSW1 VLAN/VLANIF与DHCP配置": "sysname LSW1\ndhcp enable\nvlan batch 10 20 30 200 1003\ninterface Vlanif10\n ip address 192.168.10.1 255.255.255.0\ninterface Vlanif20\n ip address 192.168.20.1 255.255.255.0\ninterface Vlanif30\n ip address 192.168.30.1 255.255.255.0\n dhcp select global\ninterface Vlanif200\n ip address 172.16.20.2 255.255.255.0\ninterface Vlanif1003\n ip address 172.168.30.2 255.255.255.0\nip pool vlan30\n gateway-list 192.168.30.1\n network 192.168.30.0 mask 255.255.255.0\n dns-list 8.8.8.8 114.114.114.114",
+        "LSW1 Trunk与OSPF配置": "interface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 200 1003\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 200 1003\ninterface GigabitEthernet0/0/3\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 50 60 200 300 1003\nospf 1\n area 0\n  network 192.168.10.0 0.0.0.255\n  network 192.168.20.0 0.0.0.255\n  network 192.168.30.0 0.0.0.255\n  network 172.16.20.0 0.0.0.255\n  network 172.168.30.0 0.0.0.255",
+        "LSW4 VLAN/VLANIF与DHCP配置": "sysname LSW4\ndhcp enable\nvlan batch 40 50 60 300 1003\ninterface Vlanif40\n ip address 192.168.40.1 255.255.255.0\n dhcp select global\ninterface Vlanif50\n ip address 192.168.50.1 255.255.255.0\ninterface Vlanif60\n ip address 192.168.60.1 255.255.255.0\ninterface Vlanif300\n ip address 172.16.30.2 255.255.255.0\ninterface Vlanif1003\n ip address 172.168.30.3 255.255.255.0\nip pool vlan40\n gateway-list 192.168.40.1\n network 192.168.40.0 mask 255.255.255.0\n dns-list 8.8.8.8 114.114.114.114",
+        "LSW4 Trunk与OSPF配置": "interface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 40 50 60 300 1003\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 40 50 60 300 1003\ninterface Ethernet0/0/1\n port link-type access\n port default vlan 50\ninterface Ethernet0/0/2\n port link-type access\n port default vlan 60\ninterface GigabitEthernet0/0/3\n port link-type trunk\n port trunk allow-pass vlan 40 50 60 300 1003\nospf 1\n area 0\n  network 192.168.40.0 0.0.0.255\n  network 192.168.50.0 0.0.0.255\n  network 192.168.60.0 0.0.0.255\n  network 172.16.30.0 0.0.0.255\n  network 172.168.30.0 0.0.0.255",
+        "LSW2 二层交换机配置": "sysname LSW2\nvlan batch 10 20 30\ninterface Ethernet0/0/1\n port link-type access\n port default vlan 10\ninterface Ethernet0/0/2\n port link-type access\n port default vlan 20\ninterface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30",
+        "LSW3 二层交换机配置": "sysname LSW3\nvlan batch 10 20 30 40\ninterface Ethernet0/0/1\n port link-type access\n port default vlan 30\ninterface Ethernet0/0/2\n port link-type access\n port default vlan 40\ninterface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40",
+        "AR1 单臂路由与OSPF配置": "sysname AR1\ninterface GigabitEthernet0/0/0\n ip address 10.10.10.1 255.255.255.0\ninterface GigabitEthernet0/0/1.200\n dot1q termination vid 200\n ip address 172.16.20.1 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet0/0/1.300\n dot1q termination vid 300\n ip address 172.16.30.1 255.255.255.0\n arp broadcast enable\nospf 1\n area 0\n  network 10.10.10.0 0.0.0.255\n  network 172.16.20.0 0.0.0.255\n  network 172.16.30.0 0.0.0.255",
+        "AR2 路由器配置": "sysname AR2\ninterface GigabitEthernet0/0/0\n ip address 10.10.10.2 255.255.255.0\ninterface GigabitEthernet0/0/2\n ip address 172.168.30.1 255.255.255.0\nospf 1\n area 0\n  network 10.10.10.0 0.0.0.255\n  network 172.168.30.0 0.0.0.255",
+        "OSPF全网配置": "所有设备运行OSPF Area 0，LSW1通告192.168.10.0/20.0/30.0和172.16.20.0/172.168.30.0；LSW4通告192.168.40.0/50.0/60.0和172.16.30.0/172.168.30.0；AR1通告10.10.10.0/172.16.20.0/172.16.30.0；AR2通告10.10.10.0/172.168.30.0",
+        "DHCP与连通性验证": "display ip pool name vlan30 used → 查看VLAN30地址池分配\ndisplay ip pool name vlan40 used → 查看VLAN40地址池分配\nPC3 ipconfig → 获取192.168.30.X地址\nPC4 ipconfig → 获取192.168.40.X地址\nPC1 ping 192.168.40.1 → 应通\nPC3 ping 192.168.50.2 → 应通\nPC5 ping 10.10.10.2 → 应通"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.10上.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n2024年3月10日 下午场（RIP）\n\n设备清单：\n- 三层交换机 LSW1（1台）\n- 二层交换机 LSW2、LSW3（2台）\n- 路由器 AR1、AR2、AR3（3台）\n- 服务器 Server1（1台）\n- PC1~PC4（4台）\n\nVLAN规划：\n- VLAN10: 192.168.10.0/24，网关 LSW1\n- VLAN20: 192.168.20.0/24，网关 LSW1（需NAT访问Server1）\n- VLAN30: 192.168.30.0/24，网关 LSW1\n- VLAN40: 192.168.40.0/24，网关 LSW1\n- VLAN100: 172.168.10.0/24，AR2单臂互联LSW1\n- VLAN300: 172.168.30.0/24，AR2单臂互联LSW3\n- VLAN400: 172.168.40.0/24，AR2单臂互联LSW3\n- VLAN500: 172.168.50.0/24，AR2↔AR3互联\n\n【调试要求】\n1. 按拓扑图完成VLAN配置\n2. 按拓扑图给出的网络地址配置设备接口及VLAN IP地址\n3. LSW1三层交换机实现不同VLAN间通信；AR2单臂路由实现不同VLAN间通信\n4. RIP动态路由协议实现全网互通\n5. AR3上配置动态NAT：VLAN20内主机访问Server1时转换为192.168.50.50~192.168.50.150",
+      "text_fields": [
+        {
+          "label": "LSW1 VLAN/VLANIF配置"
+        },
+        {
+          "label": "LSW1 Trunk与RIP配置"
+        },
+        {
+          "label": "LSW2 二层交换机配置"
+        },
+        {
+          "label": "LSW3 二层交换机配置"
+        },
+        {
+          "label": "AR1 路由器配置"
+        },
+        {
+          "label": "AR2 单臂路由与RIP配置"
+        },
+        {
+          "label": "AR3 动态NAT与RIP配置"
+        },
+        {
+          "label": "RIP全网配置"
+        },
+        {
+          "label": "NAT地址池与ACL配置"
+        },
+        {
+          "label": "NAT与连通性验证"
+        }
+      ],
+      "score": 20,
+      "reference_answer": {
+        "LSW1 VLAN/VLANIF配置": "sysname LSW1\nvlan batch 10 20 30 40 100\ninterface Vlanif10\n ip address 192.168.10.1 255.255.255.0\ninterface Vlanif20\n ip address 192.168.20.1 255.255.255.0\ninterface Vlanif30\n ip address 192.168.30.1 255.255.255.0\ninterface Vlanif40\n ip address 192.168.40.1 255.255.255.0\ninterface Vlanif100\n ip address 172.168.10.2 255.255.255.0",
+        "LSW1 Trunk与RIP配置": "interface Ethernet0/0/1\n port link-type access\n port default vlan 10\ninterface Ethernet0/0/2\n port link-type access\n port default vlan 20\ninterface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 100\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 100 300 400\ninterface GigabitEthernet0/0/3\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 100 300 400\nrip 1\n version 2\n network 192.168.10.0\n network 192.168.20.0\n network 192.168.30.0\n network 192.168.40.0\n network 172.168.10.0",
+        "LSW2 二层交换机配置": "sysname LSW2\nvlan batch 10 20 30 40\ninterface Ethernet0/0/1\n port link-type access\n port default vlan 30\ninterface Ethernet0/0/2\n port link-type access\n port default vlan 40\ninterface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40\ninterface GigabitEthernet0/0/3\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40",
+        "LSW3 二层交换机配置": "sysname LSW3\nvlan batch 10 20 30 40 300 400\ninterface GigabitEthernet0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 300 400\ninterface GigabitEthernet0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 300 400",
+        "AR1 路由器配置": "sysname AR1\ninterface GigabitEthernet0/0/0\n ip address 20.2.2.1 255.255.255.0\ninterface GigabitEthernet0/0/1\n ip address 10.0.0.1 255.255.255.252\nrip 1\n version 2\n network 20.0.0.0\n network 10.0.0.0",
+        "AR2 单臂路由与RIP配置": "sysname AR2\ninterface GigabitEthernet0/0/0\n ip address 20.2.2.2 255.255.255.0\ninterface GigabitEthernet0/0/1.100\n dot1q termination vid 100\n ip address 172.168.10.1 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet0/0/1.300\n dot1q termination vid 300\n ip address 172.168.30.1 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet0/0/1.400\n dot1q termination vid 400\n ip address 172.168.40.1 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet0/0/2\n ip address 172.168.50.1 255.255.255.0\nrip 1\n version 2\n network 20.0.0.0\n network 172.168.10.0\n network 172.168.30.0\n network 172.168.40.0\n network 172.168.50.0",
+        "AR3 动态NAT与RIP配置": "sysname AR3\ninterface GigabitEthernet0/0/3\n ip address 172.168.50.2 255.255.255.0\ninterface GigabitEthernet0/0/1\n ip address 192.168.50.1 255.255.255.0\nnat address-group 1 192.168.50.50 192.168.50.150\nacl 2000\n rule 5 permit source 192.168.20.0 0.0.0.255\ninterface GigabitEthernet0/0/1\n nat outbound 2000 address-group 1 no-pat\nrip 1\n version 2\n network 172.168.50.0\n network 192.168.50.0\nip route-static 0.0.0.0 0.0.0.0 172.168.50.1",
+        "RIP全网配置": "所有设备运行RIPv2，LSW1通告192.168.10.0/20.0/30.0/40.0和172.168.10.0；AR1通告20.0.0.0/10.0.0.0；AR2通告20.0.0.0/172.168.10.0/30.0/40.0/50.0；AR3通告172.168.50.0/192.168.50.0",
+        "NAT地址池与ACL配置": "nat address-group 1 192.168.50.50 192.168.50.150\nacl 2000\n rule 5 permit source 192.168.20.0 0.0.0.255\ninterface GigabitEthernet0/0/1\n nat outbound 2000 address-group 1 no-pat",
+        "NAT与连通性验证": "PC2(192.168.20.2) ping 192.168.50.2 → 应通（NAT转换）\ndisplay nat session all → 查看192.168.20.X→192.168.50.X转换\ndisplay nat address-group 1 → 查看地址池\nPC1 ping 192.168.50.2 → 应通\nPC3 ping 192.168.20.2 → 应通"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.10下.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n某企业网络包含4台路由器（AR1~AR4）、2台交换机（LSW1三层、LSW2二层）、5台PC。LSW1作为三层交换机实现VLAN间通信，AR3配置单臂路由。AR1与AR2之间运行OSPF，全网通过OSPF动态路由实现互通。LSW2上配置ACL策略。\n\n设备清单：\n- 三层交换机 LSW1（1台）\n- 二层交换机 LSW2（1台）\n- 路由器 AR1、AR2、AR3、AR4（各1台）\n- PC1~PC5（共5台）\n\nVLAN规划：VLAN10(192.168.11.0/24)、VLAN20(192.168.21.0/24)、VLAN30(192.168.31.0/24)、VLAN40(192.168.41.0/24)、VLAN1003(172.168.100.0/24，LSW1↔AR2互联)\n\n【调试要求】\n1. 按拓扑图完成设备连接与VLAN配置\n2. 按网络地址规划配置各设备接口及VLAN IP地址\n3. LSW1三层交换机实现不同VLAN间通信；AR3单臂路由实现不同VLAN间通信\n4. 配置OSPF动态路由协议实现全网互通\n5. LSW2上配置ACL：禁止VLAN10访问VLAN40，禁止VLAN20访问VLAN30",
+      "text_fields": [
+        {
+          "label": "LSW1三层交换机配置(VLAN+OSPF)"
+        },
+        {
+          "label": "LSW2二层交换机配置(ACL)"
+        },
+        {
+          "label": "AR1路由器配置(OSPF)"
+        },
+        {
+          "label": "AR2路由器配置(OSPF)"
+        },
+        {
+          "label": "AR3路由器配置(单臂路由+OSPF)"
+        },
+        {
+          "label": "AR4路由器配置(OSPF)"
+        },
+        {
+          "label": "OSPF路由表验证"
+        },
+        {
+          "label": "ACL过滤验证"
+        }
+      ],
+      "score": 30,
+      "reference_answer": {
+        "LSW1三层交换机配置(VLAN+OSPF)": "vlan batch 10 20 30 40 1003\ninterface Vlanif 10\n ip address 192.168.11.1 255.255.255.0\ninterface Vlanif 20\n ip address 192.168.21.1 255.255.255.0\ninterface Vlanif 30\n ip address 192.168.31.1 255.255.255.0\ninterface Vlanif 40\n ip address 192.168.41.1 255.255.255.0\ninterface Vlanif 1003\n ip address 172.168.100.2 255.255.255.0\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 30\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 1003\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 1003\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 1003\nospf 1\n area 0\n  network 192.168.11.0 0.0.0.255\n  network 192.168.21.0 0.0.0.255\n  network 192.168.31.0 0.0.0.255\n  network 192.168.41.0 0.0.0.255\n  network 172.168.100.0 0.0.0.255",
+        "LSW2二层交换机配置(ACL)": "vlan batch 10 20 30 40\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 10\ninterface Ethernet 0/0/2\n port link-type access\n port default vlan 20\ninterface Ethernet 0/0/3\n port link-type access\n port default vlan 30\ninterface Ethernet 0/0/4\n port link-type access\n port default vlan 40\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40\nacl 3001\n rule 5 deny ip source 192.168.11.0 0.0.0.255 destination 192.168.41.0 0.0.0.255\n rule 10 permit ip\nacl 3002\n rule 5 deny ip source 192.168.21.0 0.0.0.255 destination 192.168.31.0 0.0.0.255\n rule 10 permit ip\ninterface Ethernet 0/0/1\n traffic-filter inbound acl 3001\ninterface Ethernet 0/0/2\n traffic-filter inbound acl 3002",
+        "AR1路由器配置(OSPF)": "sysname AR1\ninterface GigabitEthernet 0/0/0\n ip address 192.168.10.1 255.255.255.0\ninterface GigabitEthernet 0/0/1\n ip address 192.168.20.1 255.255.255.0\nospf 1\n area 0\n  network 192.168.10.0 0.0.0.255\n  network 192.168.20.0 0.0.0.255",
+        "AR2路由器配置(OSPF)": "sysname AR2\ninterface GigabitEthernet 0/0/0\n ip address 172.168.100.1 255.255.255.0\ninterface GigabitEthernet 0/0/1\n ip address 172.16.200.1 255.255.255.0\nospf 1\n area 0\n  network 172.168.100.0 0.0.0.255\n  network 172.16.200.0 0.0.0.255",
+        "AR3路由器配置(单臂路由+OSPF)": "sysname AR3\ninterface GigabitEthernet 0/0/0\n ip address 172.16.200.2 255.255.255.0\ninterface GigabitEthernet 0/0/1.10\n dot1q termination vid 10\n ip address 192.168.11.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1.20\n dot1q termination vid 20\n ip address 192.168.21.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1.30\n dot1q termination vid 30\n ip address 192.168.31.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1.40\n dot1q termination vid 40\n ip address 192.168.41.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1\n undo shutdown\ninterface GigabitEthernet 0/0/2\n ip address 192.168.30.1 255.255.255.0\nospf 1\n area 0\n  network 172.16.200.0 0.0.0.255\n  network 192.168.11.0 0.0.0.255\n  network 192.168.21.0 0.0.0.255\n  network 192.168.31.0 0.0.0.255\n  network 192.168.41.0 0.0.0.255\n  network 192.168.30.0 0.0.0.255",
+        "AR4路由器配置(OSPF)": "sysname AR4\ninterface GigabitEthernet 0/0/0\n ip address 192.168.30.2 255.255.255.0\ninterface GigabitEthernet 0/0/1\n ip address 172.168.30.1 255.255.255.0\nospf 1\n area 0\n  network 192.168.30.0 0.0.0.255\n  network 172.168.30.0 0.0.0.255",
+        "OSPF路由表验证": "display ip routing-table\n// LSW1 应看到 192.168.30.0/24 和 172.168.30.0/24\n// AR3 应看到所有VLAN网段",
+        "ACL过滤验证": "PC1> ping 192.168.41.2  // VLAN10→VLAN40（ACL禁止，应不通）\nPC2> ping 192.168.31.2  // VLAN20→VLAN30（ACL禁止，应不通）\nPC3> ping 192.168.41.2  // VLAN30→VLAN40（未禁止，应通）\ndisplay acl all  // 查看ACL匹配计数"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.11上.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n某企业网络包含2台路由器（AR1、AR2）、4台交换机（LSW1~3为二层，LSW4为三层）、4台PC和1台Server。LSW4作为三层交换机实现VLAN间通信，AR1配置单臂路由。全网通过OSPF动态路由实现互通。AR2配置Easy IP NAT，使VLAN10网段可以访问外网Server1。\n\n设备清单：\n- 三层交换机 LSW4（1台）\n- 二层交换机 LSW1、LSW2、LSW3（各1台）\n- 路由器 AR1、AR2（各1台）\n- PC1~PC4（共4台）\n- Server1（1台）\n\nVLAN规划：VLAN10(172.16.10.0/24)、VLAN20(172.16.20.0/24)、VLAN30(172.16.30.0/24)、VLAN40(172.16.40.0/24)、VLAN50(192.168.1.0/24)、VLAN60(192.168.2.0/24)、VLAN70(192.168.3.0/24)、VLAN80(192.168.4.0/24)\n\n【调试要求】\n1. 按拓扑图完成设备连接与VLAN配置\n2. 按网络地址规划配置各设备接口及VLAN IP地址\n3. LSW4三层交换机实现不同VLAN间通信；AR1单臂路由实现不同VLAN间通信\n4. OSPF动态路由协议实现全网互通\n5. AR2上设置Easy IP NAT：VLAN10通过Easy IP访问Server1",
+      "text_fields": [
+        {
+          "label": "LSW4三层交换机配置(VLAN+OSPF)"
+        },
+        {
+          "label": "LSW1/2/3二层交换机配置"
+        },
+        {
+          "label": "AR1单臂路由+OSPF配置"
+        },
+        {
+          "label": "AR2 Easy IP NAT+OSPF配置"
+        },
+        {
+          "label": "Server1网络配置"
+        },
+        {
+          "label": "OSPF路由验证"
+        },
+        {
+          "label": "NAT转换验证"
+        }
+      ],
+      "score": 25,
+      "reference_answer": {
+        "LSW4三层交换机配置(VLAN+OSPF)": "vlan batch 10 20 30 40 80\ninterface Vlanif 10\n ip address 172.16.10.1 255.255.255.0\ninterface Vlanif 20\n ip address 172.16.20.1 255.255.255.0\ninterface Vlanif 30\n ip address 172.16.30.1 255.255.255.0\ninterface Vlanif 40\n ip address 172.16.40.1 255.255.255.0\ninterface Vlanif 80\n ip address 192.168.4.2 255.255.255.0\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 10\ninterface Ethernet 0/0/2\n port link-type access\n port default vlan 20\ninterface Ethernet 0/0/3\n port link-type access\n port default vlan 30\ninterface Ethernet 0/0/4\n port link-type access\n port default vlan 40\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 80\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 80\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 80\nospf 1\n area 0\n  network 172.16.10.0 0.0.0.255\n  network 172.16.20.0 0.0.0.255\n  network 172.16.30.0 0.0.0.255\n  network 172.16.40.0 0.0.0.255\n  network 192.168.4.0 0.0.0.255",
+        "LSW1/2/3二层交换机配置": "# LSW1\nvlan batch 10 20 30 40 50 60 70 80\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 50 60 70 80\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 50 60 70 80\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 50 60 70 80\n\n# LSW2\nvlan batch 10 20 30 40 70 80\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 70 80\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 70 80\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 70 80\n\n# LSW3\nvlan batch 10 20 30 40 80\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 80\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 80\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 10 20 30 40 80",
+        "AR1单臂路由+OSPF配置": "sysname AR1\ninterface GigabitEthernet 0/0/0\n ip address 172.168.10.1 255.255.255.0\ninterface GigabitEthernet 0/0/1.80\n dot1q termination vid 80\n ip address 192.168.4.1 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1\n undo shutdown\ninterface GigabitEthernet 0/0/2\n ip address 192.168.3.1 255.255.255.0\nospf 1\n area 0\n  network 172.168.10.0 0.0.0.255\n  network 192.168.4.0 0.0.0.255\n  network 192.168.3.0 0.0.0.255",
+        "AR2 Easy IP NAT+OSPF配置": "sysname AR2\ninterface GigabitEthernet 0/0/0\n ip address 172.168.10.2 255.255.255.0\ninterface GigabitEthernet 0/0/1\n ip address 192.168.10.1 255.255.255.0\nacl 2000\n rule 5 permit source 172.16.10.0 0.0.0.255\ninterface GigabitEthernet 0/0/1\n nat outbound 2000\nip route-static 0.0.0.0 0.0.0.0 192.168.10.2\nospf 1\n area 0\n  network 172.168.10.0 0.0.0.255\ndefault-route-advertise always",
+        "Server1网络配置": "IP地址：192.168.10.2\n子网掩码：255.255.255.0\n网关：192.168.10.1",
+        "OSPF路由验证": "display ip routing-table\n// AR1/AR2 应看到所有VLAN网段和互联网段",
+        "NAT转换验证": "PC1> ping 192.168.10.2  // VLAN10→Server1（经Easy IP NAT，应通）\ndisplay nat session all  // 应看到172.16.10.X→192.168.10.1的Easy IP转换"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.11下.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n某园区网络包含3台路由器（AR1~AR3）、6台交换机（LSW1~6）、9台PC。LSW2作为三层交换机实现VLAN间通信，AR1配置单臂路由。全网通过RIP v2动态路由实现互通。LSW1配置为主根桥，LSW2为备份根桥。LSW5的GE0/0/2端口配置端口安全：最大连接数4，违例处理shutdown。\n\n设备清单：\n- 三层交换机 LSW2（1台）\n- 二层交换机 LSW1、LSW3~LSW6（共5台）\n- 路由器 AR1、AR2、AR3（各1台）\n- PC1~PC9（共9台）\n\nVLAN规划：VLAN56(172.16.56.0/24)、VLAN57(172.16.57.0/24)、VLAN58(172.16.58.0/24)、VLAN59(172.16.59.0/24)、VLAN1004(192.168.104.0/24)\n\n【调试要求】\n1. 按拓扑图完成设备连接与VLAN配置\n2. 按网络地址规划配置各设备接口及VLAN IP地址\n3. LSW2三层交换机实现不同VLAN间通信；AR1单臂路由实现不同VLAN间通信\n4. RIP v2动态路由协议实现全网互通\n5. STP：LSW1为主根交换机，LSW2为备份根交换机\n6. LSW5 GE0/0/2端口安全：最大连接数4，违例处理shutdown",
+      "text_fields": [
+        {
+          "label": "LSW1主根桥STP配置"
+        },
+        {
+          "label": "LSW2三层+备份根桥+RIP配置"
+        },
+        {
+          "label": "LSW3/4/6二层交换机配置"
+        },
+        {
+          "label": "LSW5端口安全配置"
+        },
+        {
+          "label": "AR1单臂路由+RIP配置"
+        },
+        {
+          "label": "AR2/AR3 RIP路由配置"
+        },
+        {
+          "label": "STP根桥验证"
+        },
+        {
+          "label": "端口安全验证"
+        },
+        {
+          "label": "RIP路由表与连通性验证"
+        }
+      ],
+      "score": 30,
+      "reference_answer": {
+        "LSW1主根桥STP配置": "sysname LSW1\nvlan batch 56 57 58 59 1004\nstp mode stp\nstp root primary\nstp enable\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 1004\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59 1004\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59 1004\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59 1004\ninterface GigabitEthernet 0/0/4\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59 1004",
+        "LSW2三层+备份根桥+RIP配置": "sysname LSW2\nvlan batch 56 57 58 59 1004\nstp mode stp\nstp root secondary\nstp enable\ninterface Vlanif 56\n ip address 172.16.56.1 255.255.255.0\ninterface Vlanif 57\n ip address 172.16.57.1 255.255.255.0\ninterface Vlanif 58\n ip address 172.16.58.1 255.255.255.0\ninterface Vlanif 59\n ip address 172.16.59.1 255.255.255.0\ninterface Vlanif 1004\n ip address 192.168.104.2 255.255.255.0\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59 1004\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59 1004\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59 1004\ninterface GigabitEthernet 0/0/4\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59 1004\nrip 1\n version 2\n network 172.16.0.0\n network 192.168.104.0",
+        "LSW3/4/6二层交换机配置": "# LSW3\nvlan batch 56 57 58 59\nstp enable\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 56\ninterface Ethernet 0/0/2\n port link-type access\n port default vlan 57\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59\n\n# LSW4\nvlan batch 56 57 58 59\nstp enable\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 56\ninterface Ethernet 0/0/2\n port link-type access\n port default vlan 57\n(Trunk端口类似LSW3)\n\n# LSW6\nvlan batch 56 57 58 59\nstp enable\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 58\ninterface Ethernet 0/0/2\n port link-type access\n port default vlan 59\n(Trunk端口类似LSW3)",
+        "LSW5端口安全配置": "sysname LSW5\nvlan batch 56 57 58 59\nstp enable\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 58\ninterface Ethernet 0/0/2\n port link-type access\n port default vlan 59\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59\n port-security enable\n port-security max-mac-num 4\n port-security protect-action shutdown\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 56 57 58 59",
+        "AR1单臂路由+RIP配置": "sysname AR1\ninterface GigabitEthernet 0/0/0\n ip address 192.168.100.1 255.255.255.0\ninterface GigabitEthernet 0/0/1.56\n dot1q termination vid 56\n ip address 172.16.56.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1.57\n dot1q termination vid 57\n ip address 172.16.57.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1.58\n dot1q termination vid 58\n ip address 172.16.58.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1.59\n dot1q termination vid 59\n ip address 172.16.59.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1\n undo shutdown\nrip 1\n version 2\n network 192.168.100.0\n network 172.16.0.0",
+        "AR2/AR3 RIP路由配置": "# AR2\nsysname AR2\ninterface GigabitEthernet 0/0/1\n ip address 192.168.100.2 255.255.255.0\ninterface GigabitEthernet 0/0/0\n ip address 100.10.10.2 255.255.255.0\nrip 1\n version 2\n network 192.168.100.0\n network 100.0.0.0\n\n# AR3\nsysname AR3\ninterface GigabitEthernet 0/0/0\n ip address 100.10.10.1 255.255.255.0\ninterface GigabitEthernet 0/0/1\n ip address 200.10.10.1 255.255.255.0\ninterface GigabitEthernet 0/0/2\n ip address 192.168.104.1 255.255.255.0\nrip 1\n version 2\n network 100.0.0.0\n network 200.10.10.0\n network 192.168.104.0",
+        "STP根桥验证": "display stp brief\n// LSW1 应为根桥，所有端口Forwarding\n// LSW2 应为备份根桥",
+        "端口安全验证": "display port-security\n// 确认GE0/0/2 max-mac-num=4, action=shutdown\ndisplay mac-address  // 查看学习到的MAC地址",
+        "RIP路由表与连通性验证": "display ip routing-table\n// AR1 应看到 200.10.10.0/24 和 100.10.10.0/24\n// LSW2 应看到所有路由\nPC1> ping 172.16.58.2  // VLAN56→VLAN58（经LSW2三层，应通）\nPC5> ping 200.10.10.1  // VLAN58→外网（经RIP，应通）"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.12上.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n某学校网络包含3台路由器（AR1~AR3）、5台交换机（LSW1三层、LSW2~5二层）、5台PC。LSW1作为三层交换机实现VLAN间通信，AR3配置单臂路由。全网通过OSPF动态路由实现互通。LSW1配置为主根桥，LSW2为次根桥。LSW5的GE0/0/3端口配置端口安全：老化时间8分钟，保护动作protect。\n\n设备清单：\n- 三层交换机 LSW1（1台）\n- 二层交换机 LSW2~LSW5（共4台）\n- 路由器 AR1、AR2、AR3（各1台）\n- PC1~PC5（共5台）\n\nVLAN规划：VLAN85(10.1.15.0/24)、VLAN86(10.1.16.0/24)、VLAN87(192.168.100.0/24)、VLAN88(10.1.5.0/24)、VLAN89(10.1.6.0/24)、VLAN1001(172.16.1.0/24)、VLAN1002(172.30.16.0/24)\n\n【调试要求】\n1. 按拓扑图完成设备连接与VLAN配置\n2. 按网络地址规划配置各设备接口及VLAN IP地址\n3. LSW1三层交换机实现不同VLAN间通信；AR3单臂路由实现不同VLAN间通信\n4. OSPF动态路由协议实现全网互通\n5. STP：LSW1根交换，LSW2次根交换\n6. LSW5 GE0/0/3端口安全：老化时间8分钟，保护动作protect",
+      "text_fields": [
+        {
+          "label": "LSW1三层+主根桥+OSPF配置"
+        },
+        {
+          "label": "LSW2次根桥配置"
+        },
+        {
+          "label": "LSW3/4二层交换机配置"
+        },
+        {
+          "label": "LSW5端口安全配置"
+        },
+        {
+          "label": "AR1/AR2 OSPF路由配置"
+        },
+        {
+          "label": "AR3单臂路由+OSPF配置"
+        },
+        {
+          "label": "STP根桥验证"
+        },
+        {
+          "label": "端口安全验证"
+        },
+        {
+          "label": "OSPF全网连通性验证"
+        }
+      ],
+      "score": 30,
+      "reference_answer": {
+        "LSW1三层+主根桥+OSPF配置": "sysname LSW1\nvlan batch 85 86 87 88 89 1001 1002\nstp mode stp\nstp root primary\nstp enable\ninterface Vlanif 85\n ip address 10.1.15.1 255.255.255.0\ninterface Vlanif 86\n ip address 10.1.16.1 255.255.255.0\ninterface Vlanif 87\n ip address 192.168.100.1 255.255.255.0\ninterface Vlanif 88\n ip address 10.1.5.1 255.255.255.0\ninterface Vlanif 89\n ip address 10.1.6.1 255.255.255.0\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89 1001 1002\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89 1001 1002\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89 1001 1002\nospf 1\n area 0\n  network 10.1.15.0 0.0.0.255\n  network 10.1.16.0 0.0.0.255\n  network 192.168.100.0 0.0.0.255\n  network 10.1.5.0 0.0.0.255\n  network 10.1.6.0 0.0.0.255",
+        "LSW2次根桥配置": "sysname LSW2\nvlan batch 85 86 87 88 89 1001 1002\nstp mode stp\nstp root secondary\nstp enable\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89 1001 1002\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89 1001 1002\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89 1001 1002",
+        "LSW3/4二层交换机配置": "# LSW3\nvlan batch 85 86 87 88 89\nstp enable\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 85\ninterface Ethernet 0/0/2\n port link-type access\n port default vlan 86\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89\n\n# LSW4\nvlan batch 85 86 87 88 89\nstp enable\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 87\ninterface Ethernet 0/0/2\n port link-type access\n port default vlan 88\n(Trunk端口类似LSW3)",
+        "LSW5端口安全配置": "sysname LSW5\nvlan batch 85 86 87 88 89\nstp enable\ninterface Ethernet 0/0/1\n port link-type access\n port default vlan 89\ninterface GigabitEthernet 0/0/1\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89\ninterface GigabitEthernet 0/0/2\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89\ninterface GigabitEthernet 0/0/3\n port link-type trunk\n port trunk allow-pass vlan 85 86 87 88 89\n port-security enable\n port-security aging-time 8\n port-security protect-action protect",
+        "AR1/AR2 OSPF路由配置": "# AR1\nsysname AR1\ninterface GigabitEthernet 0/0/0\n ip address 192.168.111.1 255.255.255.0\ninterface GigabitEthernet 0/0/1\n ip address 200.100.1.1 255.255.255.0\nospf 1\n area 0\n  network 192.168.111.0 0.0.0.255\n  network 200.100.1.0 0.0.0.255\n\n# AR2\nsysname AR2\ninterface GigabitEthernet 0/0/0\n ip address 192.168.111.2 255.255.255.0\ninterface GigabitEthernet 0/0/1\n ip address 172.16.1.1 255.255.255.0\nospf 1\n area 0\n  network 192.168.111.0 0.0.0.255\n  network 172.16.1.0 0.0.0.255",
+        "AR3单臂路由+OSPF配置": "sysname AR3\ninterface GigabitEthernet 0/0/2\n ip address 172.16.1.2 255.255.255.0\ninterface GigabitEthernet 0/0/0\n ip address 172.30.16.1 255.255.255.0\ninterface GigabitEthernet 0/0/1.85\n dot1q termination vid 85\n ip address 10.1.15.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1.86\n dot1q termination vid 86\n ip address 10.1.16.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1.87\n dot1q termination vid 87\n ip address 192.168.100.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1.88\n dot1q termination vid 88\n ip address 10.1.5.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1.89\n dot1q termination vid 89\n ip address 10.1.6.2 255.255.255.0\n arp broadcast enable\ninterface GigabitEthernet 0/0/1\n undo shutdown\nospf 1\n area 0\n  network 172.16.1.0 0.0.0.255\n  network 172.30.16.0 0.0.0.255\n  network 10.1.15.0 0.0.0.255\n  network 10.1.16.0 0.0.0.255\n  network 192.168.100.0 0.0.0.255\n  network 10.1.5.0 0.0.0.255\n  network 10.1.6.0 0.0.0.255",
+        "STP根桥验证": "display stp brief\n// LSW1 应为根桥，所有端口Forwarding\n// LSW2 应为次根桥，有Blocking端口",
+        "端口安全验证": "display port-security\n// 确认 aging-time=8, protect-action=protect\n// 确认GE0/0/3端口安全配置生效",
+        "OSPF全网连通性验证": "display ip routing-table\n// AR3 应看到 200.100.1.0/24\n// LSW1 应确认OSPF配置\nPC1> ping 10.1.5.2  // VLAN85→VLAN88（经LSW1三层，应通）\nPC3> ping 200.100.1.1  // VLAN87→外网（经OSPF，应通）"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.12下.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n某网络拓扑包含4台交换机（LSW1/2/3/4）、3台路由器（AR1/2/3）、6台PC（PC1-6）。LSW4为三层交换机实现VLAN105/106间通信，AR2和AR3分别通过单臂路由实现VLAN101/102和VLAN103/104间通信。AR1连接AR2（VLAN400 172.16.40.0/24）和AR3（VLAN300 192.168.30.0/24）。\n\n设备清单：\n- AR1、AR2、AR3 路由器（各1台）\n- LSW1、LSW2、LSW3 二层交换机（各1台）\n- LSW4 三层交换机（1台）\n- PC1~PC6（各1台）\n\nVLAN规划：\n| VLAN101 | 10.10.10.0/24 | 网关 AR2 10.10.10.1 | PC1 |\n| VLAN102 | 10.10.20.0/24 | 网关 AR2 10.10.20.1 | PC2 |\n| VLAN103 | 10.10.30.0/24 | 网关 AR3 10.10.30.1 | PC5 |\n| VLAN104 | 10.10.40.0/24 | 网关 AR3 10.10.40.1 | PC6 |\n| VLAN105 | 10.10.50.0/24 | 网关 LSW4 10.10.50.1 | PC3 |\n| VLAN106 | 10.10.60.0/24 | 网关 LSW4 10.10.60.1 | PC4 |\n| VLAN300 | 192.168.30.0/24 | AR1 GE0/0/1 | AR1-AR3互联 |\n| VLAN400 | 172.16.40.0/24 | AR1 GE0/0/0 | AR1-AR2互联 |\n\n【调试要求】\n1. 按拓扑图完成设备连接\n2. 完成各交换机VLAN创建和端口配置（Access/Trunk）\n3. LSW4三层交换机配置VLANIF实现VLAN105/106间通信\n4. AR2单臂路由子接口实现VLAN101/102通信\n5. AR3单臂路由子接口实现VLAN103/104通信\n6. 配置RIP动态路由协议实现全网互通\n7. 在AR1上配置ACL 3001禁止PC1/PC2所在网段与PC5/PC6所在网段通信\n8. 验证ACL隔离效果和全网连通性",
+      "text_fields": [
+        {
+          "label": "交换机VLAN与端口配置"
+        },
+        {
+          "label": "LSW4三层接口与RIP配置"
+        },
+        {
+          "label": "AR2单臂路由与RIP配置"
+        },
+        {
+          "label": "AR3单臂路由与RIP配置"
+        },
+        {
+          "label": "AR1接口IP与RIP配置"
+        },
+        {
+          "label": "AR1 ACL 3001配置"
+        },
+        {
+          "label": "ACL隔离验证结果"
+        },
+        {
+          "label": "全网连通性验证结果"
+        }
+      ],
+      "score": 15,
+      "reference_answer": {
+        "交换机VLAN与端口配置": "LSW1: vlan batch 101 102 103 104 105 106 300 400; int GE0/0/1/2/3 port link-type trunk, port trunk allow-pass vlan 101 102 103 104 105 106 300 400\nLSW2: vlan batch 101 102; E0/0/1 access vlan 101(PC1); E0/0/2 access vlan 102(PC2); GE0/0/1/2/3 trunk allow-pass vlan 101 102\nLSW3: vlan batch 103 104; E0/0/1 access vlan 103(PC5); E0/0/2 access vlan 104(PC6); GE0/0/1/2/3 trunk allow-pass vlan 103 104",
+        "LSW4三层接口与RIP配置": "interface Vlanif105 ip 10.10.50.1/24; Vlanif106 ip 10.10.60.1/24; Vlanif400 ip 172.16.40.3/24; E0/0/1 access vlan 105(PC3); E0/0/2 access vlan 106(PC4); GE trunk allow-pass vlan 105 106 400; rip 1 version 2 network 10.0.0.0 172.16.0.0",
+        "AR2单臂路由与RIP配置": "GE0/0/0 ip 172.16.40.2/24; GE0/0/1.101 dot1q termination vid 101 ip 10.10.10.1/24 arp broadcast enable; GE0/0/1.102 dot1q termination vid 102 ip 10.10.20.1/24 arp broadcast enable; undo shutdown; rip 1 version 2 network 172.16.0.0 10.0.0.0",
+        "AR3单臂路由与RIP配置": "GE0/0/0 ip 192.168.30.2/24; GE0/0/1.103 dot1q termination vid 103 ip 10.10.30.1/24 arp broadcast enable; GE0/0/1.104 dot1q termination vid 104 ip 10.10.40.1/24 arp broadcast enable; undo shutdown; rip 1 version 2 network 192.168.30.0 10.0.0.0",
+        "AR1接口IP与RIP配置": "GE0/0/0 ip 172.16.40.1/24; GE0/0/1 ip 192.168.30.1/24; rip 1 version 2 network 172.16.0.0 192.168.30.0",
+        "AR1 ACL 3001配置": "acl 3001\n rule 5 deny ip source 10.10.10.0 0.0.0.255 destination 10.10.30.0 0.0.0.255\n rule 10 deny ip source 10.10.10.0 0.0.0.255 destination 10.10.40.0 0.0.0.255\n rule 15 deny ip source 10.10.20.0 0.0.0.255 destination 10.10.30.0 0.0.0.255\n rule 20 deny ip source 10.10.20.0 0.0.0.255 destination 10.10.40.0 0.0.0.255\n rule 25 deny ip source 10.10.30.0 0.0.0.255 destination 10.10.10.0 0.0.0.255\n rule 30 deny ip source 10.10.30.0 0.0.0.255 destination 10.10.20.0 0.0.0.255\n rule 35 deny ip source 10.10.40.0 0.0.0.255 destination 10.10.10.0 0.0.0.255\n rule 40 deny ip source 10.10.40.0 0.0.0.255 destination 10.10.20.0 0.0.0.255\n rule 100 permit ip\nint GE0/0/0 traffic-filter inbound acl 3001\nint GE0/0/1 traffic-filter inbound acl 3001",
+        "ACL隔离验证结果": "PC1→PC5 ping 不通；PC2→PC6 ping 不通；PC5→PC1 ping 不通（ACL禁止双向通信）",
+        "全网连通性验证结果": "PC1→PC3 ping 通；PC5→PC4 ping 通；PC3→PC1 ping 通（未禁止网段间正常通信）"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.13上.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n某网络拓扑包含3台二层交换机（LSW1/2）、1台三层交换机（LSW3）、4台路由器（AR1/2/3/4）、4台PC（PC1/2/4/5）和1台Server（Server2）。LSW3三层交换机实现VLAN101-104间通信，AR4单臂路由实现VLAN101-104通信。AR3配置动态NAT实现VLAN104访问Server2时地址转换。\n\n设备清单：\n- AR1、AR2、AR3、AR4 路由器（各1台）\n- LSW1、LSW2 二层交换机（各1台）\n- LSW3 三层交换机（1台）\n- PC1、PC2、PC4、PC5（各1台）\n- Server2（1台）\n\nVLAN规划：\n| VLAN101 | 172.16.101.0/24 | 网关 LSW3 172.16.101.1 | PC1 |\n| VLAN102 | 172.16.102.0/24 | 网关 LSW3 172.16.102.1 | PC2 |\n| VLAN103 | 172.16.103.0/24 | 网关 LSW3 172.16.103.1 | PC4 |\n| VLAN104 | 172.16.104.0/24 | 网关 LSW3 172.16.104.1 | PC5(需NAT) |\n| VLAN1002 | 172.16.200.0/24 | AR4 GE0/0/2 172.16.200.1 | AR4-AR1互联 |\n\n路由器互联：AR1↔AR2（192.168.4.0/24）、AR1↔AR3（192.168.2.0/24）、AR1↔AR4（192.168.3.0/24）、AR2外网（192.168.1.0/24）、AR3公网侧（172.168.100.0/24）\n\n【调试要求】\n1. 按拓扑图完成设备连接\n2. 完成各交换机VLAN创建和端口配置\n3. LSW3三层交换机配置VLANIF实现VLAN101-104间通信\n4. AR4单臂路由子接口实现VLAN101-104通信\n5. 配置RIP动态路由协议实现全网互通\n6. 在AR3上配置动态NAT：VLAN104访问Server2时转换为172.168.100.30~172.168.100.50\n7. 配置Server2 IP地址\n8. 验证NAT转换和全网连通性",
+      "text_fields": [
+        {
+          "label": "交换机VLAN与端口配置"
+        },
+        {
+          "label": "LSW3三层接口与RIP配置"
+        },
+        {
+          "label": "AR4单臂路由与RIP配置"
+        },
+        {
+          "label": "AR1/AR2接口与RIP配置"
+        },
+        {
+          "label": "AR3 NAT地址池与ACL配置"
+        },
+        {
+          "label": "AR3 NAT出接口应用"
+        },
+        {
+          "label": "NAT转换验证结果"
+        },
+        {
+          "label": "全网连通性验证结果"
+        }
+      ],
+      "score": 15,
+      "reference_answer": {
+        "交换机VLAN与端口配置": "LSW1: vlan batch 101 102 103 104; GE0/0/1/2/3 trunk allow-pass vlan 101 102 103 104\nLSW2: vlan batch 101 102 103 104; E0/0/1 access vlan 103(PC4); E0/0/2 access vlan 104(PC5); GE0/0/1/2/3 trunk allow-pass vlan 101 102 103 104",
+        "LSW3三层接口与RIP配置": "vlan batch 101 102 103 104; Vlanif101 ip 172.16.101.1/24; Vlanif102 ip 172.16.102.1/24; Vlanif103 ip 172.16.103.1/24; Vlanif104 ip 172.16.104.1/24; GE trunk allow-pass vlan 101 102 103 104; rip 1 version 2 network 172.16.0.0",
+        "AR4单臂路由与RIP配置": "GE0/0/2 ip 172.16.200.1/24; GE0/0/1.101 dot1q termination vid 101 ip 172.16.101.2/24 arp broadcast enable; GE0/0/1.102 dot1q termination vid 102 ip 172.16.102.2/24 arp broadcast enable; GE0/0/1.103 dot1q termination vid 103 ip 172.16.103.2/24 arp broadcast enable; GE0/0/1.104 dot1q termination vid 104 ip 172.16.104.2/24 arp broadcast enable; undo shutdown; rip 1 version 2 network 172.16.0.0",
+        "AR1/AR2接口与RIP配置": "AR1: GE0/0/0 ip 192.168.4.1/24; GE0/0/1 ip 192.168.2.1/24; GE4/0/0 ip 192.168.3.1/24; rip 1 version 2 network 192.168.2.0 192.168.3.0 192.168.4.0\nAR2: GE0/0/0 ip 192.168.4.2/24; GE0/0/2 ip 192.168.1.1/24; rip 1 version 2 network 192.168.4.0 192.168.1.0",
+        "AR3 NAT地址池与ACL配置": "nat address-group 1 172.168.100.30 172.168.100.50; acl 2000 rule 5 permit source 172.16.104.0 0.0.0.255",
+        "AR3 NAT出接口应用": "GE0/0/1 ip 192.168.2.2/24(内网); GE0/0/2 ip 172.168.100.1/24(公网); GE0/0/2 nat outbound 2000 address-group 1 no-pat; rip 1 version 2 network 192.168.2.0 172.168.100.0; ip route-static 0.0.0.0 0.0.0.0 192.168.2.1",
+        "NAT转换验证结果": "PC5 ping Server2(172.168.100.2) 通; display nat session all 看到172.16.104.x→172.168.100.30~50转换",
+        "全网连通性验证结果": "PC1 ping Server2 通; PC4 ping PC1 通; display ip routing-table 看到192.168.x.x全部路由"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.13下.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n某网络拓扑包含4台二层交换机（LSW1/3/4）、1台三层交换机（LSW2）、3台路由器（AR1/2/4）、4台PC（PC1-4）和2台Server（Server1/2）。LSW2三层交换机实现VLAN10-60间通信。AR1单臂路由实现VLAN10/20通信，AR4单臂路由实现VLAN50/60通信。\n\n设备清单：\n- AR1、AR2、AR4 路由器（各1台）\n- LSW1、LSW3、LSW4 二层交换机（各1台）\n- LSW2 三层交换机（1台）\n- PC1~PC4（各1台）\n- Server1、Server2（各1台）\n\nVLAN规划：\n| VLAN10 | 172.16.10.0/24 | LSW2 Vlanif10 172.16.10.1 | PC1 |\n| VLAN20 | 172.16.20.0/24 | LSW2 Vlanif20 172.16.20.1 | PC2 |\n| VLAN30 | 172.16.30.0/24 | LSW2 Vlanif30 172.16.30.1 | PC3 |\n| VLAN40 | 172.16.40.0/24 | LSW2 Vlanif40 172.16.40.1 | PC4 |\n| VLAN50 | 172.16.50.0/24 | LSW2 Vlanif50 172.16.50.1 | Server1 |\n| VLAN60 | 172.16.60.0/24 | LSW2 Vlanif60 172.16.60.1 | Server2 |\n| VLAN200 | 192.168.20.0/24 | AR4 GE0/0/1 192.168.20.1 | 互联 |\n\n路由器互联：AR1↔AR2（10.10.10.0/24, 10.10.20.0/24）、AR2↔AR4（10.10.30.0/24）\n\n【调试要求】\n1. 按拓扑图完成设备连接\n2. 完成各交换机VLAN创建和端口配置\n3. LSW2三层交换机配置VLANIF实现VLAN10-60间通信\n4. AR1单臂路由子接口实现VLAN10/20通信\n5. AR4单臂路由子接口实现VLAN50/60通信\n6. 配置RIP动态路由协议实现全网互通\n7. AR1配置ACL 3001：只允许VLAN10/20访问Server的WWW服务（TCP 80）\n8. AR4配置ACL 3002：只允许VLAN50/60访问Server的FTP服务（TCP 20/21）\n9. 验证ACL规则和全网连通性",
+      "text_fields": [
+        {
+          "label": "交换机VLAN与端口配置"
+        },
+        {
+          "label": "LSW2三层接口与RIP配置"
+        },
+        {
+          "label": "AR1单臂路由与ACL配置"
+        },
+        {
+          "label": "AR4单臂路由与ACL配置"
+        },
+        {
+          "label": "AR2接口与RIP配置"
+        },
+        {
+          "label": "HTTP ACL验证结果"
+        },
+        {
+          "label": "FTP ACL验证结果"
+        },
+        {
+          "label": "全网连通性验证结果"
+        }
+      ],
+      "score": 15,
+      "reference_answer": {
+        "交换机VLAN与端口配置": "LSW1: vlan batch 10 20 30 40 50 60; E0/0/1 access vlan 10(PC1); E0/0/2 access vlan 20(PC2); GE trunk allow-pass vlan 10 20 30 40 50 60\nLSW3: vlan batch 50 60; E0/0/1 access vlan 50(Server1); E0/0/2 access vlan 60(Server2); GE trunk allow-pass vlan 50 60\nLSW4: vlan batch 30 40; E0/0/1 access vlan 30(PC3); E0/0/2 access vlan 40(PC4); GE trunk allow-pass vlan 30 40",
+        "LSW2三层接口与RIP配置": "vlan batch 10 20 30 40 50 60 200; Vlanif10 ip 172.16.10.1/24; Vlanif20 ip 172.16.20.1/24; Vlanif30 ip 172.16.30.1/24; Vlanif40 ip 172.16.40.1/24; Vlanif50 ip 172.16.50.1/24; Vlanif60 ip 172.16.60.1/24; GE trunk allow-pass vlan 10 20 30 40 50 60 200; rip 1 version 2 network 172.16.0.0",
+        "AR1单臂路由与ACL配置": "GE0/0/1 ip 10.10.20.1/24; GE0/0/0.10 dot1q termination vid 10 ip 172.16.10.2/24 arp broadcast enable; GE0/0/0.20 dot1q termination vid 20 ip 172.16.20.2/24 arp broadcast enable; undo shutdown; acl 3001 rule 5 permit tcp source 172.16.10.0 0.0.0.255 dest 172.16.50.0 0.0.0.255 dest-port eq 80; rule 10 permit tcp source 172.16.10.0 0.0.0.255 dest 172.16.60.0 0.0.0.255 dest-port eq 80; rule 15 permit tcp source 172.16.20.0 0.0.0.255 dest 172.16.50.0 0.0.0.255 dest-port eq 80; rule 20 permit tcp source 172.16.20.0 0.0.0.255 dest 172.16.60.0 0.0.0.255 dest-port eq 80; rule 100 deny ip; int GE0/0/0 traffic-filter inbound acl 3001; rip 1 version 2 network 172.16.0.0 10.0.0.0",
+        "AR4单臂路由与ACL配置": "GE0/0/0 ip 10.10.30.2/24; GE0/0/1.50 dot1q termination vid 50 ip 172.16.50.2/24 arp broadcast enable; GE0/0/1.60 dot1q termination vid 60 ip 172.16.60.2/24 arp broadcast enable; undo shutdown; acl 3002 rule 5 permit tcp source 172.16.50.0 0.0.0.255 dest 172.16.10.0 0.0.0.255 dest-port eq 20; rule 10 permit tcp source 172.16.50.0 0.0.0.255 dest 172.16.10.0 0.0.0.255 dest-port eq 21; rule 15 permit tcp source 172.16.50.0 0.0.0.255 dest 172.16.20.0 0.0.0.255 dest-port eq 20; rule 20 permit tcp source 172.16.50.0 0.0.0.255 dest 172.16.20.0 0.0.0.255 dest-port eq 21; rule 25 permit tcp source 172.16.60.0 0.0.0.255 dest 172.16.10.0 0.0.0.255 dest-port eq 20; rule 30 permit tcp source 172.16.60.0 0.0.0.255 dest 172.16.10.0 0.0.0.255 dest-port eq 21; rule 35 permit tcp source 172.16.60.0 0.0.0.255 dest 172.16.20.0 0.0.0.255 dest-port eq 20; rule 40 permit tcp source 172.16.60.0 0.0.0.255 dest 172.16.20.0 0.0.0.255 dest-port eq 21; rule 100 deny ip; int GE0/0/1 traffic-filter inbound acl 3002; rip 1 version 2 network 172.16.0.0 10.0.0.0",
+        "AR2接口与RIP配置": "GE0/0/0 ip 10.10.20.2/24; GE0/0/1 ip 10.10.30.1/24; rip 1 version 2 network 10.0.0.0",
+        "HTTP ACL验证结果": "PC1 telnet Server1 80 通（允许WWW）; PC1 ping Server1 不通（非80端口被拒绝）",
+        "FTP ACL验证结果": "Server1 telnet PC1 21 通（允许FTP）; Server1 ping PC1 不通（非FTP被拒绝）",
+        "全网连通性验证结果": "PC1 ping PC3 通（VLAN10→VLAN30 LSW2三层转发）; PC3 ping Server1 通（未受限网段正常通信）"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.14上.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    },
+    {
+      "content": "【网络拓扑】\n某网络拓扑包含4台二层交换机（LSW3/4/5/6）、1台三层交换机（LSW1）、1台备份二层交换机（LSW2）、2台路由器（AR1/2）、6台PC（PC1-6）。LSW1三层交换机实现VLAN10-40间通信，AR2单臂路由实现VLAN10-40通信。LSW1为主根交换机、LSW2为次根交换机，运行STP。VLAN30和VLAN40的PC通过DHCP自动获取IP地址。\n\n设备清单：\n- AR1、AR2 路由器（各1台）\n- LSW1 三层交换机（1台，主根桥）\n- LSW2 二层交换机（1台，次根桥）\n- LSW3、LSW4、LSW5、LSW6 二层交换机（各1台）\n- PC1~PC6（各1台）\n\nVLAN规划：\n| VLAN10 | 172.16.10.0/24 | LSW1 Vlanif10 172.16.10.1 | PC1/PC3(静态) |\n| VLAN20 | 172.16.20.0/24 | LSW1 Vlanif20 172.16.20.1 | PC2/PC4(静态) |\n| VLAN30 | 172.16.30.0/24 | LSW1 Vlanif30 172.16.30.1 | PC5(DHCP) |\n| VLAN40 | 172.16.40.0/24 | LSW1 Vlanif40 172.16.40.1 | PC6(DHCP) |\n| VLAN300 | 192.168.1.0/24 | AR1 GE0/0/1 192.168.1.1 | AR1-LSW互联 |\n| VLAN400 | 192.168.2.0/24 | AR1 GE0/0/2 192.168.2.1 | AR1-AR2互联 |\n\n路由器：AR1 GE0/0/0连接外网10.10.10.0/24\n\n【调试要求】\n1. 按拓扑图完成设备连接\n2. 完成各交换机VLAN创建和端口配置\n3. 配置STP：LSW1为主根交换机(stp root primary)，LSW2为次根交换机(stp root secondary)，其他交换机启用STP\n4. LSW1三层交换机配置VLANIF实现VLAN10-40间通信\n5. AR2单臂路由子接口实现VLAN10/20/30/40通信\n6. LSW1配置DHCP地址池（VLAN30/40），启用全局DHCP\n7. 配置RIP动态路由协议实现全网互通\n8. 验证STP根桥选举和DHCP地址分配\n9. 验证全网连通性",
+      "text_fields": [
+        {
+          "label": "交换机VLAN与STP配置"
+        },
+        {
+          "label": "LSW1主根桥与三层接口配置"
+        },
+        {
+          "label": "LSW1 DHCP配置"
+        },
+        {
+          "label": "AR2单臂路由与RIP配置"
+        },
+        {
+          "label": "AR1接口与RIP配置"
+        },
+        {
+          "label": "STP验证结果"
+        },
+        {
+          "label": "DHCP验证结果"
+        },
+        {
+          "label": "全网连通性验证结果"
+        }
+      ],
+      "score": 15,
+      "reference_answer": {
+        "交换机VLAN与STP配置": "LSW2: vlan batch 10 20 30 40 300 400; stp mode stp; stp root secondary; stp enable; GE trunk allow-pass vlan 10 20 30 40 300 400\nLSW3: stp mode stp; stp enable; vlan batch 10 20; E0/0/1 access vlan 10(PC1); E0/0/2 access vlan 20(PC2); GE trunk allow-pass vlan 10 20\nLSW4: stp mode stp; stp enable; vlan batch 10 20; E0/0/1 access vlan 10(PC3); E0/0/2 access vlan 20(PC4); GE trunk allow-pass vlan 10 20\nLSW5: stp mode stp; stp enable; vlan batch 30; E0/0/1 access vlan 30(PC5 DHCP); GE trunk allow-pass vlan 30\nLSW6: stp mode stp; stp enable; vlan batch 40; E0/0/1 access vlan 40(PC6 DHCP); GE trunk allow-pass vlan 40",
+        "LSW1主根桥与三层接口配置": "vlan batch 10 20 30 40 300 400; stp mode stp; stp root primary; stp enable; Vlanif10 ip 172.16.10.1/24; Vlanif20 ip 172.16.20.1/24; Vlanif30 ip 172.16.30.1/24; Vlanif40 ip 172.16.40.1/24; GE trunk allow-pass vlan 10 20 30 40 300 400; rip 1 version 2 network 172.16.0.0",
+        "LSW1 DHCP配置": "dhcp enable; ip pool vlan30 gateway-list 172.16.30.1 network 172.16.30.0 mask 255.255.255.0 dns-list 8.8.8.8; ip pool vlan40 gateway-list 172.16.40.1 network 172.16.40.0 mask 255.255.255.0 dns-list 8.8.8.8; int Vlanif30 dhcp select global; int Vlanif40 dhcp select global",
+        "AR2单臂路由与RIP配置": "GE0/0/1 ip 192.168.2.2/24; GE0/0/0.10 dot1q termination vid 10 ip 172.16.10.2/24 arp broadcast enable; GE0/0/0.20 dot1q termination vid 20 ip 172.16.20.2/24 arp broadcast enable; GE0/0/0.30 dot1q termination vid 30 ip 172.16.30.2/24 arp broadcast enable; GE0/0/0.40 dot1q termination vid 40 ip 172.16.40.2/24 arp broadcast enable; undo shutdown; rip 1 version 2 network 192.168.2.0 172.16.0.0",
+        "AR1接口与RIP配置": "GE0/0/0 ip 10.10.10.1/24; GE0/0/1 ip 192.168.1.1/24; GE0/0/2 ip 192.168.2.1/24; rip 1 version 2 network 10.0.0.0 192.168.1.0 192.168.2.0",
+        "STP验证结果": "display stp brief: LSW1为根桥全部端口Forwarding; LSW2为次根桥; 各接入交换机端口正常转发无环路",
+        "DHCP验证结果": "PC5 ipconfig 自动获取172.16.30.x地址; PC6 ipconfig 自动获取172.16.40.x地址; display ip pool 查看地址池使用情况",
+        "全网连通性验证结果": "PC1 ping PC6 通（VLAN10→VLAN40 LSW1三层转发）; PC5 ping 10.10.10.1 通（DHCP网段经RIP到外网）"
+      },
+      "image": "C:\\Users\\Administrator\\Desktop\\辉\\Ensp\\2024年技能真题\\3.14下.png",
+      "source": "2024年山东省春考真题",
+      "difficulty": "难"
+    }
+  ]
+}

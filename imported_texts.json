@@ -1,0 +1,30 @@
+{
+  "english": [
+    {
+      "title": "def _on_line_input(self, var, ",
+      "content": "def _on_line_input(self, var, line_start, line_end):\n    if not self.is_running or self.is_paused:\n        return\n    if self.mode == \"chinese\":\n        return chinese_entry_var\n    new_val = var.get()\n    if len(new_val) > 0:\n        last_char = new_val[-1]\n        expected_char = self.current_text[self.current_index] if self.current_index < line_end else \"\"\n        if last_char == expected_char:\n            self.correct_keystrokes += 1\n        else:\n            self.wrong_chars.add(self.current_index)\n        self.current_index += 1\n        self.total_keystrokes += 1\n        self._update_display()\n        self._update_stats()\n        if self.current_index >= len(self.current_text):\n            self._finish_practice()\n\ndef _on_line_key(self, event, var, line_start, line_end):\n    \"\"\"Entry 按键处理，处理 Backspace\"\"\"\n    if not self.is_running or self.is_paused:\n        return \"break\"\n    if self.mode == \"chinese\":\n        return \"break\"\n    if event.keysym == \"BackSpace\":\n        if self.current_index > line_start:\n            self.current_index -= 1\n            self.wrong_chars.discard(self.current_index)\n            self.total_keystrokes = max(0, self.total_keystrokes - 1)\n            self._update_display()\n            self._update_stats()\n        return \"break\"\n    # 阻止方向键等导航\n    if event.keysym in (\"Left\", \"Right\", \"Up\", \"Down\", \"Home\", \"End\", \"Tab\"):\n        return \"break\""
+    },
+    {
+      "title": "qq",
+      "content": "Everyone has hobbies. Hobbies can make our life more colorful and help us relax in our free time. Among all kinds of hobbies, reading is my favorite.\nI love reading because books are my best friends. When I feel tired or upset, I always pick up a book and read quietly. Different books teach me different knowledge and tell me wonderful stories. I can know more about the world, history and different cultures from books.\nBesides, reading helps me improve my vocabulary and writing skills. It makes me smarter and more patient. Every weekend, I spend at least one hour reading in the library or at home. It has become an important part of my daily life.\nIn a word, reading is a great hobby. I will keep reading in the future. It brings me happiness and growth."
+    },
+    {
+      "title": "ensp",
+      "content": "sys\nsysname swb     \nquit         \nun in en\ndisplay cu\nvlan batch 20 30 40   \nint g0/0/1\np\tl a\np\td v 10\nint e0/0/5\np l t\np t a v 10 20\ndisplay vlan\n int vlanif 10\t\nip add 192.168.10.1 24\n int g0/0/1\t\nip address 192.168.10.1 24\nip route-static 192.168.1.0 255.255.255.0 192.168.3.1\nip route-static  0.0.0.0 0  192.168.1.1  \nip route-static 192.168.1.0 255.255.255.0 192.168.3.1 preference 1\nrip        \nversion 2      \nnetwork 172.16.0.0   \nospf     \narea  0 \nnetwork 192.168.1.128  0.0.0.63  \ndisplay ip routing-table   \nstp enable  \nstp mode stp   \nstp root primary  \nstp root secondary \nstp edged-port enable  \ndisplay stp brief \ndhcp enable                                 \nip pool net1               \nnetwork 192.168.1.0  mask 24  \ngateway-list 192.168.1.1    \nlease day 3     \nexcluded-ip-address 192.168.1.100 192.168.1.254 \nint vlanif 10                      \ndhcp select global   \ndhcp enable\t\nint g0/0/0    \ndhcp select interface  \nint e0/0/1\nport-security enable  \nport-security mac-address sticky \nport-security mac-address sticky 5489-983D-1315 vlan 1                                                        \nport-security max-mac-num 1  \nport-security protect-action shutdown \nport-security  aging-time  100\nacl 2000              \nrule deny source 192.168.1.0 0.0.0.255 \ntraffic-filter outbound acl 2000  \nacl 3000\nrule deny tcp source 192.168.1.0 0.0.0.255 destination 192.168.4.1 0.0.0.0 destination-port range 20 21   \n rule permit tcp source 192.168.1.0 0.0.0.255 destination 192.168.4.1 0.0.0.0 destination-port eq 80   \nrule deny ip                \ntraffic-filter inbound acl 3000  \nnat static  global  200.1.1.2 inside 192.168.1.3\nnat address-group 1 172.16.10.5 172.16.10.9  \nnat outbound 2000 address-group 1"
+    },
+    {
+      "title": "1",
+      "content": "abc\nxyz"
+    },
+    {
+      "title": "2",
+      "content": "abc  \nxyz"
+    }
+  ],
+  "chinese": [
+    {
+      "title": "二、UI 渲染与分页刷新 bug",
+      "content": "二、UI 渲染与分页刷新 bug\n1. 每次输入全页面销毁重建控件，性能极差、闪烁严重\n_update_display 每次输入、退格都会执行：\npython\n运行\nfor widget in self.practice_frame.winfo_children():\n    widget.destroy()\n每敲一个字就销毁 + 重新创建所有 Label/Entry，窗口持续闪烁；\n输入框光标会频繁丢失，用户打字体验割裂；\n频繁创建 StringVar 产生大量内存残留。\n2. 原文无对错高亮区分（和截图需求不符）\n原文 Label 是固定纯色，没有实现绿色正确、红色错误字符标记，只能看输入框，无法像金山打字通一样对照原文变色。\n当前代码原文只是静态文本，没有逐字符上色功能。"
+    }
+  ]
+}
